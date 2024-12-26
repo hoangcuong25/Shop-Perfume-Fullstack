@@ -7,6 +7,7 @@ import Item from './item.js';
 import all_item from '../assets/all_item.js'
 import banner_brand from '../assets/banner_brand.js'
 import logo_brand from '../assets/logo_brand.js'
+import { FaRegHeart } from "react-icons/fa";
 import { IoIosArrowDropright } from "react-icons/io";
 import for_him from '../assets/for_him.png'
 import for_her from '../assets/for_her.png'
@@ -119,7 +120,13 @@ const Hero = () => {
                 <Slider {...setting2}>
                     {all_item.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <div key={index} className='relative'>
+                                <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                                <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                    Brand year
+                                </div>
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700' />
+                            </div>
                         )
                     })}
                 </Slider>
