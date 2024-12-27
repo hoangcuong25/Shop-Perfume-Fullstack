@@ -38,11 +38,11 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-nam"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'nuoc-hoa-nam' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('nuoc-hoa-nam')}
+                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa nam' ? 'text-red-500' : ''}`}
+                    onClick={() => setNavbar('Nước hoa nam')}
                 >
                     Nước Hoa Nam
-                    <hr className={`${navbar === 'nuoc-hoa-nam' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${navbar === 'Nước hoa nam' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
@@ -89,11 +89,11 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-nu"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'nuoc-hoa-nu' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('nuoc-hoa-nu')}
+                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa nữ' ? 'text-red-500' : ''}`}
+                    onClick={() => setNavbar('Nước hoa nữ')}
                 >
                     Nước Hoa Nữ
-                    <hr className={`${navbar === 'nuoc-hoa-nu' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${navbar === 'Nước hoa nữ' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>

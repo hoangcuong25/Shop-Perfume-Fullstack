@@ -29,7 +29,7 @@ let all_item = [
         name: `J'adore L’Or Eau De Parfum 50ml`,
         brands: `Marc Jacobs`,
         image: item1,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 150,
         new_price: 120,
         best_seller: "y"
@@ -39,7 +39,7 @@ let all_item = [
         name: `Marc Jacobs Coco Mademoiselle Eau De Parfum 35ml`,
         brands: `Marc Jacobs`,
         image: item2,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 75,
         new_price: 60,
         best_seller: "y"
@@ -49,7 +49,7 @@ let all_item = [
         name: `Sauvage Eau De Toilette 60ml`,
         brands: `Versace`,
         image: item3,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 55,
         new_price: 48,
         best_seller: "y"
@@ -59,7 +59,7 @@ let all_item = [
         name: `ALIEN Eau De Parfum 60ml`,
         brands: `Gucci`,
         image: item4,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 103,
         new_price: 95,
         best_seller: "y"
@@ -69,7 +69,7 @@ let all_item = [
         name: `Daisy Wild Eau De Parfum 30ml`,
         brands: `Marc Jacobs`,
         image: item5,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 60,
         new_price: 48,
         best_seller: "y"
@@ -79,7 +79,7 @@ let all_item = [
         name: `Eau de Parfum Spray 30ml`,
         brands: `Gucci`,
         image: item6,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 122,
         new_price: 87,
         best_seller: "y"
@@ -89,7 +89,7 @@ let all_item = [
         name: `Honey Eau De Parfum 100ml`,
         brands: `Marc Jacobs`,
         image: item7,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 55,
         new_price: 44,
         best_seller: "y"
@@ -99,7 +99,7 @@ let all_item = [
         name: `Gucci Guilty For Her Elixir Eau De Parfum 60ml`,
         brands: `Gucci`,
         image: item8,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 126,
         new_price: 105,
         best_seller: "y"
@@ -109,7 +109,7 @@ let all_item = [
         name: `Gucci Guilty For Her Intense 30ml`,
         brands: `Gucci`,
         image: item9,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 126,
         new_price: 105,
         best_seller: "y"
@@ -119,7 +119,7 @@ let all_item = [
         name: `K BY DOLCE&GABBANA Aftershave Lotion 100ml`,
         brands: `Dolce & Gabbana`,
         image: item10,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 42,
         new_price: 53,
         best_seller: "y"
@@ -129,7 +129,7 @@ let all_item = [
         name: `K BY DOLCE&GABBANA Eau De Parfum 50ml`,
         brands: `Dolce & Gabbana`,
         image: item11,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 47,
         new_price: 55,
         best_seller: "y"
@@ -139,27 +139,27 @@ let all_item = [
         name: `212 VIP Black Eau De Parfum 50ml`,
         brands: `Carolina Herrera`,
         image: item12,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 47,
         new_price: 58,
         best_seller: "y"
     },
     {
         id: 13,
-        name: `NOIR FOR nuoc-hoa-nam Extreme Eau De Parfum 50ml`,
+        name: `NOIR FOR Nước hoa nam Extreme Eau De Parfum 50ml`,
         brands: `TOM FORD`,
         image: item13,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 107,
         new_price: 88,
         best_seller: "y"
     },
     {
         id: 14,
-        name: `NOIR FOR nuoc-hoa-nam Extreme Parfum 50ml`,
+        name: `NOIR FOR Nước hoa nam Extreme Parfum 50ml`,
         brands: `TOM FORD`,
         image: item14,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 60,
         new_price: 67,
         best_seller: "y"
@@ -169,7 +169,7 @@ let all_item = [
         name: `Pour Homme Eau De Toilette 100ml`,
         brands: `Versace`,
         image: item15,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 57,
         new_price: 67,
         best_seller: "y"
@@ -179,7 +179,7 @@ let all_item = [
         name: `Man Eau Fraiche 30ml`,
         brands: `Versace`,
         image: item16,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 57,
         new_price: 69,
         best_seller: "y"
@@ -189,7 +189,7 @@ let all_item = [
         name: `Eau de Parfum Spray 30ml`,
         brands: `Carolina Herrera`,
         image: item17,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 59,
         new_price: 69,
         best_seller: "y"
@@ -199,7 +199,7 @@ let all_item = [
         name: `Good Girl Blush Eau de Parfum Spray 30ml`,
         brands: `Carolina Herrera`,
         image: item18,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 60,
         new_price: 69,
         best_seller: "y"
@@ -209,7 +209,7 @@ let all_item = [
         name: `Very Good Girl Glam Parfum Spray 30ml`,
         brands: `Carolina Herrera`,
         image: item19,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 63,
         new_price: 69,
         best_seller: "y"
@@ -219,7 +219,7 @@ let all_item = [
         name: `K BDevotion Intense Eau de Parfum Intense Spray 100ml`,
         brands: `Dolce & Gabbana`,
         image: item20,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 48,
         new_price: 53,
         best_seller: "y"
@@ -229,7 +229,7 @@ let all_item = [
         name: `K by Dolce&Gabbana Eau de Parfum Intense Spray 100ml`,
         brands: `Dolce & Gabbana`,
         image: item21,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 47,
         new_price: 53,
         best_seller: "y"
@@ -239,7 +239,7 @@ let all_item = [
         name: `Café Rose Eau de Parfum Spray 50ml`,
         brands: `TOM FORD`,
         image: item22,
-        category: `nuoc-hoa-nu`,
+        category: `Nước hoa nữ`,
         old_price: 101,
         new_price: 88,
         best_seller: "y"
@@ -249,7 +249,7 @@ let all_item = [
         name: `Black Orchid Eau de Parfum Spray 50ml`,
         brands: `TOM FORD`,
         image: item23,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 107,
         new_price: 88,
         best_seller: "y"
@@ -259,7 +259,7 @@ let all_item = [
         name: `Eros Eau de Toilette Spray 100ml`,
         brands: `Versace`,
         image: item24,
-        category: `nuoc-hoa-nam`,
+        category: `Nước hoa nam`,
         old_price: 57,
         new_price: 67,
         best_seller: "y"
