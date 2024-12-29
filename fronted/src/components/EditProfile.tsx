@@ -15,28 +15,27 @@ const EditProfile = () => {
     const [image, setImage] = useState()
     const [lastName, setLastName] = useState(userData.lastName)
     const [firstName, setFirstName] = useState(userData.firstName)
-    const [selectGender, setSelectGender] = useState(userData.gender)
+    const [gender, setGender] = useState(userData.gender)
     const [dob, setdob] = useState(userData.dob)
 
     const editProfile = async () => {
         try {
-            const payload = {
-                firstName,
-                lastName,
-                selectGender,
-                dob
-            }
+            const formData = new FormData()
+            formData.append('firstName', firstName)
+            formData.append('lastName', lastName)
+            formData.append('gender', gender)
+            formData.append('dob', dob)
 
             if (image) {
-                payload.image = image;  // Add image as a property instead of pushing to an array
+                formData.append('image', image)  // Append image file
             }
 
             const { data } = await axios.put(
                 backendUrl + '/api/user/update-profile',
-                payload,
+                formData,
                 {
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'multipart/form-data',
                         token: token
                     }
                 }
@@ -54,10 +53,10 @@ const EditProfile = () => {
         }
     }
 
-    console.log(selectGender)
+    console.log(image)
 
     return (
-        <div className='flex gap-3 w-full bg-gray-100 px-3 py-3'>
+        <div className='flex gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
             <div className='w-1/2 border-r'>
                 <p className='font-bold text-lg'>Thông tin tài khoản</p>
                 <div className='flex gap-10 mt-3'>
@@ -99,17 +98,17 @@ const EditProfile = () => {
                         </div>
 
                         <div className="flex space-x-4">
-                            {['Nam', 'Nữ', 'Không xác định'].map((gender) => (
-                                <label key={gender} className="inline-flex items-center text-sm">
+                            {['Nam', 'Nữ', 'Không xác định'].map((selectGender) => (
+                                <label key={selectGender} className="inline-flex items-center text-sm">
                                     <input
                                         type="radio"
                                         name="gender"
                                         value={gender}
-                                        checked={selectGender === gender}
-                                        onChange={() => setSelectGender(gender)}
+                                        checked={gender === selectGender}
+                                        onChange={() => setGender(selectGender)}
                                         className="form-radio text-blue-600 h-5 w-5"
                                     />
-                                    <span className="ml-2">{gender}</span>
+                                    <span className="ml-2">{selectGender}</span>
                                 </label>
                             ))}
                         </div>

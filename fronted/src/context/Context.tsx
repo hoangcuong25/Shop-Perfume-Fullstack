@@ -35,7 +35,7 @@ const AppContextProvider = (props) => {
         backendUrl,
         token, setToken,
         userData, setUserData,
-        loadUserProfileData
+        loadUserProfileData,
     }
 
     useEffect(() => {

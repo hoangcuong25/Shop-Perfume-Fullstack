@@ -6,18 +6,21 @@ import { AppContext } from '../context/Context';
 import all_item from '../assets/all_item.js'
 import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
+import Sorting from '../components/Sorting.js';
 
 const Category = () => {
 
     const { navbar, setNavbar } = useContext(AppContext)
 
-    const [fillterItem, setFillterItem] = useState()
+    const [items, setItems] = useState<any[]>([])
 
     const [selectedBrand, setSelectedBrand] = useState<string>()
     const [selectedPrice, setSelectedPrice] = useState<string>()
 
     const [isShowBrand, setIsShowBrand] = useState<boolean>(false)
     const [isShowPrice, setIsShowPrice] = useState<boolean>(false)
+
+    const [selectedOption, setSelectedOption] = useState<string>('')
 
     const filteredItem = () => {
         let filtered = all_item.filter(item => item.category === navbar);
@@ -41,14 +44,29 @@ const Category = () => {
             });
         }
 
-        setFillterItem(filtered);
+        setItems(filtered);
     };
-
-    console.log(selectedPrice)
 
     useEffect(() => {
         filteredItem()
     }, [navbar, selectedBrand, selectedPrice])
+
+    const sorting = () => {
+        if (items?.length === 0) return
+        let sortedArray = [...items]
+
+        if (selectedOption === 'Giá thấp đến cao') {
+            sortedArray.sort((a, b) => a.new_price - b.new_price)
+        } else if (selectedOption === 'Giá cao đến thấp') {
+            sortedArray.sort((a, b) => b.new_price - a.new_price)
+        }
+
+        setItems(sortedArray)
+    }
+
+    useEffect(() => {
+        sorting()
+    }, [selectedOption, items])
 
     return (
         <div className='mb-16'>
@@ -83,8 +101,8 @@ const Category = () => {
                 </div>
             }
 
-            <div className='flex gap-3 px-3.5 sm:px-7 mt-3.5 sm:mt-12'>
-                <div className='w-56'>
+            <div className='flex gap-5 px-3.5 sm:px-7 mt-3.5 sm:mt-12 '>
+                <div className='w-56 h-fit bg-gray-100 px-3 py-5 rounded-md shadow-md hover:shadow-lg'>
                     <p className='font-semibold text-2xl'>{navbar}</p>
 
                     <p className='mt-3.5 text-gray-500'>Bộ lọc</p>
@@ -151,12 +169,12 @@ const Category = () => {
 
                 <div className='w-full '>
                     <div className='flex justify-between text-sm'>
-                        <p>{fillterItem?.length ?? 0} kết quả</p>
-                        <p>Sắp xếp theo: </p>
+                        <p>{items?.length ?? 0} kết quả</p>
+                        <Sorting setSelectedOption={setSelectedOption} />
                     </div>
 
                     <div className='mt-8 flex flex-wrap justify-center'>
-                        {fillterItem?.map((item, index) => (
+                        {items?.map((item, index) => (
                             <div key={index} className='relative'>
                                 <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
                                 <FaRegHeart className='absolute top-0 right-7 text-gray-700' />

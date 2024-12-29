@@ -112,7 +112,7 @@ const Header = () => {
 
                     {token ?
                         <div className='flex items-center gap-2  cursor-pointer relative group'>
-                            <img src={userData.image} className='w-10 rounded-full' alt="" />
+                            <img src={userData.image} className='size-10 rounded-full' alt="" />
                             <p className='capitalize group-hover:text-red-500 font-medium'>{`${userData.lastName} ${userData.firstName}`}</p>
 
                             <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>

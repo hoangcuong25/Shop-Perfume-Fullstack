@@ -6,7 +6,7 @@ import { IoMdPaper } from "react-icons/io";
 
 const Point = () => {
     return (
-        <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3'>
+        <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
             <div className='w-full h-20 bg-stone-200 flex justify-center items-center gap-5'>
                 <RiCopperCoinFill className='text-yellow-400 text-2xl' />
                 <p> Điểm khả dụng</p>
