@@ -55,8 +55,6 @@ const Register = () => {
         }
     }
 
-
-
     return (
         <div className='flex flex-col items-center gap-5 mt-3 mb-10 md:mt-5'>
             <p className='text-3xl font-bold text-red-500'>namperfume</p>

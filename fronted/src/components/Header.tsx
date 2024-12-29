@@ -18,7 +18,13 @@ import { AppContext } from '../context/Context';
 
 const Header = () => {
 
-    const { setNavbar } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData } = useContext(AppContext)
+
+    const logout = () => {
+        setToken(false)
+        localStorage.removeItem('token')
+    }
+
 
     return (
         <div className=''>
@@ -104,49 +110,66 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <div className='hidden sm:flex items-center gap-1.5 text-gray-700 cursor-pointer relative group '>
-                        <FaRegUser />
-                        <p className='group-hover:text-red-500 hidden lg:block'>Đăng nhập</p>
+                    {token ?
+                        <div className='flex items-center gap-2  cursor-pointer relative group'>
+                            <img src={userData.image} className='w-10 rounded-full' alt="" />
+                            <p className='capitalize group-hover:text-red-500 font-medium'>{`${userData.lastName} ${userData.firstName}`}</p>
 
-                        <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
-                            <div className='border border-gray-300 bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
-                                <div className='flex items-center gap-5'>
-                                    <FaRegUser className='text-2xl' />
-                                    <div className='flex flex-col'>
-                                        <p className='font-semibold'>Chào bạn,</p>
-                                        <p className='text-xs font-light'>Đăng nhập để tham gia với chúng tôi</p>
+                            <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
+                                <div className='border border-gray-300 bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>
+                                    <Link to='/my-profile' className='group/item'>
+                                        <p className=' group-hover/item:text-red-500'>My Profile</p>
+                                    </Link>
+                                    <div className='group/item'>
+                                        <p onClick={logout} className=' group-hover/item:text-red-500'>Logout</p>
                                     </div>
                                 </div>
-                                <div className='flex text-xs font-bold justify-between text-center border-b pb-5'>
-                                    <Link to='/login' className='border border-gray-300 px-3.5 py-1 w-28 cursor-pointer hover:bg-red-500 hover:text-white'>
-                                        Đăng nhập
-                                    </Link>
-                                    <Link to='/register' className='border border-gray-300 px-3.5 py-1 w-28 cursor-pointer hover:bg-red-500 hover:text-white'>
-                                        Đăng ký
-                                    </Link>
-                                </div>
-                                <div className='text-sm font-bold flex flex-col'>
-                                    <p className='text-center'>Hoặc Đăng Nhập Với</p>
-                                    <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
-                                        <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                            <FcGoogle className='text-2xl ' />
-                                        </div>
-                                        <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                            Đăng Nhập Với Google
+                            </div>
+                        </div>
+                        : <div className='hidden sm:flex items-center gap-1.5 text-gray-700 cursor-pointer relative group '>
+                            <FaRegUser />
+                            <p className='group-hover:text-red-500 hidden lg:block'>Đăng nhập</p>
+
+                            <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
+                                <div className='border border-gray-300 bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
+                                    <div className='flex items-center gap-5'>
+                                        <FaRegUser className='text-2xl' />
+                                        <div className='flex flex-col'>
+                                            <p className='font-semibold'>Chào bạn,</p>
+                                            <p className='text-xs font-light'>Đăng nhập để tham gia với chúng tôi</p>
                                         </div>
                                     </div>
-                                    <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
-                                        <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                            <FaFacebook className='text-2xl text-blue-500' />
+                                    <div className='flex text-xs font-bold justify-between text-center border-b pb-5'>
+                                        <Link to='/login' className='border border-gray-300 px-3.5 py-1 w-28 cursor-pointer hover:bg-red-500 hover:text-white'>
+                                            Đăng nhập
+                                        </Link>
+                                        <Link to='/register' className='border border-gray-300 px-3.5 py-1 w-28 cursor-pointer hover:bg-red-500 hover:text-white'>
+                                            Đăng ký
+                                        </Link>
+                                    </div>
+                                    <div className='text-sm font-bold flex flex-col'>
+                                        <p className='text-center'>Hoặc Đăng Nhập Với</p>
+                                        <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
+                                            <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
+                                                <FcGoogle className='text-2xl ' />
+                                            </div>
+                                            <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
+                                                Đăng Nhập Với Google
+                                            </div>
                                         </div>
-                                        <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                            Đăng Nhập Với Facebook
+                                        <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
+                                            <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
+                                                <FaFacebook className='text-2xl text-blue-500' />
+                                            </div>
+                                            <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
+                                                Đăng Nhập Với Facebook
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
 
                     <div className='flex items-center gap-7 text-gray-700'>
                         <div className='relative cursor-pointer'>
@@ -169,7 +192,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

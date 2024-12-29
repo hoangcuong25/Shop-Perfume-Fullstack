@@ -80,4 +80,46 @@ const loginUser = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser }
+// api get profile
+const profile = async (req, res) => {
+    try {
+        const { userId } = req.body
+        const userData = await userModel.findById(userId).select('-password')
+
+        res.json({ success: true, userData })
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// api update profile 
+const updateProfile = async (req, res) => {
+    try {
+        const { userId, firstName, lastName, dob, gender } = req.body
+        const imageFile = req.file
+
+        if (!firstName || !lastName || !dob || !gender) {
+            return res.json({ success: false, message: "data missing" })
+        }
+
+        await userModel.findByIdAndUpdate(userId, { firstName, lastName, dob, gender })
+
+        if (imageFile) {
+            // upload image to cloudinary
+            const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: 'image' })
+            const imageUrl = imageUpload.secure_url
+
+            await userModel.findByIdAndUpdate(userId, { image: imageUrl })
+        }
+
+        res.json({ success: true, messgae: 'profile updated' })
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, profile, updateProfile }

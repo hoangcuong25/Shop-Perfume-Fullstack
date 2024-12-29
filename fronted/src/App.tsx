@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Category from './pages/Category'
 import DisplayProduct from './pages/DisplayProduct'
+import MyProfile from './pages/MyProfile'
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
         <Route path='/nuoc-hoa-mini' element={<Category />} />
 
         <Route path='/product/:id' element={<DisplayProduct />} />
+
+        <Route path='/my-profile' element={<MyProfile />} />
+
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

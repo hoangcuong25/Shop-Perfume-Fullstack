@@ -85,7 +85,7 @@ const Category = () => {
 
             <div className='flex gap-3 px-3.5 sm:px-7 mt-3.5 sm:mt-12'>
                 <div className='w-56'>
-                    <p className='font-semibold text-2xl'>Nước Hoa Nam</p>
+                    <p className='font-semibold text-2xl'>{navbar}</p>
 
                     <p className='mt-3.5 text-gray-500'>Bộ lọc</p>
                     <div className='flex items-center justify-between'>
