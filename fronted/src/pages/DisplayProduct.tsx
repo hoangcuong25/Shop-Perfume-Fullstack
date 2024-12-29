@@ -10,7 +10,7 @@ const DisplayProduct = () => {
 
     const { id } = useParams()
 
-    const productInfo = all_item.find((i) => i.id = id)
+    const productInfo = all_item.find((i) => i.id === Number(id))
 
     console.log(productInfo)
 
@@ -21,13 +21,13 @@ const DisplayProduct = () => {
             <StickyBar />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
-                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo.category} | </span><span className='font-semibold'>{productInfo.name}</span></p>
+                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.category} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
 
                 <div className='flex gap-1.5'>
-                    <img src={productInfo.image} className='w-80' alt="" />
+                    <img src={productInfo?.image} className='w-80' alt="" />
 
                     <div className='flex flex-col gap-2'>
-                        <p>{productInfo.name}</p>
+                        <p>{productInfo?.name}</p>
                         <div className='flex gap-1 text-orange-600'>
                             <FaStar />
                             <FaStar />
@@ -36,8 +36,8 @@ const DisplayProduct = () => {
                             <FaStar />
                             <p className='text-gray-800 text-sm'>13 đánh giá</p>
                         </div>
-                        <p>Thương Hiệu: <span className='font-bold'>{productInfo.brands}</span></p>
-                        <p>Loại: {productInfo.category}</p>
+                        <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brands}</span></p>
+                        <p>Loại: {productInfo?.category}</p>
                     </div>
                 </div>
             </div>

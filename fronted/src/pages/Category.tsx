@@ -10,7 +10,7 @@ import Sorting from '../components/Sorting.js';
 
 const Category = () => {
 
-    const { navbar, setNavbar } = useContext(AppContext)
+    const { navbar } = useContext(AppContext)
 
     const [items, setItems] = useState<any[]>([])
 
@@ -49,6 +49,7 @@ const Category = () => {
 
     useEffect(() => {
         filteredItem()
+        setSelectedOption('')
     }, [navbar, selectedBrand, selectedPrice])
 
     const sorting = () => {
@@ -66,7 +67,7 @@ const Category = () => {
 
     useEffect(() => {
         sorting()
-    }, [selectedOption, items])
+    }, [selectedOption])
 
     return (
         <div className='mb-16'>
@@ -170,7 +171,7 @@ const Category = () => {
                 <div className='w-full '>
                     <div className='flex justify-between text-sm'>
                         <p>{items?.length ?? 0} kết quả</p>
-                        <Sorting setSelectedOption={setSelectedOption} />
+                        <Sorting setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
                     </div>
 
                     <div className='mt-8 flex flex-wrap justify-center'>

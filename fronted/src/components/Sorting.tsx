@@ -1,6 +1,6 @@
 
 
-const Sorting = ({ setSelectedOption }) => {
+const Sorting = ({ setSelectedOption, selectedOption }) => {
 
     return (
         <div className="relative group">
@@ -9,7 +9,7 @@ const Sorting = ({ setSelectedOption }) => {
             <div className='absolute z-50 top-0 right-0 pt-11 hidden group-hover:block'>
                 <div className='bg-gray-100 rounded-md w-fit h-fit flex flex-col gap-3.5 py-3 px-5 text-nowrap'>
                     <div
-                        className='hover:text-rose-500 cursor-pointer'
+                        className={`hover:text-red-600 cursor-pointer ${selectedOption === 'Giá thấp đến cao' && 'text-red-600 font-bold'}`}
                         onClick={() => setSelectedOption('Giá thấp đến cao')}
                     >
                         Giá thấp đến cao
@@ -18,7 +18,7 @@ const Sorting = ({ setSelectedOption }) => {
                     <hr />
 
                     <div
-                        className='hover:text-rose-500 cursor-pointer'
+                        className={`hover:text-red-600 cursor-pointer ${selectedOption === 'Giá cao đến thấp' && 'text-red-600 font-bold'}`}
                         onClick={() => setSelectedOption('Giá cao đến thấp')}
                     >
                         Giá cao đến thấp
