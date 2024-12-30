@@ -27,7 +27,7 @@ const Category = () => {
     const [selectedOption, setSelectedOption] = useState<string>('')
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(9)
+    const [postPerPage, setPostPerPage] = useState(3)
 
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
