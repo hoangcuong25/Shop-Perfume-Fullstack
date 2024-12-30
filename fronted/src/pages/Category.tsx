@@ -8,6 +8,7 @@ import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
+import Pagination from '../components/Pagination.js';
 
 const Category = () => {
 
@@ -24,6 +25,13 @@ const Category = () => {
     const [isShowPrice, setIsShowPrice] = useState<boolean>(false)
 
     const [selectedOption, setSelectedOption] = useState<string>('')
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postPerPage, setPostPerPage] = useState(9)
+
+    const lastPostIndex = currentPage * postPerPage
+    const firstPostIndex = lastPostIndex - postPerPage
+    const currentPosts = items?.slice(firstPostIndex, lastPostIndex)
 
     const filteredItem = () => {
         let filtered = all_item.filter(item => item.category === navbar);
@@ -71,7 +79,6 @@ const Category = () => {
     useEffect(() => {
         sorting()
     }, [selectedOption])
-
 
     return (
         <div className='mb-16'>
@@ -191,7 +198,7 @@ const Category = () => {
                     </div>
 
                     <div className='mt-8 flex flex-wrap justify-center'>
-                        {items?.map((item, index) => (
+                        {currentPosts?.map((item, index) => (
                             <div key={index} className='relative'>
                                 <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
                                 <FaRegHeart className='absolute top-0 right-7 text-gray-700' />
@@ -200,6 +207,11 @@ const Category = () => {
                     </div>
                 </div>
             </div>
+
+            <Pagination
+                totalPosts={items.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
+                setPostPerPage={setPostPerPage} currentPage={currentPage}
+            />
         </div >
     )
 }

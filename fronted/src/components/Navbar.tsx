@@ -141,7 +141,7 @@ const Navbar = () => {
                 <Link
                     to="/nuoc-hoa-mini"
                     className={`text-sm hover:text-rose-600 group ${navbar === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('nuoc-hoa-mini')}
+                    onClick={() => setNavbar('Nước hoa mini')}
                 >
                     Nước Hoa Mini
                     <hr className={`${navbar === 'nuoc-hoa-mini' ? 'block' : 'hidden'} border-red-500`} />
