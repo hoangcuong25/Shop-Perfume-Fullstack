@@ -26,12 +26,13 @@ const MyProfile = () => {
                 {sidebar === '' &&
                     <div className='flex flex-col justify-center items-center w-full bg-gray-100 relative'>
                         <div
-                            className='flex md:hidden items-center gap-3 mb-3 cursor-pointer absolute top-0 left-3'
+                            className='flex md:hidden items-center gap-3 cursor-pointer absolute top-0 left-3'
                             onClick={() => setShow(!show)}
                         >
                             <AiOutlineMenu />
                             <p>Menu</p>
                         </div>
+                        
                         <p className='text-3xl font-bold text-red-500'>namperfume</p>
                         <p>Thương hiệu nước hoa uy tín từ 2013</p>
                     </div>

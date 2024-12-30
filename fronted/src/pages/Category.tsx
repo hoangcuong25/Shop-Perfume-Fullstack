@@ -6,11 +6,14 @@ import { AppContext } from '../context/Context';
 import all_item from '../assets/all_item.js'
 import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 
 const Category = () => {
 
     const { navbar } = useContext(AppContext)
+
+    const [show, setShow] = useState<boolean>(false)
 
     const [items, setItems] = useState<any[]>([])
 
@@ -69,12 +72,13 @@ const Category = () => {
         sorting()
     }, [selectedOption])
 
+
     return (
         <div className='mb-16'>
             <Header />
             <Navbar />
 
-            {navbar === 'nuoc-hoa-nam' &&
+            {navbar === 'Nước hoa nam' &&
                 < div className='text-sm mt-2 sm:mt-5 px-6 sm:px-16'>
                     Các quý ông tìm đến nước hoa để làm gì?
                     Có lẽ là để thơm tho, nam tính và làm chỉn chu thêm phong cách của bản thân, phải chứ?
@@ -83,7 +87,7 @@ const Category = () => {
                 </div>
             }
 
-            {navbar === 'nuoc-hoa-nu' &&
+            {navbar === 'Nước hoa nữ' &&
                 <div className='text-sm mt-2 sm:mt-5 px-6 sm:px-16'>
                     Nước hoa từ những ngày đầu đã được tạo ra là để phục vụ cho phái đẹp,
                     vì thế dường như trong thế giới mùi hương, những sự lựa chọn cho nữ giới là phong phú và nhiều màu sắc hơn cả.
@@ -92,7 +96,7 @@ const Category = () => {
                 </div>
             }
 
-            {navbar === 'nuoc-hoa-mini' &&
+            {navbar === 'Nước hoa mini' &&
                 <div className='text-sm mt-2 sm:mt-5 px-6 sm:px-16'>
                     Nước hoa mini là những chai nước hoa nhỏ xinh được sản xuất chính hãng,
                     được chế tác và hoàn thiện tỉ mỉ,
@@ -102,8 +106,10 @@ const Category = () => {
                 </div>
             }
 
-            <div className='flex gap-5 px-3.5 sm:px-7 mt-3.5 sm:mt-12 '>
-                <div className='w-56 h-fit bg-gray-100 px-3 py-5 rounded-md shadow-md hover:shadow-lg'>
+            <div className='flex gap-5 px-3.5 sm:px-7 mt-3.5 sm:mt-12 relative'>
+                <div
+                    className={`w-56 h-fit bg-gray-100 px-3 py-5 rounded-md shadow-md hover:shadow-lg md:flex flex-col  ${show ? 'flex absolute z-50 top-10' : 'hidden'} `}
+                >
                     <p className='font-semibold text-2xl'>{navbar}</p>
 
                     <p className='mt-3.5 text-gray-500'>Bộ lọc</p>
@@ -170,7 +176,17 @@ const Category = () => {
 
                 <div className='w-full '>
                     <div className='flex justify-between text-sm'>
-                        <p>{items?.length ?? 0} kết quả</p>
+                        <div className='flex items-center gap-3'>
+                            <p>{items?.length ?? 0} kết quả</p>
+                            <div
+                                className='md:hidden flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 rounded-lg shadow-md cursor-pointer'
+                                onClick={() => setShow(!show)}
+                            >
+                                <FaFilter className=' text-gray-700' />
+                                <p>Bộ lọc</p>
+                            </div>
+                        </div>
+
                         <Sorting setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
                     </div>
 
