@@ -1,12 +1,21 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/Context'
+import { useNavigate } from 'react-router-dom'
 
-const Sidebar = ({ sidebar, setSidebar }) => {
+const Sidebar = ({ sidebar, setSidebar, show }) => {
 
-    const { userData } = useContext(AppContext)
+    const { userData, setToken } = useContext(AppContext)
+
+    const navigate = useNavigate()
+
+    const logout = () => {
+        setToken(false)
+        localStorage.removeItem('token')
+        navigate('/')
+    }
 
     return (
-        <div className='flex flex-col bg-gray-100 pt-2 w-72 h-fit shadow-md'>
+        <div className={`flex flex-col bg-gray-100 pt-2 w-72 h-fit shadow-md hover:shadow-lg top-36 md:top-56 z-50 absolute md:relative ${show ? 'flex' : 'hidden'}`}>
             <div className='flex items-center mx-3.5 gap-2 mb-3.5'>
                 <img src={userData.image} className='rounded-full size-12' alt="" />
                 <div className='flex flex-col'>
@@ -47,6 +56,12 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     onClick={() => setSidebar('Hỏi đáp')}
                 >
                     Hỏi đáp
+                </p>
+                <p
+                    className={`py-1.5 cursor-pointer px-3.5 text-red-500`}
+                    onClick={() => logout()}
+                >
+                    Đăng xuất
                 </p>
             </div>
         </div >

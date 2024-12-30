@@ -13,18 +13,19 @@ import goc_review from '../assets/goc-review.png'
 import feedbacks_instore from '../assets/feedbacks-instore.png'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
 
 const Header = () => {
 
     const { setNavbar, token, setToken, userData } = useContext(AppContext)
 
+    const navigate = useNavigate()
+
     const logout = () => {
         setToken(false)
         localStorage.removeItem('token')
     }
-
 
     return (
         <div className=''>
@@ -47,15 +48,12 @@ const Header = () => {
 
                 <div className='flex justify-between mt-0 sm:mt-3.5'>
                     <div className='items-center gap-2 relative flex sm:hidden'>
-                        <FiBell className='text-xl text-gray-700' />
-                        <div className='absolute left-2.5 top-1 size-4 text-center rounded-full bg-red-500 text-[10px] text-white'>
-                            5
-                        </div>
                         <IoIosSearch className='text-2xl text-gray-600 mx-2' />
+                        <img onClick={() => navigate('/my-profile')} src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
                     </div>
                     <Link
                         to='/'
-                        className='text-red-500 text-3xl font-medium cursor-pointer'
+                        className='text-red-500 text-2xl md:text-3xl font-medium cursor-pointer'
                         onClick={() => setNavbar('/')}
                     >
                         namperfume
@@ -111,17 +109,17 @@ const Header = () => {
                     </div>
 
                     {token ?
-                        <div className='flex items-center gap-2  cursor-pointer relative group'>
-                            <img src={userData.image} className='size-10 rounded-full' alt="" />
-                            <p className='capitalize group-hover:text-red-500 font-medium'>{`${userData.lastName} ${userData.firstName}`}</p>
+                        <div className='hidden sm:flex items-center gap-2  cursor-pointer relative group'>
+                            <img src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                            <p className='capitalize group-hover:text-red-500 font-medium hidden lg:block'>{`${userData.lastName} ${userData.firstName}`}</p>
 
-                            <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
+                            <div className='absolute z-50 pt-8 top-3.5 -right-3.5 hidden group-hover:flex'>
                                 <div className='border border-gray-300 bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>
                                     <Link to='/my-profile' className='group/item'>
-                                        <p className=' group-hover/item:text-red-500'>My Profile</p>
+                                        <p className=' group-hover/item:text-red-500'>Tài khoản của tôi</p>
                                     </Link>
                                     <div className='group/item'>
-                                        <p onClick={logout} className=' group-hover/item:text-red-500'>Logout</p>
+                                        <p onClick={logout} className=' group-hover/item:text-red-500'>Đăng xuất</p>
                                     </div>
                                 </div>
                             </div>

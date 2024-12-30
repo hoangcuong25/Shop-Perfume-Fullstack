@@ -7,8 +7,9 @@ import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { AiOutlineMenu } from "react-icons/ai";
 
-const EditProfile = () => {
+const EditProfile = ({ setShow, show }) => {
 
     const { userData, setUserData, backendUrl, token, loadUserProfileData } = useContext(AppContext)
 
@@ -56,13 +57,20 @@ const EditProfile = () => {
     console.log(image)
 
     return (
-        <div className='flex gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
-            <div className='w-1/2 border-r'>
+        <div className='flex flex-col xl:flex-row gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
+            <div className='w-full xl:w-1/2 xl:border-r'>
+                <div
+                    className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
+                    onClick={() => setShow(!show)}
+                >
+                    <AiOutlineMenu />
+                    <p>Menu</p>
+                </div>
                 <p className='font-bold text-lg'>Thông tin tài khoản</p>
-                <div className='flex gap-10 mt-3'>
+                <div className='flex flex-col md:flex-row gap-7 mt-3'>
                     <label htmlFor="image">
                         <div className='inline-block relative cursor-pointer'>
-                            <img className='h-28 w-28 rounded-full' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
+                            <img className='size-24 rounded-full' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
                             <p className='mt-3 text-sm text-center'>Tải ảnh của bạn</p>
                         </div>
                         <input onChange={(e) => setImage(e.target.files[0])} type="file" id='image' hidden />
@@ -131,7 +139,9 @@ const EditProfile = () => {
                 </div>
             </div>
 
-            <div className='w-1/2'>
+            <hr className='xl:hidden block my-3.5' />
+
+            <div className='w-full xl:w-1/2'>
                 <p className='font-bold text-lg'>Số điện thoại và Email</p>
 
                 <div className='mt-5 flex justify-between'>
@@ -144,7 +154,7 @@ const EditProfile = () => {
                         </div>
                     </div>
 
-                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
+                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 '>
                         Cập Nhật
                     </div>
                 </div>

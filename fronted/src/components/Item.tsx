@@ -18,7 +18,7 @@ const Item = ({
                 <h5 className="mt-3 text-[9px] lg:text-[13px] md:text-[11px]">New Price: ${newPrice}</h5>
                 <h5 className="line-through text-[9px] lg:text-[13px] md:text-[11px]  text-slate-400  color: rgb(71 85 105);">Old Price ${oldPrice}</h5>
 
-                <div className='absolute hidden group-hover:block w-[65%] bg-red-500 py-1 text-white text-sm rounded-lg text-center'>
+                <div className='absolute hidden group-hover:block w-[65%] bg-red-500 py-1 text-white text-sm rounded-lg shadow-2xl text-center'>
                     XEM NHANH
                 </div>
             </div>
