@@ -19,7 +19,7 @@ const Login = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const login = async (e) => {
+    const login = async (e: React.FormEvent) => {
         e.preventDefault()
 
         try {
@@ -30,6 +30,7 @@ const Login = () => {
                 localStorage.setItem('token', data.token)
                 setToken(data.token)
                 navigate('/')
+                scrollTo(0, 0)
             } else {
                 toast.error(data.message)
             }

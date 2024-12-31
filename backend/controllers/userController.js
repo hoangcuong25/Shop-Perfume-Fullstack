@@ -14,7 +14,18 @@ const registerUser = async (req, res) => {
         }
 
         if (!validator.isEmail(email)) {
-            return res.status(400).json({ success: false, message: "Hãy Điền EmailonClick={() =>} Hợp Lệ" })
+            return res.status(400).json({ success: false, message: "Hãy Điền Email Hợp Lệ" })
+        }
+
+        const isUser = await userModel.findOne({ email })
+
+        if (isUser) {
+            return res.json({ success: false, message: 'Email này đã tồn tại' })
+        }
+
+        const isPhone = await userModel.findOne({ phone })
+        if (isPhone) {
+            return res.json({ success: false, message: 'Số điện thoại này đã tồn tại' })
         }
 
         if (phone.length !== 10) {

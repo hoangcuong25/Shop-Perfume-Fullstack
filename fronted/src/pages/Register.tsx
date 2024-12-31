@@ -22,7 +22,7 @@ const Register = () => {
     const [password_2, setPassword_2] = useState<string>('')
     const [dob, setDob] = useState<string>('')
 
-    const register = async (e) => {
+    const register = async (e: React.FormEvent) => {
         try {
             e.preventDefault()
 
@@ -47,6 +47,7 @@ const Register = () => {
                 localStorage.setItem('token', data.token)
                 setToken(data.token)
                 navigate('/')
+                scrollTo(0, 0)
             } else {
                 toast.error(data.message)
             }

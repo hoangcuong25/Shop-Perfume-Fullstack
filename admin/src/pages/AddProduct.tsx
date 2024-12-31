@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import upload from '../assets/upload.png'
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { AppContext } from '../context/Context';
 
 interface Product {
     name: string;
@@ -12,6 +15,8 @@ interface Product {
 
 const AddProduct = () => {
 
+    const { backendUrl } = useContext(AppContext)
+
     const [product, setProduct] = useState<Product>({
         name: '',
         brand: '',
@@ -22,11 +27,25 @@ const AddProduct = () => {
     })
 
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log('Product data:', product);
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
 
-        alert('Sản phẩm đã được thêm!');
+        try {
+            const { data } = await axios.post(backendUrl + '/api/admin/add-product', product, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+
+            if (data.success) {
+                toast.success("Thêm Sản Phẩm Thành Công")
+            } else {
+                toast.error(data.message)
+            }
+
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
     }
 
     return (
