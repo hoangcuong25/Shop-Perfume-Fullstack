@@ -6,6 +6,7 @@ import { AppContext } from '../context/Context';
 
 interface Product {
     name: string;
+    des: string;
     brand: string;
     type: string;
     oldPrice: string;
@@ -19,6 +20,7 @@ const AddProduct = () => {
 
     const [product, setProduct] = useState<Product>({
         name: '',
+        des: '',
         brand: '',
         type: '',
         oldPrice: '',
@@ -59,6 +61,17 @@ const AddProduct = () => {
                         name="name"
                         value={product.name}
                         onChange={(e) => setProduct((prev) => ({ ...prev, name: e.target.value }))}
+                        className="border p-2 w-full"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block mb-2">Mô tả sản phẩm</label>
+                    <input
+                        type="text"
+                        name="des"
+                        value={product.des}
+                        onChange={(e) => setProduct((prev) => ({ ...prev, des: e.target.value }))}
                         className="border p-2 w-full"
                         required
                     />

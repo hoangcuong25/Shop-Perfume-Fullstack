@@ -4,13 +4,13 @@ import productModel from '../models/productModel.js'
 // api add product
 const addProduct = async (req, res) => {
     try {
-        const { name, brand, type, oldPrice, newPrice } = req.body
+        const { name, des, brand, type, oldPrice, newPrice } = req.body
         const imageFile = req.file
 
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: 'image' })
         const imageUrl = imageUpload.secure_url
 
-        if (!name || !brand || !type || !oldPrice || !newPrice || !imageFile) {
+        if (!name || !des || !brand || !type || !oldPrice || !newPrice || !imageFile) {
             return res.json({ success: false, message: 'Hãy Điền Đầy Đủ Thông Tin' })
         }
 
@@ -21,6 +21,7 @@ const addProduct = async (req, res) => {
 
         const productData = {
             name,
+            des,
             brand,
             type,
             oldPrice,

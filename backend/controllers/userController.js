@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import userModel from '../models/userModel.js'
+import productModel from '../models/productModel.js'
 
 // api to register
 const registerUser = async (req, res) => {
@@ -133,4 +134,17 @@ const updateProfile = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, profile, updateProfile }
+// api get product
+const getProduct = async (req, res) => {
+    try {
+        const dataProduct = await productModel.find()
+
+        res.json({ success: true, dataProduct })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, profile, updateProfile, getProduct }

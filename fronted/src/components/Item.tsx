@@ -7,7 +7,8 @@ const Item = ({
     name,
     newPrice,
     oldPrice,
-    id
+    id,
+    des
 }) => {
     return (
         <Link to={`/product/${id}`} onClick={() => window.scrollTo(0, 0)}>

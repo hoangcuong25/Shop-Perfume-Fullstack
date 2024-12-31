@@ -1,10 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HeroBanner from '../assets/banner.js'
-import Item from './item.js';
-import all_item from '../assets/all_item.js'
 import banner_brand from '../assets/banner_brand.js'
 import logo_brand from '../assets/logo_brand.js'
 import { FaRegHeart } from "react-icons/fa";
@@ -13,8 +11,12 @@ import for_him from '../assets/for_him.png'
 import for_her from '../assets/for_her.png'
 import sale from '../assets/sale.png'
 import new_in from '../assets/new_in.png'
+import { AppContext } from '../context/Context.js';
+import Item from './item.js';
 
 const Hero = () => {
+
+    const { productData } = useContext(AppContext)
 
     const setting1 = {
         dots: true,
@@ -118,10 +120,10 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
                             <div key={index} className='relative'>
-                                <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                                 <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Brand year
                                 </div>
@@ -142,9 +144,9 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                         )
                     })}
                 </Slider>
@@ -160,9 +162,9 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                         )
                     })}
                 </Slider>
@@ -197,9 +199,9 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                         )
                     })}
                 </Slider>
@@ -215,9 +217,9 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                         )
                     })}
                 </Slider>
@@ -233,9 +235,9 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {all_item.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item, index) => {
                         return (
-                            <Item id={item.id} key={index} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                         )
                     })}
                 </Slider>
