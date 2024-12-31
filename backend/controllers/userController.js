@@ -97,14 +97,14 @@ const profile = async (req, res) => {
 // api update profile 
 const updateProfile = async (req, res) => {
     try {
-        const { userId, firstName, lastName, dob, gender } = req.body
+        const { userId, firstName, lastName, dob, gender, address } = req.body
         const imageFile = req.file
 
-        if (!firstName || !lastName || !dob || !gender) {
+        if (!firstName || !lastName || !dob || !gender || !address) {
             return res.json({ success: false, message: "Thiếu thông tin" })
         }
 
-        await userModel.findByIdAndUpdate(userId, { firstName, lastName, dob, gender })
+        await userModel.findByIdAndUpdate(userId, { firstName, lastName, dob, gender, address })
 
         if (imageFile) {
             // upload image to cloudinary

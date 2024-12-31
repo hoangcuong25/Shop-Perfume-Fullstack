@@ -17,6 +17,7 @@ const EditProfile = ({ setShow, show }) => {
     const [lastName, setLastName] = useState(userData.lastName)
     const [firstName, setFirstName] = useState(userData.firstName)
     const [gender, setGender] = useState(userData.gender)
+    const [address, setAddress] = useState(userData.address)
     const [dob, setdob] = useState(userData.dob)
 
     const editProfile = async () => {
@@ -25,6 +26,7 @@ const EditProfile = ({ setShow, show }) => {
             formData.append('firstName', firstName)
             formData.append('lastName', lastName)
             formData.append('gender', gender)
+            formData.append('address', address)
             formData.append('dob', dob)
 
             if (image) {
@@ -129,6 +131,14 @@ const EditProfile = ({ setShow, show }) => {
                             onChange={(e) => setdob(e.target.value)}
                         />
 
+                        <p className='text-sm font-semibold'>Địa chỉ</p>
+                        <input
+                            type="text"
+                            className='w-72 py-2 border border-gray-300 px-3'
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+
                         <div className='flex text-sm gap-3'>
                             <input type="checkbox" />
                             <p>Nhận thông tin khuyến mãi qua e-mail</p>
@@ -154,7 +164,7 @@ const EditProfile = ({ setShow, show }) => {
                         </div>
                     </div>
 
-                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 '>
+                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 '>
                         Cập Nhật
                     </div>
                 </div>
@@ -175,7 +185,7 @@ const EditProfile = ({ setShow, show }) => {
                         <IoMdLock className='text-2xl text-gray-700' />
                         <p>Đổi mât khẩu</p>
                     </div>
-                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
+                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
                         Cập Nhật
                     </div>
                 </div>
@@ -187,7 +197,7 @@ const EditProfile = ({ setShow, show }) => {
                         <FaFacebook className='text-2xl text-blue-500' />
                         <p>Facebook</p>
                     </div>
-                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
+                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
                         Cập Nhật
                     </div>
                 </div>
@@ -197,7 +207,7 @@ const EditProfile = ({ setShow, show }) => {
                         <FcGoogle className='text-2xl' />
                         <p>Google</p>
                     </div>
-                    <div className='bg-gray-300 rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
+                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
                         Cập Nhật
                     </div>
                 </div>
