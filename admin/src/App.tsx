@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
+import AddProduct from './pages/AddProduct'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/add-product' element={<AddProduct />} />
         </Routes>
       </div>
     </BrowserRouter>

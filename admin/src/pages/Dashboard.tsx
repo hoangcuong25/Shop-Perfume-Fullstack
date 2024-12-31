@@ -1,40 +1,42 @@
 import React, { useContext, useEffect } from 'react'
+import { FaUsers } from "react-icons/fa";
+import { GiPerfumeBottle } from "react-icons/gi";
+import { FaBox } from "react-icons/fa";
 
 const Dashboard = () => {
 
     return (
         <div className='m-5'>
             <div className='flex flex-wrap gap-3'>
-                <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all'>
-                    {/* <img className='w-14' src={assets.doctor_icon} alt="" /> */}
+                <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
+                    <FaUsers className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>aaaaa</p>
-                        <p className='text-gray-400'>Doctors</p>
+                        <p className='text-xl font-medium text-gray-600'>37</p>
+                        <p className='text-gray-400'>Thành viên</p>
                     </div>
                 </div>
 
-                <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all'>
-                    {/* <img className='w-14' src={assets.appointments_icon} alt="" /> */}
+                <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
+                    <GiPerfumeBottle className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>aaaaaa</p>
-                        <p className='text-gray-400'>Appointments</p>
+                        <p className='text-xl font-medium text-gray-600'>173</p>
+                        <p className='text-gray-400'>Sản phẩm</p>
                     </div>
                 </div>
 
-                <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all'>
-                    {/* <img className='w-14' src={assets.patients_icon} alt="" /> */}
+                <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
+                    <FaBox className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>aaaaa</p>
-                        <p className='text-gray-400'>patients</p>
+                        <p className='text-xl font-medium text-gray-600'>50</p>
+                        <p className='text-gray-400'>Đơn hàng tháng này</p>
                     </div>
                 </div>
 
             </div>
 
             <div className='bg-white'>
-                <div className='flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border'>
-                    {/* <img src={assets.list_icon} alt="" /> */}
-                    <p className='font-medium'>Latest Bookings</p>
+                <div className='flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t bg-gray-100 shadow-md'>
+                    <p className='font-medium'>Đơn hàng gần đây</p>
                 </div>
 
                 {/* <div className='pt-4 border border-t-0'>
