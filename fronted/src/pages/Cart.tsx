@@ -22,7 +22,7 @@ const Cart = () => {
                         <p className='text-2xl font-bold mb-3.5'>Giỏ hàng của bạn đang rỗng!</p>
                         <p>Thật tiếc! Chúng tôi biết bạn đang muốn mua món đồ gì đó.</p>
                         <p>Nhưng trước tiên bạn cần thêm món đồ đó vào giỏ hàng của mình.</p>
-                        <p>Nhấn <Link to='/' className='font-bold hover:underline'>vào đây</Link> để tiếp tục mua sắm.</p>
+                        <p>Nhấn <Link onClick={() => scrollTo(0, 0)} to='/' className='font-bold hover:underline'>vào đây</Link> để tiếp tục mua sắm.</p>
                     </div>
                 </div>
             </div>
