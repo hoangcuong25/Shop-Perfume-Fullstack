@@ -9,7 +9,7 @@ const registerUser = async (req, res) => {
     try {
         const { firstName, lastName, email, phone, password_1, password_2, dob } = req.body
 
-        if (!firstName) {
+        if (!firstName || !lastName || !email || !phone || !password_1 || !password_2 || !dob) {
             return res.json({ success: false, message: 'Hãy Điền Đầy Đủ Thông Tin' })
         }
 

@@ -15,13 +15,13 @@ const Point = ({ setShow, show }) => {
                 <AiOutlineMenu />
                 <p>Menu</p>
             </div>
-            <div className='w-full h-20 bg-stone-200 flex justify-center items-center gap-5'>
+            <div className='w-full h-20 bg-stone-200 rounded-md flex justify-center items-center gap-5'>
                 <RiCopperCoinFill className='text-yellow-400 text-2xl' />
                 <p> Điểm khả dụng</p>
                 <p className='text-2xl font-bold text-orange-500'>0</p>
             </div>
 
-            <div className='w-full h-fit border border-gray-300 flex items-center justify-evenly py-5'>
+            <div className='w-full h-fit bg-gray-200 rounded-md flex items-center justify-evenly py-5'>
                 <div className='flex flex-col items-center gap-3 hover:text-orange-500 text-gray-700'>
                     <FaPen className='text-2xl md:text-5xl' />
                     <p className='font-bold text-xs md:text-base'>Lịch sử tích điểm</p>

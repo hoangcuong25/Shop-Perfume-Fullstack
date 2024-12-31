@@ -201,7 +201,7 @@ const Category = () => {
                         {currentPosts?.map((item, index) => (
                             <div key={index} className='relative'>
                                 <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700' />
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
                             </div>
                         ))}
                     </div>
