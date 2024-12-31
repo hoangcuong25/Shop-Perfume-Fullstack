@@ -100,6 +100,7 @@ const AddProduct = () => {
                         <option value="Nước hoa nữ">Nước hoa nữ</option>
                         <option value="Nước hoa mini">Nước hoa mini</option>
                         <option value="Giftset">Giftset</option>
+                        <option value="Bodycare & Homecare">Bodycare & Homecare</option>
                     </select>
                 </div>
                 <div>

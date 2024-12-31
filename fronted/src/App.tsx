@@ -18,6 +18,8 @@ const App = () => {
         <Route path='/nuoc-hoa-nam' element={<TypeProduct />} />
         <Route path='/nuoc-hoa-nu' element={<TypeProduct />} />
         <Route path='/nuoc-hoa-mini' element={<TypeProduct />} />
+        <Route path='/giftset' element={<TypeProduct />} />
+        <Route path='/bodycare&homecare' element={<TypeProduct />} />
         <Route path='/product/:id' element={<DisplayProduct />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/my-profile' element={<MyProfile />} />

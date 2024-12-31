@@ -13,10 +13,15 @@ import sale from '../assets/sale.png'
 import new_in from '../assets/new_in.png'
 import { AppContext } from '../context/Context.js';
 import Item from './item.js';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
 
-    const { productData } = useContext(AppContext)
+    const { productData, setNavbar } = useContext(AppContext)
+
+    const miniSize = productData?.filter((i) => i.type === 'Nước hoa mini')
+    const giftset = productData?.filter((i) => i.type === 'Giftset')
+    const bodyAndHome = productData?.filter((i) => i.type === 'Bodycare & Homecare')
 
     const setting1 = {
         dots: true,
@@ -124,7 +129,7 @@ const Hero = () => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Brand year
                                 </div>
                                 <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
@@ -144,9 +149,15 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {productData?.slice(3, 10).map((item, index) => {
                         return (
-                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                            <div key={index} className='relative'>
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                    New
+                                </div>
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                            </div>
                         )
                     })}
                 </Slider>
@@ -162,29 +173,43 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {productData?.slice(3, 10).map((item, index) => {
                         return (
-                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                            <div key={index} className='relative'>
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                    Bestsellers
+                                </div>
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                            </div>
                         )
                     })}
                 </Slider>
             </div>
 
-            <div className='mt-12 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
-                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500'>
+            <div className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
+                <Link
+                    to='/nuoc-hoa-nam'
+                    className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
+                    onClick={() => { scrollTo(0, 0), setNavbar('Nước hoa nam') }}
+                >
                     <img src={for_him} className=' w-40 md:w-60 xl:w-72  ' alt="" />
                     <p>For Him</p>
-                </div>
-                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500'>
+                </Link>
+                <Link
+                    to='/nuoc-hoa-nu'
+                    className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
+                    onClick={() => { scrollTo(0, 0), setNavbar('Nước hoa nữ') }}
+                >
                     <img src={for_her} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>For Her</p>
-                </div>
-                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500'>
-                    <img src={sale} className='w-40 md:w-60 xl:w-72 ' alt="" />
+                </Link>
+                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
+                    <img src={sale} onClick={() => scrollTo(0, 1800)} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>Sale</p>
                 </div>
-                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500'>
-                    <img src={new_in} className='w-40 md:w-60 xl:w-72 ' alt="" />
+                <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
+                    <img src={new_in} onClick={() => scrollTo(0, 1500)} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>New In</p>
                 </div>
             </div>
@@ -199,9 +224,15 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {miniSize?.slice(0, 6).map((item, index) => {
                         return (
-                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                            <div key={index} className='relative'>
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                    Mini size
+                                </div>
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                            </div>
                         )
                     })}
                 </Slider>
@@ -217,9 +248,15 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {giftset?.slice(0, 6).map((item, index) => {
                         return (
-                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                            <div key={index} className='relative'>
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                    Giftset
+                                </div>
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                            </div>
                         )
                     })}
                 </Slider>
@@ -235,9 +272,12 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {bodyAndHome?.slice(0, 6).map((item, index) => {
                         return (
-                            <Item key={index} id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                            <div key={index} className='relative'>
+                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                            </div>
                         )
                     })}
                 </Slider>

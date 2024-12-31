@@ -11,7 +11,7 @@ import { AppContext } from '../context/Context.js';
 
 const DisplayProduct = () => {
 
-    const { productData } = useContext(AppContext)
+    const { productData, formatMoney } = useContext(AppContext)
 
     const { id } = useParams()
 
@@ -21,7 +21,7 @@ const DisplayProduct = () => {
         <div className='mb-16'>
             <Header />
             <Navbar />
-            <StickyBar productInfo={productInfo} />
+            <StickyBar productInfo={productInfo} formatMoney={formatMoney} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
                 <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.category} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
@@ -40,11 +40,13 @@ const DisplayProduct = () => {
                                 <FaStar />
                                 <p className='text-gray-800 text-sm'>13 đánh giá</p>
                             </div>
-                            <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brands}</span></p>
+                            <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brand}</span></p>
+                            <p>Mô tả: {productInfo?.des}</p>
                             <p>Loại: {productInfo?.type}</p>
                             <p>Mặt hàng: Có sẵn</p>
                             <p>Vận chuyển: <span className='text-red-500'>Freeship HCM</span></p>
                             <p>Gọi đặt mua: <span className='text-red-500'>1900 0129 </span><span className='text-gray-400'>(9:00 - 21:00)</span></p>
+                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo?.newPrice)} vnd </span><span className='text-gray-400 line-through'>{formatMoney(productInfo?.oldPrice)} vnd</span></p>
 
                             <div className='flex gap-5 mt-7'>
                                 <div

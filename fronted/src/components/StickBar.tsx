@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const StickyBar = ({ productInfo }) => {
+const StickyBar = ({ productInfo, formatMoney }) => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -23,12 +23,12 @@ const StickyBar = ({ productInfo }) => {
                     <img src={productInfo?.image} className="w-12 h-12 mr-4" />
                     <div>
                         <strong className="md:text-lg text-xs">{productInfo?.name}</strong>
-                        <div className="text-red-500 font-bold text-xs md:text-base">${productInfo?.newPrice} <span className='text-gray-300 line-through ml-3'>${productInfo?.oldPrice}</span></div>
+                        <div className="text-red-500 font-bold text-xs md:text-base">{formatMoney(productInfo?.newPrice)} vnd<span className='text-gray-300 line-through ml-3 sm:inline hidden'>{formatMoney(productInfo?.oldPrice)} vnd</span></div>
                     </div>
                 </div>
                 <div className='flex gap-5'>
-                    <button className="bg-red-500 text-white text-xs md:text-base px-1 md:px-6 py-2 rounded-lg">Thêm vào giỏ</button>
-                    <button className="bg-red-500 text-white text-xs md:text-base px-1 md:px-6 py-2 rounded-lg">Mua ngay</button>
+                    <button className="bg-red-500 text-white text-xs md:text-base px-1 md:px-6 ml-2 py-1 md:py-2 rounded-lg">Thêm vào giỏ</button>
+                    <button className="bg-red-500 text-white text-xs md:text-base px-1 md:px-6 py-1 md:py-2 rounded-lg">Mua ngay</button>
                 </div>
             </div>
         </div>
