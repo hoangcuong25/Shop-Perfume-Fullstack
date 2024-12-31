@@ -24,6 +24,10 @@ const AppContextProvider = (props) => {
 
     const backendUrl = 'http://localhost:4000'
 
+    function formatMoney(amount) {
+        return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
     const loadUserProfileData = async () => {
         try {
             const { data } = await axios.get(backendUrl + '/api/user/profile', { headers: { token } })
@@ -64,7 +68,8 @@ const AppContextProvider = (props) => {
         userData, setUserData,
         loadUserProfileData,
         productData, setProductData,
-        loadProductData
+        loadProductData,
+        formatMoney
     }
 
     useEffect(() => {

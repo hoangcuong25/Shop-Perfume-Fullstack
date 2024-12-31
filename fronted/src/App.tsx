@@ -5,19 +5,19 @@ import Footer from './components/Footer'
 import Support from './components/Support'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import Category from './pages/Category'
 import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
 import Cart from './pages/Cart'
+import TypeProduct from './pages/TypeProduct'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/nuoc-hoa-nam' element={<Category />} />
-        <Route path='/nuoc-hoa-nu' element={<Category />} />
-        <Route path='/nuoc-hoa-mini' element={<Category />} />
+        <Route path='/nuoc-hoa-nam' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nu' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-mini' element={<TypeProduct />} />
         <Route path='/product/:id' element={<DisplayProduct />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/my-profile' element={<MyProfile />} />

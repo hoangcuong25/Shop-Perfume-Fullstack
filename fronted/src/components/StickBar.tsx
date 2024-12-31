@@ -20,10 +20,10 @@ const StickyBar = ({ productInfo }) => {
         <div className={`fixed top-0 left-0 z-50 w-full bg-white shadow-lg border-b border-gray-200 transition-transform transform ${show ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="flex items-center justify-between p-1.5 md:p-4">
                 <div className="flex items-center">
-                    <img src={productInfo.image} className="w-12 h-12 mr-4" />
+                    <img src={productInfo?.image} className="w-12 h-12 mr-4" />
                     <div>
-                        <strong className="md:text-lg text-xs">{productInfo.name}</strong>
-                        <div className="text-red-500 font-bold text-xs md:text-base">${productInfo.new_price} <span className='text-gray-300 line-through ml-3'>${productInfo.old_price}</span></div>
+                        <strong className="md:text-lg text-xs">{productInfo?.name}</strong>
+                        <div className="text-red-500 font-bold text-xs md:text-base">${productInfo?.newPrice} <span className='text-gray-300 line-through ml-3'>${productInfo?.oldPrice}</span></div>
                     </div>
                 </div>
                 <div className='flex gap-5'>

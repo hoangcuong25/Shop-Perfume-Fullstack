@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
-import all_item from '../assets/all_item.js'
+import { AppContext } from '../context/Context.js';
 
 const Interested = () => {
+
+    const { productData } = useContext(AppContext)
 
     const setting = {
         dots: true,
@@ -49,10 +51,10 @@ const Interested = () => {
         <div className='flex flex-col gap-5 mt-16 px-3.5 sm:px-7'>
             <p className='text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
             <Slider {...setting}>
-                {all_item.slice(0, 8).map((item, index) => {
+                {productData?.slice(0, 8).map((item, index) => {
                     return (
                         <div key={index} className='relative'>
-                            <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                            <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                             <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                 Brand year
                             </div>

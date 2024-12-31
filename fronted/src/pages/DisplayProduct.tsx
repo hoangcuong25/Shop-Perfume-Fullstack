@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import { FaStar } from "react-icons/fa";
@@ -7,12 +7,15 @@ import all_item from '../assets/all_item.js'
 import StickyBar from '../components/StickBar.js'
 import { FaCheckSquare } from "react-icons/fa";
 import Interested from '../components/Interested.js';
+import { AppContext } from '../context/Context.js';
 
 const DisplayProduct = () => {
 
+    const { productData } = useContext(AppContext)
+
     const { id } = useParams()
 
-    const productInfo = all_item.find((i) => i.id === Number(id))
+    const productInfo = productData?.find((i) => i._id === id)
 
     return (
         <div className='mb-16'>
@@ -38,7 +41,7 @@ const DisplayProduct = () => {
                                 <p className='text-gray-800 text-sm'>13 đánh giá</p>
                             </div>
                             <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brands}</span></p>
-                            <p>Loại: {productInfo?.category}</p>
+                            <p>Loại: {productInfo?.type}</p>
                             <p>Mặt hàng: Có sẵn</p>
                             <p>Vận chuyển: <span className='text-red-500'>Freeship HCM</span></p>
                             <p>Gọi đặt mua: <span className='text-red-500'>1900 0129 </span><span className='text-gray-400'>(9:00 - 21:00)</span></p>

@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Header from '../components/Header'
-import Navbar from '../components/Navbar'
+import Header from '../components/Header.js'
+import Navbar from '../components/Navbar.js'
 import { IoIosArrowDown } from "react-icons/io";
-import { AppContext } from '../context/Context';
-import all_item from '../assets/all_item.js'
+import { AppContext } from '../context/Context.js';
 import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 import Pagination from '../components/Pagination.js';
 
-const Category = () => {
+const TypeProduct = () => {
 
-    const { navbar } = useContext(AppContext)
+    const { navbar, productData } = useContext(AppContext)
 
     const [show, setShow] = useState<boolean>(false)
 
@@ -34,7 +33,7 @@ const Category = () => {
     const currentPosts = items?.slice(firstPostIndex, lastPostIndex)
 
     const filteredItem = () => {
-        let filtered = all_item.filter(item => item.category === navbar);
+        let filtered = productData?.filter(item => item.type === navbar);
 
         if (selectedBrand) {
             filtered = filtered.filter(item => item.brands === selectedBrand);
@@ -197,10 +196,10 @@ const Category = () => {
                         <Sorting setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
                     </div>
 
-                    <div className='mt-8 flex flex-wrap justify-center'>
+                    <div className='mt-8 flex flex-wrap gap-5 justify-center'>
                         {currentPosts?.map((item, index) => (
                             <div key={index} className='relative'>
-                                <Item id={item.id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.old_price} newPrice={item.new_price} />
+                                <Item id={item._id} image={item.image} brand={item.brands} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                                 <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
                             </div>
                         ))}
@@ -209,11 +208,11 @@ const Category = () => {
             </div>
 
             <Pagination
-                totalPosts={items.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
+                totalPosts={items?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
                 setPostPerPage={setPostPerPage} currentPage={currentPage}
             />
         </div >
     )
 }
 
-export default Category
+export default TypeProduct
