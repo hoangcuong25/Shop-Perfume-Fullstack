@@ -61,6 +61,25 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const addToCart = async (productId) => {
+        try {
+            const { data } = await axios.post(
+                backendUrl + '/api/user/add-to-cart',
+                { productId },
+                {
+                    headers: { token }
+                }
+            )
+
+            if (data.success) {
+                toast.success("Thêm vào giỏ hàng thành công")
+            }
+
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
     const value = {
         navbar, setNavbar,
         backendUrl,
@@ -69,7 +88,8 @@ const AppContextProvider = (props) => {
         loadUserProfileData,
         productData, setProductData,
         loadProductData,
-        formatMoney
+        formatMoney,
+        addToCart
     }
 
     useEffect(() => {

@@ -22,7 +22,7 @@ const StickyBar = ({ productInfo, formatMoney }) => {
                 <div className="flex items-center">
                     <img src={productInfo?.image} className="w-12 h-12 mr-4" />
                     <div>
-                        <strong className="md:text-lg text-xs">{productInfo?.name}</strong>
+                        <strong className="md:text-base text-xs">{productInfo?.name}</strong>
                         <div className="text-red-500 font-bold text-xs md:text-base">{formatMoney(productInfo?.newPrice)} vnd<span className='text-gray-300 line-through ml-3 sm:inline hidden'>{formatMoney(productInfo?.oldPrice)} vnd</span></div>
                     </div>
                 </div>

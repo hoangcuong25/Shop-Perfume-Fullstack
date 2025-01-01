@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import userModel from '../models/userModel.js'
 import productModel from '../models/productModel.js'
+import cartModel from '../models/cartModel.js'
 
 // api to register
 const registerUser = async (req, res) => {
@@ -147,4 +148,46 @@ const getProduct = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, profile, updateProfile, getProduct }
+// api add to cart
+const addToCart = async (req, res) => {
+    try {
+        const { userId, productId } = req.body
+
+        const isCart = await cartModel.findOne({ userId })
+        const productData = await productModel.findById(productId)
+
+        if (!isCart) {
+            const cartData = {
+                userId: userId,
+                cart: {
+                    product: productData,
+                    quantity: 1
+                }
+            }
+
+            const newCart = new cartModel(cartData)
+            await newCart.save()
+
+            res.json({ success: true, message: 'Thêm vào giỏ hàng thành công!' })
+        } else {
+            const isProduct = await cartModel.findOne({ productId })
+
+            console.log(isProduct)
+
+            if (isProduct) {
+                const quantity = isProduct.cart.quantity + 1
+
+                await cartModel.findByIdAndUpdate(isProduct._id, { "cart.quantity": quantity })
+                res.json({ success: true, message: 'Thêm vào giỏ hàng thành công' })
+            }
+        }
+
+        res.json({ success: false, message: 'Thêm vào giỏ hàng thất bại!' })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, profile, updateProfile, getProduct, addToCart }

@@ -11,7 +11,7 @@ import { AppContext } from '../context/Context.js';
 
 const DisplayProduct = () => {
 
-    const { productData, formatMoney } = useContext(AppContext)
+    const { productData, formatMoney, addToCart } = useContext(AppContext)
 
     const { id } = useParams()
 
@@ -50,13 +50,13 @@ const DisplayProduct = () => {
 
                             <div className='flex gap-5 mt-7'>
                                 <div
-                                    className='w-40 py-2 bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
-
+                                    className='w-40 py-2 rounded-md bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
+                                    onClick={() => addToCart('6773c2acb6aca84e9a9489f8')}
                                 >
                                     THÊM VÀO GIỎ
                                 </div>
                                 <div
-                                    className='w-40 py-2 bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
+                                    className='w-40 py-2 rounded-md bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
 
                                 >
                                     MUA NGAY
