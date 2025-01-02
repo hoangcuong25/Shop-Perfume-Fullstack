@@ -4,8 +4,6 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import userModel from '../models/userModel.js'
 import productModel from '../models/productModel.js'
-import cartModel from '../models/cartModel.js'
-import mongoose from "mongoose"
 
 // api to register
 const registerUser = async (req, res) => {
@@ -154,45 +152,18 @@ const addToCart = async (req, res) => {
     try {
         const { userId, productId } = req.body
 
-        const isCart = await cartModel.findOne({ userId })
         const productData = await productModel.findById(productId)
+        const user = await userModel.findById(userId)
 
-        if (!isCart) {
-            const cartData = {
-                userId: userId,
-                cart: [
-                    {
-                        product: productData,
-                        quantity: 1
-                    }
-                ]
-            }
-
-            const newCart = new cartModel(cartData)
-            await newCart.save()
-
-            res.json({ success: true, message: 'Thêm vào giỏ hàng thành công!' })
-        } else {
-            const isProduct = await cartModel.find({
-                'cart': {
-                    $elemMatch: {
-                        'product._id': new mongoose.Types.ObjectId(productId)
-                    }
-                }
-            })
-
-            if (isProduct) {
-                const productInCart = isProduct[0].cart.find(item =>
-                    item.product._id.equals(new mongoose.Types.ObjectId(productId))
-                )
-
-                const quantity = productInCart.quantity + 1
-
-                await cartModel.findByIdAndUpdate(isProduct._id, { "cart.quantity": quantity })
-                res.json({ success: true, message: 'Thêm vào giỏ hàng thành công' })
-            }
+        const addToCart = {
+            product: productData,
+            quantity: 1
         }
 
+        const cartData = [...user.cart, addToCart]
+
+        await userModel.findByIdAndUpdate(userId, { cart: cartData })
+        res.json({ success: true })
     }
     catch (error) {
         console.log(error)

@@ -49,7 +49,7 @@ const Header = () => {
                 <div className='flex justify-between mt-0 sm:mt-3.5'>
                     <div className='items-center gap-2 relative flex sm:hidden'>
                         <IoIosSearch className='text-2xl text-gray-600 mx-2' />
-                        <img onClick={() => navigate('/my-profile')} src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                        <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
                     </div>
                     <Link
                         to='/'
@@ -110,8 +110,8 @@ const Header = () => {
 
                     {token ?
                         <div className='hidden sm:flex items-center gap-2  cursor-pointer relative group'>
-                            <img src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
-                            <p className='capitalize group-hover:text-red-500 font-medium hidden lg:block'>{`${userData.lastName} ${userData.firstName}`}</p>
+                            <img src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                            <p className='capitalize group-hover:text-red-500 font-medium hidden lg:block'>{`${userData?.lastName} ${userData?.firstName}`}</p>
 
                             <div className='absolute z-50 pt-8 top-3.5 -right-3.5 hidden group-hover:flex'>
                                 <div className='border border-gray-300 bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>

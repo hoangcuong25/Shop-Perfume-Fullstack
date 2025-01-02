@@ -45,7 +45,7 @@ const EditProfile = ({ setShow, show }) => {
             )
 
             if (data.success) {
-                toast.success('Profile updated successfully');
+                toast.success('Lưu thay đổi thành công');
                 await loadUserProfileData();
             } else {
                 toast.error(data.message);

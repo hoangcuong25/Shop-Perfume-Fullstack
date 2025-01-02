@@ -130,7 +130,7 @@ const Register = () => {
                 <div className='relative'>
                     <p>Nhập Lại Mật Khẩu*:</p>
                     <input
-                        type="text"
+                        type={`${isShow ? 'text' : 'password'}`}
                         className='border-b border-gray-500 focus:outline-none w-full mt-2'
                         value={password_2}
                         onChange={(e) => setPassword_2(e.target.value)}
