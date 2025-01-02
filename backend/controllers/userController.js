@@ -155,15 +155,34 @@ const addToCart = async (req, res) => {
         const productData = await productModel.findById(productId)
         const user = await userModel.findById(userId)
 
-        const addToCart = {
-            product: productData,
-            quantity: 1
+        let isProduct = false
+        let indexProduct = 0
+
+        user.cart.forEach((i, index) => {
+            if (i.product._id.toString() === productId) {
+                isProduct = true
+                indexProduct = index
+            }
+        })
+
+        if (isProduct) {
+            const cart = user.cart;
+
+            cart[indexProduct].quantity += 1;
+
+            await userModel.findByIdAndUpdate(userId, { cart });
+            res.json({ success: true })
+        } else {
+            const addToCart = {
+                product: productData,
+                quantity: 1
+            }
+
+            const cartData = [...user.cart, addToCart]
+
+            await userModel.findByIdAndUpdate(userId, { cart: cartData })
+            res.json({ success: true })
         }
-
-        const cartData = [...user.cart, addToCart]
-
-        await userModel.findByIdAndUpdate(userId, { cart: cartData })
-        res.json({ success: true })
     }
     catch (error) {
         console.log(error)
