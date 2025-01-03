@@ -7,7 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
-import Cart from './pages/Cart'
+import Cart from './components/Cart'
 import TypeProduct from './pages/TypeProduct'
 
 const App = () => {
@@ -21,7 +21,6 @@ const App = () => {
         <Route path='/giftset' element={<TypeProduct />} />
         <Route path='/bodycare&homecare' element={<TypeProduct />} />
         <Route path='/product/:id' element={<DisplayProduct />} />
-        <Route path='/cart' element={<Cart />} />
         <Route path='/my-profile' element={<MyProfile />} />
 
         <Route path='/login' element={<Login />} />

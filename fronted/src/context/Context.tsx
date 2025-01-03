@@ -19,6 +19,7 @@ const AppContextProvider = (props) => {
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
 
     const [navbar, setNavbar] = useState<string>('')
+    const [sidebar, setSidebar] = useState<string>('')
     const [userData, setUserData] = useState(false)
     const [cart, setCart] = useState(false)
     const [productData, setProductData] = useState<ProductData>()
@@ -91,7 +92,8 @@ const AppContextProvider = (props) => {
         loadProductData,
         formatMoney,
         addToCart,
-        cart, setCart
+        cart, setCart,
+        sidebar, setSidebar
     }
 
     useEffect(() => {

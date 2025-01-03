@@ -206,11 +206,11 @@ const Hero = () => {
                 </Link>
                 <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
                     <img src={sale} onClick={() => scrollTo(0, 1800)} className='w-40 md:w-60 xl:w-72 ' alt="" />
-                    <p>Sale</p>
+                    <p>Bestseller</p>
                 </div>
                 <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
                     <img src={new_in} onClick={() => scrollTo(0, 1500)} className='w-40 md:w-60 xl:w-72 ' alt="" />
-                    <p>New In</p>
+                    <p>New Arrivals</p>
                 </div>
             </div>
 

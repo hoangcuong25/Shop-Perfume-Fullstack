@@ -18,7 +18,7 @@ import { AppContext } from '../context/Context';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData, cart } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData, cart, setSidebar } = useContext(AppContext)
 
     const navigate = useNavigate()
 
@@ -177,7 +177,8 @@ const Header = () => {
                             </div>
                         </div>
                         <Link
-                            to='/cart'
+                            to='/my-profile'
+                            onClick={() => setSidebar('Giỏ hàng của tôi')}
                             className='relative cursor-pointer group'
                         >
                             <RiShoppingCartLine className='' />

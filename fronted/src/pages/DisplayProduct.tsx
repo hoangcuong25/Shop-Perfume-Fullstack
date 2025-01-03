@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
-import { FaStar } from "react-icons/fa";
 import { useParams } from 'react-router-dom'
-import all_item from '../assets/all_item.js'
 import StickyBar from '../components/StickBar.js'
 import { FaCheckSquare } from "react-icons/fa";
 import Interested from '../components/Interested.js';
 import { AppContext } from '../context/Context.js';
-
+import { FaStar } from "react-icons/fa";
 const DisplayProduct = () => {
 
     const { productData, formatMoney, addToCart } = useContext(AppContext)
@@ -55,12 +53,6 @@ const DisplayProduct = () => {
                                 >
                                     THÊM VÀO GIỎ
                                 </div>
-                                <div
-                                    className='w-40 py-2 rounded-md bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
-
-                                >
-                                    MUA NGAY
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,6 +72,31 @@ const DisplayProduct = () => {
                             <FaCheckSquare className='text-yellow-500' />
                             <p>Kiểm tra hàng trước khi nhận</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className='flex flex-col gap-3 mt-8 px-3.5 sm:px-7'>
+                <p className='text-2xl font-semibold'>Đánh giá về sản phẩm</p>
+                <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo?.name}</p>
+
+                <div className='bg-gray-100 rounded-md shadow-md flex flex-col md:flex-row  gap-16 px-7 py-3.5 w-fit items-center'>
+                    <div className='flex flex-col items-center gap-2 pr-3.5'>
+                        <div className='flex items-center gap-3'>
+                            <p className='text-2xl font-bold text-yellow-500 '>4.8</p>
+                            <FaStar className='text-2xl text-orange-500' />
+                        </div>
+                        <p className='text-lg font-semibold'>Đánh giá trung bình</p>
+                    </div>
+                    <div className='flex flex-col py-16 border-y-2 md:py-0 md:border-y-0 md:px-16 md:border-x-2 border-gray-300'>
+                        <p>8 đánh giá 5 sao</p>
+                        <p>5 đánh giá 4 sao</p>
+                        <p>0 đánh giá 3 sao</p>
+                        <p>0 đánh giá 2 sao</p>
+                        <p>0 đánh giá 1 sao</p>
+                    </div>
+                    <div className='bg-black rounded-md text-white px-3.5 py-3'>
+                        Đánh giá ngay
                     </div>
                 </div>
             </div>
