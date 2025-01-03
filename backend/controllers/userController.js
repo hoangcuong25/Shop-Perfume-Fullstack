@@ -296,12 +296,12 @@ const wishlist = async (req, res) => {
             wishlist.splice(indexProduct, 1)
             await userModel.findByIdAndUpdate(userId, { wishlist })
 
-            res.json({ success: true })
+            res.json({ success: true, message: 'Bỏ khỏi danh sách thành công' })
         } else {
             const wishlistData = [...user.wishlist, productData]
             await userModel.findByIdAndUpdate(userId, { wishlist: wishlistData })
 
-            res.json({ success: true })
+            res.json({ success: true, message: 'Thêm vào danh sách thành công' })
         }
 
     }

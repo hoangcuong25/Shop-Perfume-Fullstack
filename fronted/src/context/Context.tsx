@@ -85,18 +85,22 @@ const AppContextProvider = (props) => {
         }
     }
 
-    const addToWishlist = async (productId) => {
+    const wishlistProduct = async (productId) => {
         try {
-            const { data } = await axios.post(backendUrl + '/api/user/add-to-wishlist', { productId }, { headers: { token } })
+            const { data } = await axios.post(backendUrl + '/api/user/wishlist', { productId }, { headers: { token } })
 
             if (data.success) {
-                toast.success("Thêm vào danh sách thành công")
+                toast.success(data.message)
                 loadUserProfileData()
             }
         }
         catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+    }
+
+    const isWishlist = (productId) => {
+        return wishlist?.some((i) => i?._id === productId) || false
     }
 
     const value = {
@@ -111,8 +115,9 @@ const AppContextProvider = (props) => {
         addToCart,
         cart, setCart,
         sidebar, setSidebar,
-        addToWishlist,
-        wishlist, setWishlist
+        wishlistProduct,
+        wishlist, setWishlist,
+        isWishlist
     }
 
     useEffect(() => {

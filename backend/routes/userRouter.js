@@ -14,6 +14,6 @@ userRouter.post('/add-to-cart', authUser, addToCart)
 userRouter.post('/remove-from-cart', authUser, removeFromCart)
 userRouter.post('/increase-quantity', authUser, increaseQuantity)
 userRouter.post('/decrease-quantity', authUser, decreaseQuantity)
-userRouter.post('/add-to-wishlist', authUser, wishlist)
+userRouter.post('/wishlist', authUser, wishlist)
 
 export default userRouter

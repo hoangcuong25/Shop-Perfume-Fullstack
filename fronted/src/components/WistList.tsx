@@ -8,7 +8,7 @@ import { MdDeleteForever } from 'react-icons/md';
 
 const WistList = ({ setShow, show }) => {
 
-    const { wishlist, formatMoney } = useContext(AppContext)
+    const { wishlist, formatMoney, wishlistProduct } = useContext(AppContext)
 
     console.log(wishlist)
 
@@ -45,6 +45,7 @@ const WistList = ({ setShow, show }) => {
                                         <p className=''>{formatMoney(i?.newPrice)} vnd</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
+                                            onClick={() => wishlistProduct(i?._id)}
                                         />
                                     </div>
                                 </div>
@@ -54,6 +55,7 @@ const WistList = ({ setShow, show }) => {
                             <p className='lg:block hidden'>{formatMoney(i?.newPrice)} vnd</p>
                             <MdDeleteForever
                                 className='text-gray-700 text-2xl cursor-pointer lg:block hidden'
+                                onClick={() => wishlistProduct(i?._id)}
                             />
                         </div>
                     ))}

@@ -4,11 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Item from '../components/item.js';
 import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { AppContext } from '../context/Context.js';
 
 const Interested = () => {
 
-    const { productData, addToWishlist } = useContext(AppContext)
+    const { productData, wishlistProduct, isWishlist } = useContext(AppContext)
 
     const setting = {
         dots: true,
@@ -58,8 +59,11 @@ const Interested = () => {
                             <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                 Brand year
                             </div>
-                            <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                        </div>
+                            {isWishlist(item?._id) ?
+                                < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                            }
+                        </div>  
                     )
                 })}
             </Slider>
