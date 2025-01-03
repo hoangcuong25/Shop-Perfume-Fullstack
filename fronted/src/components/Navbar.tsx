@@ -42,7 +42,7 @@ const Navbar = () => {
                     <hr className={`${navbar === 'Nước hoa nam' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
-                        <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
+                        <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
                                 <p className='my-1.5 hover:text-rose-500'>Mới nhất</p>
@@ -93,7 +93,7 @@ const Navbar = () => {
                     <hr className={`${navbar === 'Nước hoa nữ' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
-                        <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
+                        <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
                                 <p className='my-1.5 hover:text-rose-500'>Mới nhất</p>
@@ -144,7 +144,7 @@ const Navbar = () => {
                     <hr className={`${navbar === 'nuoc-hoa-mini' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
-                        <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
+                        <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
                                 <p className='my-1.5 hover:text-rose-500'>Mới nhất</p>
@@ -195,7 +195,7 @@ const Navbar = () => {
                     <hr className={`${navbar === 'Giftset' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
-                        <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
+                        <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
                                 <p className='my-1.5 hover:text-rose-500'>Gift set nước hoa nam</p>
@@ -230,7 +230,7 @@ const Navbar = () => {
                     <hr className={`${navbar === 'Bodycare & Homecare' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
-                        <div className='w-full bg-stone-100 justify-between p-3 hidden sm:flex'>
+                        <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân Loại</p>
                                 <p className='my-1.5 hover:text-rose-500'>Chăm sóc tóc</p>

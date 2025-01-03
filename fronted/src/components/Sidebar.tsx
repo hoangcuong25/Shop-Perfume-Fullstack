@@ -40,6 +40,12 @@ const Sidebar = ({ sidebar, setSidebar, show }) => {
                     Tích điểm
                 </p>
                 <p
+                    className={`py-1.5 cursor-pointer px-3.5`}
+                    onClick={() => navigate('/cart')}
+                >
+                    Giỏ hàng của tôi
+                </p>
+                <p
                     className={`py-1.5 cursor-pointer px-3.5 ${sidebar === 'Đơn hàng của tôi' && 'bg-stone-200 text-orange-500'}`}
                     onClick={() => setSidebar('Đơn hàng của tôi')}
                 >

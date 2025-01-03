@@ -20,6 +20,7 @@ const AppContextProvider = (props) => {
 
     const [navbar, setNavbar] = useState<string>('')
     const [userData, setUserData] = useState(false)
+    const [cart, setCart] = useState(false)
     const [productData, setProductData] = useState<ProductData>()
 
     const backendUrl = 'http://localhost:4000'
@@ -34,7 +35,7 @@ const AppContextProvider = (props) => {
 
             if (data.success) {
                 setUserData(data.userData)
-
+                setCart(data.userData.cart)
             } else {
                 toast.error(data.message)
             }
@@ -89,7 +90,8 @@ const AppContextProvider = (props) => {
         productData, setProductData,
         loadProductData,
         formatMoney,
-        addToCart
+        addToCart,
+        cart, setCart
     }
 
     useEffect(() => {

@@ -18,7 +18,7 @@ import { AppContext } from '../context/Context';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData, cart } = useContext(AppContext)
 
     const navigate = useNavigate()
 
@@ -74,7 +74,7 @@ const Header = () => {
                         <p className='group-hover:text-red-500 hidden lg:block'>Nmagazine</p>
 
                         <div className='absolute z-50 pt-8 top-2.5 -left-3.5 hidden group-hover:flex'>
-                            <div className='border border-gray-300 bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
+                            <div className='border border-gray-300 rounded-md bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
                                 <div className='flex items-center gap-3 border-b pb-2 cursor-pointer group/item'>
                                     <img src={cong_dong_nuoc_hoa} className='w-11' alt="" />
                                     <div className='flex flex-col '>
@@ -114,7 +114,7 @@ const Header = () => {
                             <p className='capitalize group-hover:text-red-500 font-medium hidden lg:block'>{`${userData?.lastName} ${userData?.firstName}`}</p>
 
                             <div className='absolute z-50 pt-8 top-3.5 -right-3.5 hidden group-hover:flex'>
-                                <div className='border border-gray-300 bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>
+                                <div className='border border-gray-300 rounded-md bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>
                                     <Link to='/my-profile' className='group/item'>
                                         <p className=' group-hover/item:text-red-500'>Tài khoản của tôi</p>
                                     </Link>
@@ -129,7 +129,7 @@ const Header = () => {
                             <p className='group-hover:text-red-500 hidden lg:block'>Đăng nhập</p>
 
                             <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
-                                <div className='border border-gray-300 bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
+                                <div className='border border-gray-300 rounded-md bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
                                     <div className='flex items-center gap-5'>
                                         <FaRegUser className='text-2xl' />
                                         <div className='flex flex-col'>
@@ -185,9 +185,18 @@ const Header = () => {
                                 0
                             </div>
                             <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
-                                <div className='border border-gray-300 bg-white text-sm w-max px-3.5 py-2.5 flex flex-col gap-3.5'>
-                                    Chưa có sản phẩm nào trong giỏ hàng!
-                                </div>
+                                {cart ?
+                                    <div className='flex flex-col border border-gray-300 rounded-md bg-white gap-3 '>
+                                        {cart?.map((i, index) => (
+                                            <div key={index} className='flex items-center gap-3.5 text-xs w-72 px-3.5 py-2.5 border-b'>
+                                                <img src={i?.product?.image} className='size-12  ' alt="" />
+                                                <p>{i?.product?.name}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    : <div className='border border-gray-300 bg-white text-sm w-max px-3.5 py-2.5 flex flex-col gap-3.5'>
+                                        Chưa có sản phẩm nào trong giỏ hàng!
+                                    </div>}
                             </div>
                         </Link>
                     </div>
