@@ -3,10 +3,53 @@ import empty from '../assets/empty.png'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context.js'
 import { FaShoppingBasket } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Cart = ({ show, setShow }) => {
 
-    const { cart, formatMoney } = useContext(AppContext)
+    const { cart, formatMoney, backendUrl, token, loadUserProfileData } = useContext(AppContext)
+
+    const removeFromCart = async (productId) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/user/remove-from-cart', { productId }, { headers: { token } })
+
+            if (data.success) {
+                toast.success('Xóa khỏi giỏ hàng thành công')
+                loadUserProfileData()
+            }
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
+    const increaseQuantity = async (productId) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/user/increase-quantity', { productId }, { headers: { token } })
+
+            if (data.success) {
+                loadUserProfileData()
+            }
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
+    const decreaseQuantity = async (productId) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/user/decrease-quantity', { productId }, { headers: { token } })
+
+            if (data.success) {
+                loadUserProfileData()
+            }
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
 
     return (
         <div className='flex flex-col w-full bg-gray-100 shadow-md px-3 py-3'>
@@ -16,27 +59,45 @@ const Cart = ({ show, setShow }) => {
                         <FaShoppingBasket className='text-3xl text-gray-600' />
                         <p className='text-xl font-semibold'>Giỏ hàng của bạn</p>
                     </div>
-                    <div className='mt-3.5 grid grid-cols-[57%_13%_17%_13%] justify-center bg-gray-200 shadow-md px-3 py-2'>
+                    <div className='mt-3.5 grid grid-cols-[50%_13%_17%_13%_7%] justify-center bg-gray-200 shadow-md px-3 py-2'>
                         <p className='text-lg font-semibold'>Tất cả ({cart.length} sản phẩm)</p>
                         <p className='text-lg font-semibold text-center'>Giá</p>
                         <p className='text-lg font-semibold text-center'>Số lượng</p>
                         <p className='text-lg font-semibold text-center'>Thành tiền</p>
                     </div>
                     {cart?.map((i, index) => (
-                        <div key={index} className='mt-3.5 grid items-center text-center grid-cols-[57%_13%_17%_13%] px-3 py-2'>
+                        <div key={index} className='mt-3.5 grid items-center text-center grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
                                 <img src={i?.product?.image} className='w-28  ' alt="" />
                                 <p>{i?.product?.name}</p>
                             </div>
                             <p>{formatMoney(i?.product?.newPrice)} vnd</p>
                             <div className='flex justify-center items-center gap-3.5'>
-                                <p className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'>+</p>
+                                <p
+                                    className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
+                                    onClick={() => decreaseQuantity(i?.product?._id)}
+                                >
+                                    -
+                                </p>
                                 <p className='px-5 py-2 text-center font-semibold bg-gray-100 rounded-md  shadow-md'>{i?.quantity}</p>
-                                <p className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'>-</p>
+                                <p
+                                    className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
+                                    onClick={() => increaseQuantity(i?.product?._id)}
+                                >
+                                    +
+                                </p>
                             </div>
                             <p>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
+                            <MdDeleteForever
+                                className='text-gray-700 text-2xl cursor-pointer'
+                                onClick={() => removeFromCart(i?.product?._id)}
+                            />
                         </div>
                     ))}
+
+                    <div className='mt-3.5 bg-red-500 text-white w-52 text-center py-3 rounded-md place-self-end mr-10 cursor-pointer'>
+                        Thanh toán ngay
+                    </div>
                 </div>
                 : <div className=' mt-3 flex md:flex-row flex-col gap-1.5'>
                     <img src={empty} className='size-72' alt="" />

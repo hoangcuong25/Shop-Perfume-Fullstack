@@ -75,6 +75,7 @@ const AppContextProvider = (props) => {
 
             if (data.success) {
                 toast.success("Thêm vào giỏ hàng thành công")
+                loadUserProfileData()
             }
 
         } catch (error) {

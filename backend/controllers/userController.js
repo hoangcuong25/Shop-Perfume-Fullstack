@@ -190,4 +190,87 @@ const addToCart = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, profile, updateProfile, getProduct, addToCart }
+// api remove from cart
+const removeFromCart = async (req, res) => {
+    try {
+        const { userId, productId } = req.body
+
+        const user = await userModel.findById(userId)
+
+        let indexProduct = 0
+        const cart = user.cart
+
+        cart.forEach((i, index) => {
+            if (i.product._id.toString() === productId) {
+                indexProduct = index
+            }
+        })
+
+        cart.splice(indexProduct, 1)
+        await userModel.findByIdAndUpdate(userId, { cart })
+
+        res.status(200).json({ success: true })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// api increase quantity
+const increaseQuantity = async (req, res) => {
+    try {
+        const { userId, productId } = req.body
+
+        const user = await userModel.findById(userId)
+
+        let indexProduct = 0
+        const cart = user.cart
+
+        cart.forEach((i, index) => {
+            if (i.product._id.toString() === productId) {
+                indexProduct = index
+            }
+        })
+
+        cart[indexProduct].quantity += 1
+
+        await userModel.findByIdAndUpdate(userId, { cart })
+        res.status(200).json({ success: true })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// api decrease quantity
+const decreaseQuantity = async (req, res) => {
+    try {
+        const { userId, productId } = req.body
+
+        const user = await userModel.findById(userId)
+
+        let indexProduct = 0
+        const cart = user.cart
+
+        cart.forEach((i, index) => {
+            if (i.product._id.toString() === productId) {
+                indexProduct = index
+            }
+        })
+
+        cart[indexProduct].quantity -= 1
+
+        await userModel.findByIdAndUpdate(userId, { cart })
+        res.status(200).json({ success: true })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, profile, updateProfile, getProduct, addToCart, removeFromCart, increaseQuantity, decreaseQuantity }

@@ -34,10 +34,10 @@ const TypeProduct = () => {
     const currentPosts = items?.slice(firstPostIndex, lastPostIndex)
 
     const filteredItem = () => {
-        let filtered = productData?.filter(item => item.type === navbar);
+        let filtered = productData?.filter(item => item.type === navbar)
 
         if (selectedBrand) {
-            filtered = filtered.filter(item => item.brand === selectedBrand);
+            filtered = filtered.filter(item => item.brand === selectedBrand)
         }
 
         if (selectedPrice) {
@@ -52,11 +52,11 @@ const TypeProduct = () => {
                     return item.newPrice > 4000000;
                 }
                 return true;
-            });
+            })
         }
 
         setItems(filtered);
-    };
+    }
 
     useEffect(() => {
         filteredItem()
@@ -68,9 +68,9 @@ const TypeProduct = () => {
         let sortedArray = [...items]
 
         if (selectedOption === 'Giá thấp đến cao') {
-            sortedArray.sort((a, b) => a.new_price - b.new_price)
+            sortedArray.sort((a, b) => a.newPrice - b.newPrice)
         } else if (selectedOption === 'Giá cao đến thấp') {
-            sortedArray.sort((a, b) => b.new_price - a.new_price)
+            sortedArray.sort((a, b) => b.newPrice - a.newPrice)
         }
 
         setItems(sortedArray)
