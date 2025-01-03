@@ -311,6 +311,23 @@ const wishlist = async (req, res) => {
     }
 }
 
+// api order
+const order = async (req, res) => {
+    try {
+        const { userId } = req.body
+
+        const cart = []
+
+        await userModel.findByIdAndUpdate(userId, { cart: cart })
+        res.status(200).json({ success: true })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 export {
     registerUser,
     loginUser,
@@ -321,5 +338,6 @@ export {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
-    wishlist
+    wishlist,
+    order
 }

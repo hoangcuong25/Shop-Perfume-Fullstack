@@ -7,16 +7,28 @@ import { IoIosWallet } from "react-icons/io";
 import { IoIosPricetags } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Payment = () => {
 
-    const { token, totalPrice, formatMoney } = useContext(AppContext)
+    const { token, totalPrice, formatMoney, backendUrl, loadUserProfileData } = useContext(AppContext)
 
     const [optionShip, setOptionShip] = useState<string>('Giao hàng tiêu chuẩn')
     const [optionPayment, setOptionPayment] = useState<string>('Thanh toán khi nhận hàng')
 
-    const order = () => {
+    const order = async () => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/user/order', {}, { headers: { token } })
 
+            if (data.success) {
+                toast.success('Đặt hàng thành công')
+                scrollTo(0, 0)
+                loadUserProfileData()
+            }
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
     }
 
     return token && (
@@ -155,7 +167,7 @@ const Payment = () => {
                         <p>Thời gian dự kiến:</p>
                         <p>Dự kiến từ 20/04 - 21/04</p>
                     </div>
-                    <Link to='/' onClick={() => { toast.success('Đặt hàng thành công'), scrollTo(0, 0) }} className='mt-7 w-52 py-3 bg-red-500 hover:bg-red-600 text-white text-lg text-center self-start md:self-end'>
+                    <Link to='/' onClick={() => order()} className='mt-7 w-52 py-3 bg-red-500 hover:bg-red-600 text-white text-lg text-center self-start md:self-end'>
                         ĐẶT HÀNG
                     </Link>
                 </div>

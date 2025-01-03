@@ -95,7 +95,7 @@ const Cart = ({ show, setShow }) => {
                                             +
                                         </p>
                                     </div>
-                                    <div className='flex gap-3.5 items-center'>
+                                    <div className='flex justify-between items-center'>
                                         <p className=''>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
