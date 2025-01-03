@@ -18,7 +18,7 @@ import { AppContext } from '../context/Context';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData, cart, setSidebar } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist } = useContext(AppContext)
 
     const navigate = useNavigate()
 
@@ -170,23 +170,32 @@ const Header = () => {
                     }
 
                     <div className='flex items-center gap-7 text-gray-700'>
-                        <div className='relative cursor-pointer'>
+                        <Link
+                            to='/my-profile'
+                            onClick={() => setSidebar('Danh sách yêu thích')}
+                            className='relative cursor-pointer group'
+                        >
                             <FaRegHeart />
-                            <div className='absolute -right-2 -top-2 size-4 rounded-full bg-red-500 text-[10px] text-white text-center'>
-                                0
+                            <div className='absolute -right-3 -top-2 px-1.5  py-0.5 rounded-full bg-red-500 text-[10px] text-white text-center'>
+                                {wishlist.length}
                             </div>
-                        </div>
+                            <div className='absolute z-50 pt-8 top-2.5 -right-3 hidden group-hover:flex'>
+                                <div className='border border-gray-300 rounded-md bg-white text-sm w-max px-3.5 py-2.5 flex flex-col gap-3.5'>
+                                    Danh sách yêu thích của bạn
+                                </div>
+                            </div>
+                        </Link>
                         <Link
                             to='/my-profile'
                             onClick={() => setSidebar('Giỏ hàng của tôi')}
                             className='relative cursor-pointer group'
                         >
                             <RiShoppingCartLine className='' />
-                            <div className='absolute -right-2 -top-2 size-4 rounded-full bg-red-500 text-[10px] text-white text-center'>
-                                0
+                            <div className='absolute -right-3 -top-2 px-1.5  py-0.5 rounded-full bg-red-500 text-[10px] text-white text-center'>
+                                {cart.length}
                             </div>
                             <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
-                                {cart ?
+                                {cart.length != 0 ?
                                     <div className='flex flex-col border border-gray-300 rounded-md bg-white gap-3 '>
                                         {cart?.map((i, index) => (
                                             <div key={index} className='flex items-center gap-3.5 text-xs w-72 px-3.5 py-2.5 border-b'>
@@ -195,7 +204,7 @@ const Header = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    : <div className='border border-gray-300 bg-white text-sm w-max px-3.5 py-2.5 flex flex-col gap-3.5'>
+                                    : <div className='border border-gray-300 rounded-md bg-white text-sm w-max px-3.5 py-2.5 flex flex-col gap-3.5'>
                                         Chưa có sản phẩm nào trong giỏ hàng!
                                     </div>}
                             </div>

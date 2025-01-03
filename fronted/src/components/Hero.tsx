@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
 
-    const { productData, setNavbar } = useContext(AppContext)
+    const { productData, setNavbar, addToWishlist } = useContext(AppContext)
 
     const miniSize = productData?.filter((i) => i.type === 'Nước hoa mini')
     const giftset = productData?.filter((i) => i.type === 'Giftset')
@@ -132,7 +132,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Brand year
                                 </div>
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}
@@ -156,7 +156,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     New
                                 </div>
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}
@@ -180,7 +180,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Bestsellers
                                 </div>
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}
@@ -231,7 +231,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Mini size
                                 </div>
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}
@@ -255,7 +255,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Giftset
                                 </div>
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}
@@ -276,7 +276,7 @@ const Hero = () => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             </div>
                         )
                     })}

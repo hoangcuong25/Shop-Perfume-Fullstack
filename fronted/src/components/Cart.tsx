@@ -78,7 +78,7 @@ const Cart = ({ show, setShow }) => {
                             <div className='flex gap-5 items-center'>
                                 <img src={i?.product?.image} className='w-28  ' alt="" />
                                 <p className='lg:block hidden'>{i?.product?.name}</p>
-                                <div className='lg:hidden flex flex-col gap-1 text-sm'>
+                                <div className='lg:hidden flex flex-col gap-2 text-[13px]'>
                                     <p className='text-start'>{i?.product?.name}</p>
                                     <div className='flex justify-start items-center gap-3.5'>
                                         <p
@@ -95,8 +95,8 @@ const Cart = ({ show, setShow }) => {
                                             +
                                         </p>
                                     </div>
-                                    <div className='flex gap-3.5'>
-                                        <p className='mx-3.5'>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
+                                    <div className='flex gap-3.5 items-center'>
+                                        <p className=''>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
                                             onClick={() => removeFromCart(i?.product?._id)}
@@ -128,7 +128,7 @@ const Cart = ({ show, setShow }) => {
                         </div>
                     ))}
 
-                    <div className='mt-3.5 bg-red-500 text-white w-52 text-center py-3 rounded-md place-self-end mr-10 cursor-pointer'>
+                    <div className='mt-3.5 bg-red-500 text-white w-52 text-center py-3 rounded-md place-self-start lg:place-self-end mr-10 cursor-pointer'>
                         Thanh toán ngay
                     </div>
                 </div>

@@ -149,7 +149,7 @@ const About = () => {
                     >
                         <IoShieldCheckmarkOutline className='text-3xl' />
                     </div>
-                    <p>100% Chính hãng</p>
+                    <p className='text-center'>100% Chính hãng</p>
                 </div>
 
                 <div className='flex flex-col items-center gap-2'>
@@ -159,7 +159,7 @@ const About = () => {
                     >
                         <IoMdGift className='text-3xl' />
                     </div>
-                    <p>Ưu đãi đặc quyền</p>
+                    <p className='text-center'>Ưu đãi đặc quyền</p>
                 </div>
 
                 <div className='flex flex-col items-center gap-2'>
@@ -169,7 +169,7 @@ const About = () => {
                     >
                         <FiCreditCard className='text-3xl' />
                     </div>
-                    <p>Giao dịch an toàn uy tín</p>
+                    <p className='text-center'>Giao dịch an toàn uy tín</p>
                 </div>
             </div>
 

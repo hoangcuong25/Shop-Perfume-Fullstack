@@ -21,7 +21,8 @@ const AppContextProvider = (props) => {
     const [navbar, setNavbar] = useState<string>('')
     const [sidebar, setSidebar] = useState<string>('')
     const [userData, setUserData] = useState(false)
-    const [cart, setCart] = useState(false)
+    const [cart, setCart] = useState([])
+    const [wishlist, setWishlist] = useState([])
     const [productData, setProductData] = useState<ProductData>()
 
     const backendUrl = 'http://localhost:4000'
@@ -37,6 +38,7 @@ const AppContextProvider = (props) => {
             if (data.success) {
                 setUserData(data.userData)
                 setCart(data.userData.cart)
+                setWishlist(data.userData.wishlist)
             } else {
                 toast.error(data.message)
             }
@@ -88,9 +90,9 @@ const AppContextProvider = (props) => {
             const { data } = await axios.post(backendUrl + '/api/user/add-to-wishlist', { productId }, { headers: { token } })
 
             if (data.success) {
-                toast.success("thành công")
+                toast.success("Thêm vào danh sách thành công")
+                loadUserProfileData()
             }
-
         }
         catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong")
@@ -109,7 +111,8 @@ const AppContextProvider = (props) => {
         addToCart,
         cart, setCart,
         sidebar, setSidebar,
-        addToWishlist
+        addToWishlist,
+        wishlist, setWishlist
     }
 
     useEffect(() => {

@@ -36,7 +36,7 @@ const MyProfile = () => {
                             <p>Menu</p>
                         </div>
 
-                        <p className='text-3xl font-bold text-red-500'>namperfume</p>
+                        <p className='text-3xl font-bold text-red-500 md:mt-0 mt-7'>namperfume</p>
                         <p>Thương hiệu nước hoa uy tín từ 2013</p>
                     </div>
                 }
