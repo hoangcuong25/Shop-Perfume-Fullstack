@@ -8,7 +8,7 @@ import { AppContext } from '../context/Context.js';
 
 const Interested = () => {
 
-    const { productData } = useContext(AppContext)
+    const { productData, addToWishlist } = useContext(AppContext)
 
     const setting = {
         dots: true,
@@ -58,7 +58,7 @@ const Interested = () => {
                             <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                 Brand year
                             </div>
-                            <FaRegHeart className='absolute top-0 right-7 text-gray-700' />
+                            <FaRegHeart onClick={() => addToWishlist(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                         </div>
                     )
                 })}

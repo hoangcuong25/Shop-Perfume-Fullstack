@@ -53,7 +53,7 @@ const Cart = ({ show, setShow }) => {
 
     return (
         <div className='flex flex-col w-full bg-gray-100 shadow-md px-3 py-3'>
-            {cart ?
+            {cart.length != 0 ?
                 <div className=' mt-3 flex flex-col gap-1.5'>
                     <div className='flex gap-3.5 items-center'>
                         <FaShoppingBasket className='text-3xl text-gray-600' />
@@ -99,7 +99,7 @@ const Cart = ({ show, setShow }) => {
                         Thanh toán ngay
                     </div>
                 </div>
-                : <div className=' mt-3 flex md:flex-row flex-col gap-1.5'>
+                : <div className=' mt-3 flex md:flex-row flex-col gap-3.5'>
                     <img src={empty} className='size-72' alt="" />
 
                     <div className='flex flex-col'>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 
-const WhistList = ({ setShow, show }) => {
+const WistList = ({ setShow, show }) => {
     return (
         <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
             <div
@@ -16,4 +16,4 @@ const WhistList = ({ setShow, show }) => {
     )
 }
 
-export default WhistList
+export default WistList

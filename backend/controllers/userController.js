@@ -273,4 +273,53 @@ const decreaseQuantity = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, profile, updateProfile, getProduct, addToCart, removeFromCart, increaseQuantity, decreaseQuantity }
+// api add to wishlist
+const wishlist = async (req, res) => {
+    try {
+        const { userId, productId } = req.body
+
+        const user = await userModel.findById(userId)
+        const productData = await productModel.findById(productId)
+
+        let isProduct = false
+        let indexProduct = 0
+
+        user.wishlist.forEach((i, index) => {
+            if (i._id.toString() === productId) {
+                isProduct = true
+                indexProduct = index
+            }
+        })
+
+        if (isProduct) {
+            const wishlist = user.wishlist
+            wishlist.splice(indexProduct, 1)
+            await userModel.findByIdAndUpdate(userId, { wishlist })
+
+            res.json({ success: true })
+        } else {
+            const wishlistData = [...user.wishlist, productData]
+            await userModel.findByIdAndUpdate(userId, { wishlist: wishlistData })
+
+            res.json({ success: true })
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export {
+    registerUser,
+    loginUser,
+    profile,
+    updateProfile,
+    getProduct,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    wishlist
+}
