@@ -48,8 +48,11 @@ const Header = () => {
 
                 <div className='flex justify-between mt-0 sm:mt-3.5'>
                     <div className='items-center gap-2 relative flex sm:hidden'>
-                        <IoIosSearch className='text-2xl text-gray-600 mx-2' />
-                        <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                        <IoIosSearch className='text-2xl text-gray-600' />
+                        {token ?
+                            <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                            : <FaRegUser onClick={() => navigate('/login')} />
+                        }
                     </div>
                     <Link
                         to='/'

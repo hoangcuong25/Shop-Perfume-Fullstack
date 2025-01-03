@@ -65,26 +65,6 @@ const AppContextProvider = (props) => {
         }
     }
 
-    const addToCart = async (productId) => {
-        try {
-            const { data } = await axios.post(
-                backendUrl + '/api/user/add-to-cart',
-                { productId },
-                {
-                    headers: { token }
-                }
-            )
-
-            if (data.success) {
-                toast.success("Thêm vào giỏ hàng thành công")
-                loadUserProfileData()
-            }
-
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Something went wrong")
-        }
-    }
-
     const wishlistProduct = async (productId) => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/wishlist', { productId }, { headers: { token } })
@@ -103,6 +83,16 @@ const AppContextProvider = (props) => {
         return wishlist?.some((i) => i?._id === productId) || false
     }
 
+    const totalPrice = () => {
+        let totalPrice = 0
+
+        cart.map((i) => {
+            totalPrice += i?.product?.newPrice * i?.quantity
+        })
+
+        return totalPrice
+    }
+
     const value = {
         navbar, setNavbar,
         backendUrl,
@@ -112,12 +102,12 @@ const AppContextProvider = (props) => {
         productData, setProductData,
         loadProductData,
         formatMoney,
-        addToCart,
         cart, setCart,
         sidebar, setSidebar,
         wishlistProduct,
         wishlist, setWishlist,
-        isWishlist
+        isWishlist,
+        totalPrice
     }
 
     useEffect(() => {
@@ -131,6 +121,10 @@ const AppContextProvider = (props) => {
     useEffect(() => {
         loadProductData()
     }, [])
+
+    useEffect(() => {
+        totalPrice()
+    }, [cart])
 
     return (
         <AppContext.Provider value={value}>

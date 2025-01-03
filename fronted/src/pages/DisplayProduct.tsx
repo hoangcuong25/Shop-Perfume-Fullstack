@@ -1,28 +1,55 @@
 import React, { useContext } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import StickyBar from '../components/StickBar.js'
 import { FaCheckSquare } from "react-icons/fa";
 import Interested from '../components/Interested.js';
 import { AppContext } from '../context/Context.js';
 import { FaStar } from "react-icons/fa";
+import { toast } from 'react-toastify'
+import axios from 'axios'
 const DisplayProduct = () => {
 
-    const { productData, formatMoney, addToCart } = useContext(AppContext)
+    const { productData, formatMoney, loadUserProfileData, backendUrl, token } = useContext(AppContext)
+
+    const navigate = useNavigate()
 
     const { id } = useParams()
 
     const productInfo = productData?.find((i) => i._id === id)
 
+    const addToCart = async (productId) => {
+        try {
+            const { data } = await axios.post(
+                backendUrl + '/api/user/add-to-cart',
+                { productId },
+                {
+                    headers: { token }
+                }
+            )
+
+            if (data.success) {
+                toast.success("Thêm vào giỏ hàng thành công")
+                loadUserProfileData()
+            } else {
+                navigate('/login')
+                scrollTo(0, 0)
+            }
+
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
     return (
         <div className='mb-16'>
             <Header />
             <Navbar />
-            <StickyBar productInfo={productInfo} formatMoney={formatMoney} />
+            <StickyBar productInfo={productInfo} formatMoney={formatMoney} addToCart={addToCart} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
-                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.category} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
+                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.type} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
 
                 <div className='flex flex-col lg:flex-row justify-between gap-10'>
                     <div className='flex flex-col md:flex-row gap-3'>

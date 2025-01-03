@@ -58,7 +58,7 @@ const Register = () => {
 
     return (
         <div className='flex flex-col items-center gap-5 mt-3 mb-10 md:mt-5'>
-            <p className='text-3xl font-bold text-red-500'>namperfume</p>
+            <Link to='/' className='text-3xl font-bold text-red-500'>namperfume</Link>
             <div className='flex flex-col items-center gap-2 text-white text-sm w-full py-3 bg-[#333333]'>
                 <p className='text-base'>Đã là thành viên?</p>
                 <p>Đăng nhập để truy cập vào tài khoản của bạn</p>

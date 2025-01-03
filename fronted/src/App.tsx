@@ -9,6 +9,7 @@ import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
 import Cart from './components/Cart'
 import TypeProduct from './pages/TypeProduct'
+import Payment from './pages/Payment'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/bodycare&homecare' element={<TypeProduct />} />
         <Route path='/product/:id' element={<DisplayProduct />} />
         <Route path='/my-profile' element={<MyProfile />} />
+        <Route path='/thanh-toan' element={<Payment />} />
 
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

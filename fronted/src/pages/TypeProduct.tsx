@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar.js'
 import { IoIosArrowDown } from "react-icons/io";
 import { AppContext } from '../context/Context.js';
 import Item from '../components/item.js';
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 import Pagination from '../components/Pagination.js';
@@ -12,7 +12,7 @@ import DescriptionTypeProduct from '../components/DescriptionTypeProduct.js';
 
 const TypeProduct = () => {
 
-    const { navbar, productData } = useContext(AppContext)
+    const { navbar, productData, isWishlist, wishlistProduct } = useContext(AppContext)
 
     const [show, setShow] = useState<boolean>(false)
 
@@ -175,7 +175,10 @@ const TypeProduct = () => {
                         {currentPosts?.map((item, index) => (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <FaRegHeart className='absolute top-0 right-7 text-gray-700 text-lg' />
+                                {isWishlist(item?._id) ?
+                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                }
                             </div>
                         ))}
                     </div>

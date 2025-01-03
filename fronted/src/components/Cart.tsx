@@ -10,7 +10,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 
 const Cart = ({ show, setShow }) => {
 
-    const { cart, formatMoney, backendUrl, token, loadUserProfileData } = useContext(AppContext)
+    const { cart, formatMoney, backendUrl, token, loadUserProfileData, totalPrice } = useContext(AppContext)
 
     const removeFromCart = async (productId) => {
         try {
@@ -128,8 +128,11 @@ const Cart = ({ show, setShow }) => {
                         </div>
                     ))}
 
-                    <div className='mt-3.5 bg-red-500 text-white w-52 text-center py-3 rounded-md place-self-start lg:place-self-end mr-10 cursor-pointer'>
-                        Thanh toán ngay
+                    <div className='mt-3.5 flex items-center gap-5 place-self-start lg:place-self-end'>
+                        <p className='text-lg font-semibold'>Tổng: {formatMoney(totalPrice())} vnd</p>
+                        <Link to='/thanh-toan' className='bg-red-500 text-white w-52 text-center py-3 rounded-md mr-10 hover:bg-red-600 cursor-pointer'>
+                            Thanh toán ngay
+                        </Link>
                     </div>
                 </div>
                 : <div className=' mt-3 flex md:flex-row flex-col gap-3.5'>

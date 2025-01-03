@@ -50,7 +50,7 @@ const Interested = () => {
 
     return (
         <div className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7'>
-            <p className='text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
+            <p className='text-lg md:text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
             <Slider {...setting}>
                 {productData?.slice(0, 8).map((item, index) => {
                     return (
@@ -63,7 +63,7 @@ const Interested = () => {
                                 < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                 : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             }
-                        </div>  
+                        </div>
                     )
                 })}
             </Slider>

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AppContext } from '../context/Context';
 
-const StickyBar = ({ productInfo, formatMoney }) => {
-
-    const { addToCart } = useContext(AppContext)
+const StickyBar = ({ productInfo, formatMoney, addToCart }) => {
 
     const [show, setShow] = useState(false);
 
@@ -31,7 +28,7 @@ const StickyBar = ({ productInfo, formatMoney }) => {
                     </div>
                 </div>
                 <div className='flex gap-5'>
-                    <button onClick={() => addToCart(productInfo?._id)} className="bg-red-500 text-white text-xs md:text-base px-1 md:px-6 ml-2 py-1 md:py-2 rounded-lg">Thêm vào giỏ</button>
+                    <button onClick={() => addToCart(productInfo?._id)} className="bg-red-500 hover:bg-red-600 text-white text-xs md:text-base px-1 md:px-6 ml-2 py-1 md:py-2 rounded-lg">Thêm vào giỏ</button>
                 </div>
             </div>
         </div>

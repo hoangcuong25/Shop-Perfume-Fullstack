@@ -86,7 +86,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7'>
                 <div className='flex justify-between'>
-                    <p className='text-2xl font-semibold'>Thương Hiệu</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Thương Hiệu</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -118,7 +118,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>Brand Of The Year</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Brand Of The Year</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -145,7 +145,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>New Arrivals</p>
+                    <p className='text-lg md:text-2xl font-semibold'>New Arrivals</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -172,7 +172,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>Bestsellers</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Bestsellers</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -226,7 +226,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>Mini & Travel Size</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Mini & Travel Size</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -253,7 +253,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>Giftset</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Giftset</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
@@ -280,7 +280,7 @@ const Hero = () => {
 
             <div className='mt-10 px-3.5 sm:px-7 '>
                 <div className='flex justify-between mb-3.5'>
-                    <p className='text-2xl font-semibold'>Bodycare & Homecare</p>
+                    <p className='text-lg md:text-2xl font-semibold'>Bodycare & Homecare</p>
                     <div className='flex items-center gap-3.5 cursor-pointer text-gray-500'>
                         <p className=''>Xem thêm</p>
                         <IoIosArrowDropright />
