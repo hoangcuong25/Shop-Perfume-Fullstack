@@ -33,7 +33,7 @@ const Header = () => {
                 <p className='text-center text-sm'>Thương hiệu nước hoa được feedback nhiều nhất Việt Nam</p>
             </div>
 
-            <div className='flex flex-col mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
+            <div className='flex flex-col mt-1.5 sm:mt-3 px-3.5 sm:px-7'>
 
                 <div className='flex justify-between text-sm'>
                     <p className='hidden sm:block'>Thương hiệu nước hoa uy tín từ 2013</p>

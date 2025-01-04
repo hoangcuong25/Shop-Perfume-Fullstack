@@ -22,7 +22,7 @@ const Navbar = () => {
     const { navbar, setNavbar } = useContext(AppContext)
 
     return (
-        <div className='mt-5 px-3.5 sm:px-7 overflow-x-scroll overflow-y-hidden'>
+        <div className='mt-1.5 sm:px-3.5 px-3.5  overflow-x-scroll overflow-y-hidden'>
             <div className='flex justify-start gap-3 lg:gap-7 whitespace-nowrap space-x-4'>
                 <Link
                     to='/'

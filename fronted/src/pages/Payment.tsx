@@ -124,13 +124,13 @@ const Payment = () => {
                             <input
                                 type="radio"
                                 name="paymentMethod"
-                                checked={optionPayment === 'Giao hàng bằng ví VNPAY'}
-                                onClick={() => setOptionPayment('Giao hàng bằng ví VNPAY')}
+                                checked={optionPayment === 'Thanh toán bằng ví VNPAY'}
+                                onClick={() => setOptionPayment('Thanh toán bằng ví VNPAY')}
                                 className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                             />
                             <div className="ml-3 text-sm">
                                 <p className="block text-base font-medium">
-                                    Giao hàng bằng ví VNPAY
+                                    Thanh toán bằng ví VNPAY
                                 </p>
                                 <p className="text-gray-600">
                                     Quý khách sử dụng ví VNPAY để thanh toán online

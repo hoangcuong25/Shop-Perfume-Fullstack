@@ -38,18 +38,12 @@ const Interested = () => {
                 settings: {
                     slidesToShow: 2,
                 }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                }
             }
         ]
     }
 
     return (
-        <div className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7' data-aos="fade-up">
+        <div className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7'>
             <p className='text-lg md:text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
             <Slider {...setting}>
                 {productData?.slice(0, 8).map((item, index) => {
