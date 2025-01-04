@@ -315,7 +315,7 @@ const wishlist = async (req, res) => {
 // api order
 const order = async (req, res) => {
     try {
-        const { userId, productInfor } = req.body
+        const { userId, productInfor, subtotal } = req.body
 
         const cart = []
         const productList = []
@@ -325,13 +325,15 @@ const order = async (req, res) => {
 
             productList.push({
                 productList: product,
-                quantity: i.quantity
+                quantity: i.quantity,
             })
         }
 
         const orderData = {
             userId: userId,
-            productList: productList
+            productList: productList,
+            date: Date.now(),
+            price: subtotal
         }
 
         const newOrder = new orderModel(orderData)

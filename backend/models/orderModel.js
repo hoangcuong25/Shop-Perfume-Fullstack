@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
     userId: { type: String, required: true },
     status: { type: String, default: 'Đang xử lý' },
-    productList: { type: Array, default: [] }
+    productList: { type: Array, default: [] },
+    date: { type: Number, required: true },
+    price: { type: Number, required: true }
 }, { minimize: false })
 
 const orderModel = mongoose.model('order', orderSchema)

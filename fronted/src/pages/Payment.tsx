@@ -16,6 +16,8 @@ const Payment = () => {
     const [optionShip, setOptionShip] = useState<string>('Giao hàng tiêu chuẩn')
     const [optionPayment, setOptionPayment] = useState<string>('Thanh toán khi nhận hàng')
 
+    const subtotal = totalPrice() + (optionShip === 'Giao hàng tiêu chuẩn' ? 30000 : 60000)
+
     const productInfor: any[] = []
 
     const order = async () => {
@@ -27,7 +29,7 @@ const Payment = () => {
                 })
             })
 
-            const { data } = await axios.post(backendUrl + '/api/user/order', { productInfor }, { headers: { token } })
+            const { data } = await axios.post(backendUrl + '/api/user/order', { productInfor, subtotal }, { headers: { token } })
 
             if (data.success) {
                 toast.success('Đặt hàng thành công')
@@ -168,7 +170,7 @@ const Payment = () => {
                     <div className='mt-5 flex justify-between'>
                         <p>Tiền phải trả:</p>
                         <p className='text-red-500 font-semibold'>
-                            {formatMoney(totalPrice() + (optionShip === 'Giao hàng tiêu chuẩn' ? 30000 : 60000))} vnd
+                            {formatMoney(subtotal)} vnd
                         </p>
                     </div>
                     <p className='mt-1 text-sm'>(giá này đã bao gồm thuế GTGT, phí đóng gói, phí vận chuyển và các chi phí phát sinh khác)</p>
