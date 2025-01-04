@@ -350,6 +350,22 @@ const order = async (req, res) => {
     }
 }
 
+// api get order
+const getOrder = async (req, res) => {
+    try {
+        const { userId } = req.body
+
+        const orderData = await orderModel.find({ userId })
+
+        res.json({ success: true, orderData })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 export {
     registerUser,
     loginUser,
@@ -361,5 +377,6 @@ export {
     increaseQuantity,
     decreaseQuantity,
     wishlist,
-    order
+    order,
+    getOrder
 }

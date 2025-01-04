@@ -3,14 +3,14 @@ import { AiOutlineMenu } from "react-icons/ai";
 import wishlist_icon from '../assets/wishlist.jpg'
 import { RiFileList3Line } from "react-icons/ri";
 import { AppContext } from '../context/Context';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
 
-const WistList = ({ setShow, show }) => {
+const WishList = ({ setShow, show }) => {
 
     const { wishlist, formatMoney, wishlistProduct } = useContext(AppContext)
 
-    console.log(wishlist)
+    const navigate = useNavigate()
 
     return (
         <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
@@ -37,7 +37,7 @@ const WistList = ({ setShow, show }) => {
                     {wishlist?.map((i, index) => (
                         <div key={index} className='mt-3.5 flex lg:grid items-center text-center lg:grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
-                                <img src={i?.image} className='w-28  ' alt="" />
+                                <img onClick={() => navigate(`/product/${i?._id}`)} src={i?.image} className='w-28 cursor-pointer ' alt="" />
                                 <p className='lg:block hidden'>{i?.name}</p>
                                 <div className='lg:hidden flex flex-col gap-2 text-[13px]'>
                                     <p className='text-start'>{i?.name}</p>
@@ -81,4 +81,4 @@ const WistList = ({ setShow, show }) => {
     )
 }
 
-export default WistList
+export default WishList

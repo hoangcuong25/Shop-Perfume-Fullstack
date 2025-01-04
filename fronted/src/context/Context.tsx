@@ -24,6 +24,7 @@ const AppContextProvider = (props) => {
     const [cart, setCart] = useState([])
     const [wishlist, setWishlist] = useState([])
     const [productData, setProductData] = useState<ProductData>()
+    const [order, setOrder] = useState({})
 
     const backendUrl = 'http://localhost:4000'
 
@@ -93,6 +94,20 @@ const AppContextProvider = (props) => {
         return totalPrice
     }
 
+    const getOrder = async () => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/user/get-order', { headers: { token } })
+
+            if (data.success) {
+                setOrder(data.orderData)
+            }
+
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
     const value = {
         navbar, setNavbar,
         backendUrl,
@@ -107,7 +122,8 @@ const AppContextProvider = (props) => {
         wishlistProduct,
         wishlist, setWishlist,
         isWishlist,
-        totalPrice
+        totalPrice,
+        getOrder
     }
 
     useEffect(() => {
@@ -120,6 +136,7 @@ const AppContextProvider = (props) => {
 
     useEffect(() => {
         loadProductData()
+        getOrder()
     }, [])
 
     useEffect(() => {

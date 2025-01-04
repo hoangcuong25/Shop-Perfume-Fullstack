@@ -7,7 +7,6 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
-import Cart from './components/Cart'
 import TypeProduct from './pages/TypeProduct'
 import Payment from './pages/Payment'
 

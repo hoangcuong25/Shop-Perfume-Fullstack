@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar'
 import EditProfile from '../components/EditProfile'
 import Point from '../components/Point'
 import TrackOrder from '../components/TrackOrder'
-import WistList from '../components/WistList'
+import WishList from '../components/WishList'
 import FAQ from '../components/FAQ'
 import { AiOutlineMenu } from "react-icons/ai";
 import Cart from '../components/Cart'
@@ -45,7 +45,7 @@ const MyProfile = () => {
                 {sidebar === 'Tích điểm' && <Point show={show} setShow={setShow} />}
                 {sidebar === 'Giỏ hàng của tôi' && <Cart show={show} setShow={setShow} />}
                 {sidebar === 'Đơn hàng của tôi' && <TrackOrder show={show} setShow={setShow} />}
-                {sidebar === 'Danh sách yêu thích' && <WistList show={show} setShow={setShow} />}
+                {sidebar === 'Danh sách yêu thích' && <WishList show={show} setShow={setShow} />}
                 {sidebar === 'Hỏi đáp' && <FAQ show={show} setShow={setShow} />}
             </div>
 

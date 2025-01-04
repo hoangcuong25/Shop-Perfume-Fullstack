@@ -11,7 +11,7 @@ import axios from 'axios';
 
 const Payment = () => {
 
-    const { token, totalPrice, formatMoney, backendUrl, loadUserProfileData, cart } = useContext(AppContext)
+    const { token, totalPrice, formatMoney, backendUrl, loadUserProfileData, cart, getOrder } = useContext(AppContext)
 
     const [optionShip, setOptionShip] = useState<string>('Giao hàng tiêu chuẩn')
     const [optionPayment, setOptionPayment] = useState<string>('Thanh toán khi nhận hàng')
@@ -35,6 +35,7 @@ const Payment = () => {
                 toast.success('Đặt hàng thành công')
                 scrollTo(0, 0)
                 loadUserProfileData()
+                getOrder()
             }
         }
         catch (error) {
