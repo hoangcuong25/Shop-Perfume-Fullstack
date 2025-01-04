@@ -15,8 +15,8 @@ import 'aos/dist/aos.css'
 const App = () => {
 
   AOS.init({
-    offset: 200,
-    duration: 550,
+    offset: 100,
+    duration: 500,
     easing: 'ease-in-sine',
     delay: 200,
   })

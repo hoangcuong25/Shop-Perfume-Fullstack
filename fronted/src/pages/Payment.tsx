@@ -29,7 +29,7 @@ const Payment = () => {
                 })
             })
 
-            const { data } = await axios.post(backendUrl + '/api/user/order', { productInfor, subtotal }, { headers: { token } })
+            const { data } = await axios.post(backendUrl + '/api/user/order', { productInfor, subtotal, optionShip, optionPayment }, { headers: { token } })
 
             if (data.success) {
                 toast.success('Đặt hàng thành công')

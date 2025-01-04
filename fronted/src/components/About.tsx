@@ -14,7 +14,7 @@ const About = () => {
     const [select2, setSelect2] = useState<string>('100%-chinh-hang')
 
     return (
-        <div className='px-3.5 sm:px-7 mt-20 mb-8 flex flex-col gap-10 items-center justify-center'>
+        <div data-aos="fade-up" className='px-3.5 sm:px-7 mt-20 mb-8 flex flex-col gap-10 items-center justify-center'>
             <p className='font-semibold text-2xl'>Về namperfume</p>
             <div className='flex justify-center flex-wrap gap-10 text-gray-800 text-5xl'>
                 <div className='flex flex-col items-center gap-2 text-xs'>

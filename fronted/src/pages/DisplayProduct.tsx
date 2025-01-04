@@ -85,17 +85,20 @@ const DisplayProduct = () => {
                     </div>
 
                     <div className='flex flex-col gap-5 bg-gray-100 shadow-md px-3.5 py-3.5 w-fit h-fit'>
-                        <div className='flex items-center gap-1.5 text-sm'>
+                        <div className='flex items-center gap-3.5 text-sm'>
                             <FaCheckSquare className='text-yellow-500' />
-                            <p>Miễn phí đổi trả trong 7 ngày <span className='text-blue-500 hover:underline cursor-pointer'>xem chi tiết</span></p>
+                            <div>
+                                <p>Miễn phí đổi trả trong 7 ngày</p>
+                                <span className='text-blue-500 hover:underline cursor-pointer'>xem chi tiết</span>
+                            </div>
                         </div>
                         <hr />
-                        <div className='flex items-center gap-1.5 text-sm '>
+                        <div className='flex items-center gap-3.5 text-sm '>
                             <FaCheckSquare className='text-yellow-500' />
                             <p>Hoàn tiền nếu phát hiện hàng giả</p>
                         </div>
                         <hr />
-                        <div className='flex items-center gap-1.5 text-sm '>
+                        <div className='flex items-center gap-3.5 text-sm '>
                             <FaCheckSquare className='text-yellow-500' />
                             <p>Kiểm tra hàng trước khi nhận</p>
                         </div>
@@ -107,22 +110,22 @@ const DisplayProduct = () => {
                 <p className='text-2xl font-semibold'>Đánh giá về sản phẩm</p>
                 <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo?.name}</p>
 
-                <div className='bg-gray-100 rounded-md shadow-md flex flex-col md:flex-row  gap-16 px-7 py-3.5 w-fit items-center'>
-                    <div className='flex flex-col items-center gap-2 pr-3.5'>
+                <div className='bg-gray-100 rounded-md shadow-md flex gap-1.5 md:gap-16 md:px-7 px-1.5 md:py-3.5 py-1.5 w-fit items-center'>
+                    <div className='flex flex-col items-center gap-2'>
                         <div className='flex items-center gap-3'>
-                            <p className='text-2xl font-bold text-yellow-500 '>4.8</p>
-                            <FaStar className='text-2xl text-orange-500' />
+                            <p className='md:text-2xl font-bold text-yellow-500 '>4.8</p>
+                            <FaStar className='md:text-2xl text-orange-500' />
                         </div>
-                        <p className='text-lg font-semibold'>Đánh giá trung bình</p>
+                        <p className='md:text-lg text-xs font-semibold'>Đánh giá trung bình</p>
                     </div>
-                    <div className='flex flex-col py-16 border-y-2 md:py-0 md:border-y-0 md:px-16 md:border-x-2 border-gray-300'>
+                    <div className='flex flex-col md:text-base text-xs md:px-16 px-1.5 border-x-2 border-gray-300'>
                         <p>8 đánh giá 5 sao</p>
                         <p>5 đánh giá 4 sao</p>
                         <p>0 đánh giá 3 sao</p>
                         <p>0 đánh giá 2 sao</p>
                         <p>0 đánh giá 1 sao</p>
                     </div>
-                    <div className='bg-black rounded-md text-white px-3.5 py-3'>
+                    <div className='bg-black rounded-md text-white md:px-3.5 px-1.5 md:py-3 py-1 md:text-base text-xs'>
                         Đánh giá ngay
                     </div>
                 </div>
