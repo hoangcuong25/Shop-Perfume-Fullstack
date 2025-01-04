@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
 import AddProduct from './pages/AddProduct'
+import Orders from './pages/Orders'
+import Products from './pages/Products'
 
 const App = () => {
   return (
@@ -13,7 +15,10 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/products' element={<Products />} />
           <Route path='/add-product' element={<AddProduct />} />
+          <Route path='/manage-user' element={<AddProduct />} />
+          <Route path='/orders' element={<Orders />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import { RiDashboardHorizontalFill } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import { FaBox } from "react-icons/fa";
+import { GiPerfumeBottle } from "react-icons/gi";
 
 const Sidebar = () => {
     const location = useLocation()
@@ -26,6 +27,14 @@ const Sidebar = () => {
                         ${isActive('/manage-user') ? 'border-r-4 border-blue-500' : ''}`}>
                     <p className='hidden md:block'>Quản lí thành viên</p>
                     <FaUsers className='text-xl' />
+                </Link>
+
+                <Link
+                    to={'/products'}
+                    className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer 
+                        ${isActive('/products') ? 'border-r-4 border-blue-500' : ''}`}>
+                    <p className='hidden md:block'>Tất cả sản phẩm</p>
+                    <GiPerfumeBottle className='text-xl' />
                 </Link>
 
                 <Link

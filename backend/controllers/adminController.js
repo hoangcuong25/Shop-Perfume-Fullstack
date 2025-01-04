@@ -1,5 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary'
 import productModel from '../models/productModel.js'
+import userModel from '../models/userModel.js'
+import orderModel from '../models/orderModel.js'
 
 // api add product
 const addProduct = async (req, res) => {
@@ -40,4 +42,43 @@ const addProduct = async (req, res) => {
     }
 }
 
-export { addProduct }
+// api get all user
+const getAllUser = async (req, res) => {
+    try {
+        const users = await userModel.find()
+
+        res.json({ success: true, users })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// api get all product
+const getAllProduct = async (req, res) => {
+    try {
+        const products = await productModel.find()
+
+        res.json({ success: true, products })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+// api get all order
+const getAllOder = async (req, res) => {
+    try {
+        const orders = await orderModel.find()
+
+        res.json({ success: true, orders })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
+export { addProduct, getAllUser, getAllProduct, getAllOder }

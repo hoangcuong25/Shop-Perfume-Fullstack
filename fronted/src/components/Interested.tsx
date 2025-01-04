@@ -43,7 +43,7 @@ const Interested = () => {
     }
 
     return (
-        <div className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7'>
+        <div data-aos="fade-up" className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7'>
             <p className='text-lg md:text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
             <Slider {...setting}>
                 {productData?.slice(0, 8).map((item, index) => {
