@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import userModel from '../models/userModel.js'
 import productModel from '../models/productModel.js'
+import orderModel from '../models/orderModel.js'
 
 // api to register
 const registerUser = async (req, res) => {
@@ -314,11 +315,30 @@ const wishlist = async (req, res) => {
 // api order
 const order = async (req, res) => {
     try {
-        const { userId } = req.body
+        const { userId, productInfor } = req.body
 
         const cart = []
+        const productList = []
+
+        for (const i of productInfor) {
+            const product = await productModel.findById(i.productId)
+
+            productList.push({
+                productList: product,
+                quantity: i.quantity
+            })
+        }
+
+        const orderData = {
+            userId: userId,
+            productList: productList
+        }
+
+        const newOrder = new orderModel(orderData)
+        await newOrder.save()
 
         await userModel.findByIdAndUpdate(userId, { cart: cart })
+
         res.status(200).json({ success: true })
 
     }

@@ -11,14 +11,23 @@ import axios from 'axios';
 
 const Payment = () => {
 
-    const { token, totalPrice, formatMoney, backendUrl, loadUserProfileData } = useContext(AppContext)
+    const { token, totalPrice, formatMoney, backendUrl, loadUserProfileData, cart } = useContext(AppContext)
 
     const [optionShip, setOptionShip] = useState<string>('Giao hàng tiêu chuẩn')
     const [optionPayment, setOptionPayment] = useState<string>('Thanh toán khi nhận hàng')
 
+    const productInfor: any[] = []
+
     const order = async () => {
         try {
-            const { data } = await axios.post(backendUrl + '/api/user/order', {}, { headers: { token } })
+            cart.map((i) => {
+                productInfor.push({
+                    productId: i?.product?._id,
+                    quantity: i?.quantity
+                })
+            })
+
+            const { data } = await axios.post(backendUrl + '/api/user/order', { productInfor }, { headers: { token } })
 
             if (data.success) {
                 toast.success('Đặt hàng thành công')
