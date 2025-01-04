@@ -176,8 +176,8 @@ const TypeProduct = () => {
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                                 {isWishlist(item?._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-30 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-30 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
                             </div>
                         ))}

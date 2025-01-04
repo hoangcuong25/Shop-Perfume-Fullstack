@@ -93,7 +93,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className='mt-3.5 flex flex-col md:flex-row items-center gap-3'>
+                <div className='mt-3.5 flex flex-col md:flex-row items-center md:gap-3'>
                     <div className='w-full md:w-1/2'>
                         <Slider {...setting1}>
                             {banner_brand.map((banner, index) => {
@@ -106,10 +106,10 @@ const Hero = () => {
                         </Slider>
                     </div>
 
-                    <div className='w-full md:w-1/2 grid grid-cols-4'>
+                    <div className='w-full md:w-1/2 flex flex-wrap justify-center'>
                         {logo_brand.map((logo, index) => (
                             <div key={index}>
-                                <img src={logo} className='w-32 hover:-translate-y-1 transition-all duration-500' alt="" />
+                                <img src={logo} className='w-24 md:w-20 lg:w-32 m-1 lg:m-3 hover:-translate-y-1 transition-all duration-500' alt="" />
                             </div>
                         ))}
                     </div>
@@ -197,7 +197,7 @@ const Hero = () => {
                 </Slider>
             </div>
 
-            <div className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
+            <div data-aos="fade-up" className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
                 <Link
                     to='/nuoc-hoa-nam'
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'

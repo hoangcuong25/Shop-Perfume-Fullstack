@@ -123,7 +123,8 @@ const AppContextProvider = (props) => {
         wishlist, setWishlist,
         isWishlist,
         totalPrice,
-        getOrder
+        getOrder,
+        order, setOrder
     }
 
     useEffect(() => {

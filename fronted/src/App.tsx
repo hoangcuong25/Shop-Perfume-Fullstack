@@ -9,8 +9,18 @@ import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
 import TypeProduct from './pages/TypeProduct'
 import Payment from './pages/Payment'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const App = () => {
+
+  AOS.init({
+    offset: 200,
+    duration: 550,
+    easing: 'ease-in-sine',
+    delay: 200,
+  })
+
   return (
     <BrowserRouter>
       <Routes>

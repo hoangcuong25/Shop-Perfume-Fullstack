@@ -76,7 +76,7 @@ const Header = () => {
                         <RiArticleLine />
                         <p className='group-hover:text-red-500 hidden lg:block'>Nmagazine</p>
 
-                        <div className='absolute z-50 pt-8 top-2.5 -left-3.5 hidden group-hover:flex'>
+                        <div className='absolute z-50 pt-8 top-2.5 -left-20 lf lg:-left-3.5 hidden group-hover:flex'>
                             <div className='border border-gray-300 rounded-md bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
                                 <div className='flex items-center gap-3 border-b pb-2 cursor-pointer group/item'>
                                     <img src={cong_dong_nuoc_hoa} className='w-11' alt="" />
@@ -114,7 +114,12 @@ const Header = () => {
                     {token ?
                         <div className='hidden sm:flex items-center gap-2  cursor-pointer relative group'>
                             <img src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
-                            <p className='capitalize group-hover:text-red-500 font-medium hidden lg:block'>{`${userData?.lastName} ${userData?.firstName}`}</p>
+                            <Link
+                                to='/my-profile'
+                                className='capitalize group-hover:text-red-500 font-medium hidden lg:block'
+                            >
+                                {`${userData?.lastName} ${userData?.firstName}`}
+                            </Link>
 
                             <div className='absolute z-50 pt-8 top-3.5 -right-3.5 hidden group-hover:flex'>
                                 <div className='border border-gray-300 rounded-md bg-white w-max px-7 py-3.5 flex flex-col gap-3.5'>
