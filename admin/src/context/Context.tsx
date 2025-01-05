@@ -8,7 +8,9 @@ const AppContextProvider = (props) => {
 
     const backendUrl = 'http://localhost:4000'
 
-    const [users, setUsers] = useState()
+    const [users, setUsers] = useState<any[]>([])
+    const [products, setProducts] = useState<any[]>([])
+    const [orders, setOrders] = useState<any[]>([])
 
     const getAllUser = async (): Promise<void> => {
         try {
@@ -25,14 +27,50 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const getAllProduct = async (): Promise<void> => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/admin/get-all-product')
+
+            if (data.success) {
+                setProducts(data.products)
+            }
+
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message || "Something went wrong"
+            )
+        }
+    }
+
+    const getAllOrder = async (): Promise<void> => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/admin/get-all-order')
+
+            if (data.success) {
+                setOrders(data.orders)
+            }
+
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message || "Something went wrong"
+            )
+        }
+    }
+
     const value = {
         backendUrl,
         getAllUser,
-        users, setUsers
+        users, setUsers,
+        getAllProduct,
+        products, setProducts,
+        getAllOrder,
+        orders, setOrders
     }
 
     useEffect(() => {
         getAllUser()
+        getAllProduct()
+        getAllOrder()
     }, [])
 
 

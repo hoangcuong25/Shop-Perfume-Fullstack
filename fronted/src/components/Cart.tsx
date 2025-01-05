@@ -81,57 +81,57 @@ const Cart = ({ show, setShow }: Props) => {
                         <p className='text-lg font-semibold text-center hidden lg:block'>Số lượng</p>
                         <p className='text-lg font-semibold text-center hidden lg:block'>Thành tiền</p>
                     </div>
-                    {cart?.map((i: any, index: number) => (
+                    {cart.map((i: any, index: number) => (
                         <div key={index} className='mt-3.5 flex lg:grid items-center text-center lg:grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
-                                <img src={i?.product?.image} className='w-28  ' alt="" />
-                                <p className='lg:block hidden'>{i?.product?.name}</p>
+                                <img src={i.product.image} className='w-28  ' alt="" />
+                                <p className='lg:block hidden'>{i.product.name}</p>
                                 <div className='lg:hidden flex flex-col gap-2 text-[13px]'>
-                                    <p className='text-start'>{i?.product?.name}</p>
+                                    <p className='text-start'>{i.product.name}</p>
                                     <div className='flex justify-start items-center gap-3.5'>
                                         <p
                                             className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
-                                            onClick={() => decreaseQuantity(i?.product?._id)}
+                                            onClick={() => decreaseQuantity(i.product._id)}
                                         >
                                             -
                                         </p>
-                                        <p className='px-5 py-2 text-center font-semibold bg-gray-100 rounded-md  shadow-md'>{i?.quantity}</p>
+                                        <p className='px-5 py-2 text-center font-semibold bg-gray-100 rounded-md  shadow-md'>{i.quantity}</p>
                                         <p
                                             className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
-                                            onClick={() => increaseQuantity(i?.product?._id)}
+                                            onClick={() => increaseQuantity(i.product._id)}
                                         >
                                             +
                                         </p>
                                     </div>
                                     <div className='flex justify-between items-center'>
-                                        <p className=''>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
+                                        <p className=''>{formatMoney(i.product.newPrice * i.quantity)} vnd</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
-                                            onClick={() => removeFromCart(i?.product?._id)}
+                                            onClick={() => removeFromCart(i.product._id)}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <p className='lg:block hidden'>{formatMoney(i?.product?.newPrice)} vnd</p>
+                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice)} vnd</p>
                             <div className='lg:flex hidden justify-center items-center gap-3.5'>
                                 <p
                                     className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
-                                    onClick={() => decreaseQuantity(i?.product?._id)}
+                                    onClick={() => decreaseQuantity(i.product._id)}
                                 >
                                     -
                                 </p>
-                                <p className='px-5 py-2 text-center font-semibold bg-gray-100 rounded-md  shadow-md'>{i?.quantity}</p>
+                                <p className='px-5 py-2 text-center font-semibold bg-gray-100 rounded-md  shadow-md'>{i.quantity}</p>
                                 <p
                                     className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
-                                    onClick={() => increaseQuantity(i?.product?._id)}
+                                    onClick={() => increaseQuantity(i.product._id)}
                                 >
                                     +
                                 </p>
                             </div>
-                            <p className='lg:block hidden'>{formatMoney(i?.product?.newPrice * i?.quantity)} vnd</p>
+                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice * i.quantity)} vnd</p>
                             <MdDeleteForever
                                 className='text-gray-700 text-2xl cursor-pointer lg:block hidden'
-                                onClick={() => removeFromCart(i?.product?._id)}
+                                onClick={() => removeFromCart(i.product._id)}
                             />
                         </div>
                     ))}

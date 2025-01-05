@@ -2,8 +2,11 @@ import React, { useContext, useEffect } from 'react'
 import { FaUsers } from "react-icons/fa";
 import { GiPerfumeBottle } from "react-icons/gi";
 import { FaBox } from "react-icons/fa";
+import { AppContext } from '../context/Context';
 
 const Dashboard = () => {
+
+    const { users, products, orders } = useContext(AppContext)
 
     return (
         <div className='m-5'>
@@ -11,7 +14,7 @@ const Dashboard = () => {
                 <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
                     <FaUsers className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>37</p>
+                        <p className='text-xl font-medium text-gray-600'>{users.length}</p>
                         <p className='text-gray-400'>Thành viên</p>
                     </div>
                 </div>
@@ -19,7 +22,7 @@ const Dashboard = () => {
                 <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
                     <GiPerfumeBottle className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>173</p>
+                        <p className='text-xl font-medium text-gray-600'>{products.length}</p>
                         <p className='text-gray-400'>Sản phẩm</p>
                     </div>
                 </div>
@@ -27,8 +30,8 @@ const Dashboard = () => {
                 <div className='flex items-center gap-3.5 bg-gray-100 p-4 min-w-52 rounded shadow-md cursor-pointer hover:scale-105 transition-all'>
                     <FaBox className='text-3xl text-gray-800' />
                     <div>
-                        <p className='text-xl font-medium text-gray-600'>50</p>
-                        <p className='text-gray-400'>Đơn hàng tháng này</p>
+                        <p className='text-xl font-medium text-gray-600'>{orders.length}</p>
+                        <p className='text-gray-400'>Đơn hàng</p>
                     </div>
                 </div>
 

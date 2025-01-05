@@ -53,7 +53,7 @@ const Interested = () => {
                             <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                 Brand year
                             </div>
-                            {isWishlist(item?._id) ?
+                            {isWishlist(item._id) ?
                                 < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                 : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                             }

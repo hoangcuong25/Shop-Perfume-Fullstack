@@ -37,23 +37,23 @@ const TrackOrder = ({ setShow, show }: Props) => {
                         <p className='font-bold text-lg'>Đơn hàng của tôi</p>
 
                         <div className='flex flex-col gap-5 md:gap-8 mt-3.5'>
-                            {order?.map((i: any, index: number) => (
+                            {order.map((i: any, index: number) => (
                                 <div key={index} className='bg-gray-100 border border-gray-200 rounded-md shadow-md hover:shadow-xl flex flex-col gap-2 px-2 py-1.5 md:px-5 md:py-5'>
-                                    <p>Mã đơn hàng: <span className='font-semibold'>{i?._id}</span></p>
-                                    <p>Trạng thái: <span className='font-semibold'>{i?.status}</span></p>
-                                    <p>Giá phải trả: <span className='font-semibold'>{formatMoney(i?.price)}</span></p>
-                                    <p>Ngày đặt hàng: <span className='font-semibold'>{formatDate(i?.date)}</span></p>
-                                    <p>Hình thức vận chuyển: <span className='font-semibold'>{i?.optionShip}</span></p>
-                                    <p>Hình thức thanh toán: <span className='font-semibold'>{i?.optionPayment}</span></p>
+                                    <p>Mã đơn hàng: <span className='font-semibold'>{i._id}</span></p>
+                                    <p>Trạng thái: <span className='font-semibold'>{i.status}</span></p>
+                                    <p>Giá phải trả: <span className='font-semibold'>{formatMoney(i.price)}</span></p>
+                                    <p>Ngày đặt hàng: <span className='font-semibold'>{formatDate(i.date)}</span></p>
+                                    <p>Hình thức vận chuyển: <span className='font-semibold'>{i.optionShip}</span></p>
+                                    <p>Hình thức thanh toán: <span className='font-semibold'>{i.optionPayment}</span></p>
 
                                     <div className='flex flex-col gap-5 mt-3.5'>
-                                        {i?.productList?.map((i: any, index: number) => (
+                                        {i.productList.map((i: any, index: number) => (
                                             <div key={index} className='flex items-center gap-3 text-[13px] md:text-sm'>
-                                                <img src={i.productList?.image} className='w-20' alt="" />
+                                                <img src={i.productList.image} className='w-20' alt="" />
                                                 <div>
-                                                    <p>Tên sản phẩm: <span className='font-semibold'>{i?.productList?.name}</span> </p>
-                                                    <p>Số lượng: <span className='font-semibold'>{i?.quantity}</span></p>
-                                                    <p>Giá mỗi sản phẩm: <span className='font-semibold'>{formatMoney(i?.productList?.newPrice)}</span> vnd</p>
+                                                    <p>Tên sản phẩm: <span className='font-semibold'>{i.productList.name}</span> </p>
+                                                    <p>Số lượng: <span className='font-semibold'>{i.quantity}</span></p>
+                                                    <p>Giá mỗi sản phẩm: <span className='font-semibold'>{formatMoney(i.productList.newPrice)}</span> vnd</p>
                                                 </div>
                                             </div>
                                         ))}

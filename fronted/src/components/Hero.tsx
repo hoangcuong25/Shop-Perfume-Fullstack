@@ -127,7 +127,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Brand year
                                 </div>
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
@@ -154,7 +154,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     New
                                 </div>
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
@@ -181,7 +181,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Bestsellers
                                 </div>
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
@@ -235,7 +235,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Mini size
                                 </div>
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
@@ -262,7 +262,7 @@ const Hero = () => {
                                 <div className='absolute top-0 left-7 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                     Giftset
                                 </div>
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }
@@ -286,7 +286,7 @@ const Hero = () => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                {isWishlist(item?._id) ?
+                                {isWishlist(item._id) ?
                                     < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
                                     : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
                                 }

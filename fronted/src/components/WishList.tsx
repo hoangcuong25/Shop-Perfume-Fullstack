@@ -30,7 +30,7 @@ const WishList = ({ setShow, show }: Props) => {
                 }
                 <p>Menu</p>
             </div>
-            {wishlist?.length != 0 ?
+            {wishlist.length != 0 ?
                 <div className=' mt-3 flex flex-col gap-1.5'>
                     <div className='flex gap-3.5 items-center'>
                         <RiFileList3Line className='text-3xl text-gray-600' />
@@ -43,28 +43,28 @@ const WishList = ({ setShow, show }: Props) => {
                         <p className='text-lg font-semibold text-center hidden lg:block'>Giá tiền</p>
                     </div>
 
-                    {wishlist?.map((i: any, index: number) => (
+                    {wishlist.map((i: any, index: number) => (
                         <div key={index} className='mt-3.5 flex lg:grid items-center text-center lg:grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
-                                <img onClick={() => navigate(`/product/${i?._id}`)} src={i?.image} className='w-28 cursor-pointer ' alt="" />
-                                <p className='lg:block hidden'>{i?.name}</p>
+                                <img onClick={() => navigate(`/product/${i._id}`)} src={i.image} className='w-28 cursor-pointer ' alt="" />
+                                <p className='lg:block hidden'>{i.name}</p>
                                 <div className='lg:hidden flex flex-col gap-2 text-[13px]'>
-                                    <p className='text-start'>{i?.name}</p>
+                                    <p className='text-start'>{i.name}</p>
                                     <div className='flex gap-3.5 items-center'>
-                                        <p className=''>{formatMoney(i?.newPrice)} vnd</p>
+                                        <p className=''>{formatMoney(i.newPrice)} vnd</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
-                                            onClick={() => wishlistProduct(i?._id)}
+                                            onClick={() => wishlistProduct(i._id)}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <p className='lg:block hidden font-semibold'>{i?.brand}</p>
-                            <p className='lg:block hidden'>{i?.type}</p>
-                            <p className='lg:block hidden'>{formatMoney(i?.newPrice)} vnd</p>
+                            <p className='lg:block hidden font-semibold'>{i.brand}</p>
+                            <p className='lg:block hidden'>{i.type}</p>
+                            <p className='lg:block hidden'>{formatMoney(i.newPrice)} vnd</p>
                             <MdDeleteForever
                                 className='text-gray-700 text-2xl cursor-pointer lg:block hidden'
-                                onClick={() => wishlistProduct(i?._id)}
+                                onClick={() => wishlistProduct(i._id)}
                             />
                         </div>
                     ))}

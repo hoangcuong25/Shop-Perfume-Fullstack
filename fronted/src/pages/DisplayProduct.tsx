@@ -49,14 +49,14 @@ const DisplayProduct = () => {
             <StickyBar productInfo={productInfo} formatMoney={formatMoney} addToCart={addToCart} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
-                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.type} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
+                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo.type} | </span><span className='font-semibold'>{productInfo.name}</span></p>
 
                 <div className='flex flex-col lg:flex-row justify-between gap-10'>
                     <div className='flex flex-col md:flex-row gap-3'>
-                        <img src={productInfo?.image} className='w-80' alt="" />
+                        <img src={productInfo.image} className='w-80' alt="" />
 
                         <div className='flex flex-col gap-2'>
-                            <p>{productInfo?.name}</p>
+                            <p>{productInfo.name}</p>
                             <div className='flex gap-1 text-orange-600'>
                                 <FaStar />
                                 <FaStar />
@@ -65,13 +65,13 @@ const DisplayProduct = () => {
                                 <FaStar />
                                 <p className='text-gray-800 text-sm'>13 đánh giá</p>
                             </div>
-                            <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brand}</span></p>
-                            <p>Mô tả: {productInfo?.des}</p>
-                            <p>Loại: {productInfo?.type}</p>
+                            <p>Thương Hiệu: <span className='font-bold'>{productInfo.brand}</span></p>
+                            <p>Mô tả: {productInfo.des}</p>
+                            <p>Loại: {productInfo.type}</p>
                             <p>Mặt hàng: Có sẵn</p>
                             <p>Vận chuyển: <span className='text-red-500'>Freeship HCM</span></p>
                             <p>Gọi đặt mua: <span className='text-red-500'>1900 0129 </span><span className='text-gray-400'>(9:00 - 21:00)</span></p>
-                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo?.newPrice)} vnd </span><span className='text-gray-400 line-through'>{formatMoney(productInfo?.oldPrice)} vnd</span></p>
+                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo.newPrice)} vnd </span><span className='text-gray-400 line-through'>{formatMoney(productInfo.oldPrice)} vnd</span></p>
 
                             <div className='flex gap-5 mt-7'>
                                 <div
@@ -108,7 +108,7 @@ const DisplayProduct = () => {
 
             <div className='flex flex-col gap-3 mt-8 px-3.5 sm:px-7'>
                 <p className='text-2xl font-semibold'>Đánh giá về sản phẩm</p>
-                <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo?.name}</p>
+                <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo.name}</p>
 
                 <div className='bg-gray-100 rounded-md shadow-md flex gap-1.5 md:gap-16 md:px-7 px-1.5 md:py-3.5 py-1.5 w-fit items-center'>
                     <div className='flex flex-col items-center gap-2'>

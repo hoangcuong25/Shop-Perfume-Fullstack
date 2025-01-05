@@ -24,8 +24,8 @@ const Payment = () => {
         try {
             cart.map((i) => {
                 productInfor.push({
-                    productId: i?.product?._id,
-                    quantity: i?.quantity
+                    productId: i.product._id,
+                    quantity: i.quantity
                 })
             })
 
