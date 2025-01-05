@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { AppContext } from '../context/Context';
 import { Link } from 'react-router-dom';
-import { FaBox } from "react-icons/fa";
+import { FaBox, FaRegWindowClose } from "react-icons/fa";
 
 const TrackOrder = ({ setShow, show }) => {
 
@@ -16,16 +16,18 @@ const TrackOrder = ({ setShow, show }) => {
 
     return (
         <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
+            <div
+                className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
+                onClick={() => setShow(!show)}
+            >
+                {show ?
+                    <FaRegWindowClose className='text-gray-700' />
+                    : <AiOutlineMenu className='text-gray-700' />
+                }
+                <p>Menu</p>
+            </div>
             {order.length != 0 ?
                 <>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
-
                     <div className='flex flex-col'>
                         <p className='font-bold text-lg'>Đơn hàng của tôi</p>
 

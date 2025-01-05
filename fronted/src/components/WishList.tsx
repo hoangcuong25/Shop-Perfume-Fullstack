@@ -5,6 +5,7 @@ import { RiFileList3Line } from "react-icons/ri";
 import { AppContext } from '../context/Context';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 const WishList = ({ setShow, show }) => {
 
@@ -14,15 +15,18 @@ const WishList = ({ setShow, show }) => {
 
     return (
         <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
+            <div
+                className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
+                onClick={() => setShow(!show)}
+            >
+                {show ?
+                    <FaRegWindowClose className='text-gray-700' />
+                    : <AiOutlineMenu className='text-gray-700' />
+                }
+                <p>Menu</p>
+            </div>
             {wishlist?.length != 0 ?
                 <div className=' mt-3 flex flex-col gap-1.5'>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
                     <div className='flex gap-3.5 items-center'>
                         <RiFileList3Line className='text-3xl text-gray-600' />
                         <p className='text-xl font-semibold'>Danh sách yêu thích của bạn</p>

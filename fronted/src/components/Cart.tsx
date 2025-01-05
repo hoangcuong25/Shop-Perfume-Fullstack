@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import empty from '../assets/empty.png'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context.js'
-import { FaShoppingBasket } from "react-icons/fa";
+import { FaRegWindowClose, FaShoppingBasket } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -54,15 +54,18 @@ const Cart = ({ show, setShow }) => {
 
     return (
         <div className='flex flex-col w-full bg-gray-100 shadow-md px-3 py-3'>
+            <div
+                className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
+                onClick={() => setShow(!show)}
+            >
+                {show ?
+                    <FaRegWindowClose className='text-gray-700' />
+                    : <AiOutlineMenu className='text-gray-700' />
+                }
+                <p>Menu</p>
+            </div>
             {cart.length != 0 ?
                 <div className=' mt-3 flex flex-col gap-1.5'>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
                     <div className='flex gap-3.5 items-center'>
                         <FaShoppingBasket className='text-3xl text-gray-600' />
                         <p className='text-xl font-semibold'>Giỏ hàng của bạn</p>
@@ -136,13 +139,6 @@ const Cart = ({ show, setShow }) => {
                     </div>
                 </div>
                 : <div className=' mt-3 flex md:flex-row flex-col gap-3.5'>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
                     <img src={empty} className='size-72' alt="" />
 
                     <div className='flex flex-col'>

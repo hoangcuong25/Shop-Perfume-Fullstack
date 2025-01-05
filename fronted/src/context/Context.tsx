@@ -11,7 +11,7 @@ interface ProductData {
     type: string;
     oldPrice: string;
     newPrice: string;
-    image: File | null;
+    image: string;
 }
 
 const AppContextProvider = (props) => {

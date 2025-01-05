@@ -3,7 +3,7 @@ import { AppContext } from '../context/Context'
 import { HiOutlineMail } from "react-icons/hi";
 import { MdLocalPhone } from "react-icons/md";
 import { IoMdLock } from "react-icons/io";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaRegWindowClose } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -65,7 +65,10 @@ const EditProfile = ({ setShow, show }) => {
                     className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
                     onClick={() => setShow(!show)}
                 >
-                    <AiOutlineMenu />
+                    {show ?
+                        <FaRegWindowClose className='text-gray-700' />
+                        : <AiOutlineMenu className='text-gray-700' />
+                    }
                     <p>Menu</p>
                 </div>
                 <p className='font-bold text-lg'>Thông tin tài khoản</p>

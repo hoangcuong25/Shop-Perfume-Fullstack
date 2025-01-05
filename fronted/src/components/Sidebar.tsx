@@ -15,7 +15,7 @@ const Sidebar = ({ sidebar, setSidebar, show }) => {
     }
 
     return (
-        <div className={`md:flex flex-col bg-gray-100 pt-2 w-72 h-fit shadow-md hover:shadow-lg ${show ? 'flex absolute z-50 top-36 md:top-56' : 'hidden'}`}>
+        <div className={`md:flex flex-col bg-gray-100 border border-gray-300 rounded-md pt-2 w-72 h-fit shadow-md hover:shadow-lg ${show ? 'flex absolute z-50 top-36 md:top-56' : 'hidden'}`}>
             <div className='flex items-center mx-3.5 gap-2 mb-3.5'>
                 <img src={userData.image} className='rounded-full size-12' alt="" />
                 <div className='flex flex-col'>

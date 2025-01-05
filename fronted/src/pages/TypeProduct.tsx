@@ -6,6 +6,7 @@ import { AppContext } from '../context/Context.js';
 import Item from '../components/item.js';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
+import { FaRegWindowClose } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 import Pagination from '../components/Pagination.js';
 import DescriptionTypeProduct from '../components/DescriptionTypeProduct.js';
@@ -163,7 +164,10 @@ const TypeProduct = () => {
                                 className='md:hidden flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 rounded-lg shadow-md cursor-pointer'
                                 onClick={() => setShow(!show)}
                             >
-                                <FaFilter className=' text-gray-700' />
+                                {show ?
+                                    <FaRegWindowClose className=' text-gray-700' />
+                                    : <FaFilter className=' text-gray-700' />
+                                }
                                 <p>Bộ lọc</p>
                             </div>
                         </div>

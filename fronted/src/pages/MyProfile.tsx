@@ -8,6 +8,7 @@ import TrackOrder from '../components/TrackOrder'
 import WishList from '../components/WishList'
 import FAQ from '../components/FAQ'
 import { AiOutlineMenu } from "react-icons/ai";
+import { FaRegWindowClose } from "react-icons/fa";
 import Cart from '../components/Cart'
 import Interested from '../components/Interested'
 import { AppContext } from '../context/Context'
@@ -29,10 +30,13 @@ const MyProfile = () => {
                 {sidebar === '' &&
                     <div className='flex flex-col justify-center items-center w-full bg-gray-100 shadow-md relative'>
                         <div
-                            className='flex md:hidden items-center gap-3 cursor-pointer absolute top-0 left-3'
+                            className='flex md:hidden items-center gap-3 cursor-pointer absolute top-3 left-3'
                             onClick={() => setShow(!show)}
                         >
-                            <AiOutlineMenu />
+                            {show ?
+                                <FaRegWindowClose className='text-gray-700' />
+                                : <AiOutlineMenu className='text-gray-700' />
+                            }
                             <p>Menu</p>
                         </div>
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu } from "react-icons/ai";
+import { FaRegWindowClose } from 'react-icons/fa';
 
 const FAQ = ({ setShow, show }) => {
     const [openIndex, setOpenIndex] = useState(null);
@@ -24,12 +25,15 @@ const FAQ = ({ setShow, show }) => {
     };
 
     return (
-        <div className='flex flex-col gap-5 w-full bg-gray-100 px-5 py-5 shadow-md'>
+        <div className='flex flex-col gap-5 w-full bg-gray-100 px-3 py-3 shadow-md'>
             <div
-                className='flex md:hidden items-center gap-3 cursor-pointer'
+                className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
                 onClick={() => setShow(!show)}
             >
-                <AiOutlineMenu />
+                {show ?
+                    <FaRegWindowClose className='text-gray-700' />
+                    : <AiOutlineMenu className='text-gray-700' />
+                }
                 <p>Menu</p>
             </div>
             <p className='font-bold text-xl md:text-2xl text-center mb-3'>Câu hỏi thường gặp</p>

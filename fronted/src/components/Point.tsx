@@ -1,6 +1,6 @@
 import React from 'react'
 import { RiCopperCoinFill } from "react-icons/ri";
-import { FaPen } from "react-icons/fa";
+import { FaPen, FaRegWindowClose } from "react-icons/fa";
 import { IoIosGift } from "react-icons/io";
 import { IoMdPaper } from "react-icons/io";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -12,7 +12,10 @@ const Point = ({ setShow, show }) => {
                 className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
                 onClick={() => setShow(!show)}
             >
-                <AiOutlineMenu />
+                {show ?
+                    <FaRegWindowClose className='text-gray-700' />
+                    : <AiOutlineMenu className='text-gray-700' />
+                }
                 <p>Menu</p>
             </div>
             <div className='w-full h-20 bg-stone-200 rounded-md flex justify-center items-center gap-5'>
