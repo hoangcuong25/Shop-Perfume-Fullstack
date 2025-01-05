@@ -64,7 +64,7 @@ const TypeProduct = () => {
         setSelectedOption('')
     }, [navbar, selectedBrand, selectedPrice])
 
-    const sorting = () => {
+    const sorting = (): void => {
         if (items?.length === 0) return
         let sortedArray = [...items]
 
@@ -191,7 +191,7 @@ const TypeProduct = () => {
 
             <Pagination
                 totalPosts={items?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
-                setPostPerPage={setPostPerPage} currentPage={currentPage}
+                currentPage={currentPage}
             />
         </div >
     )

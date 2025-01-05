@@ -69,7 +69,7 @@ const Hero = () => {
     return (
         <div className='mt-8'>
             <Slider {...setting1}>
-                {HeroBanner.map((banner, index) => {
+                {HeroBanner.map((banner: any, index: number) => {
                     return (
                         <div key={index} className='!important flex justify-center'>
                             <img src={banner} alt="" />
@@ -90,7 +90,7 @@ const Hero = () => {
                 <div className='mt-3.5 flex flex-col md:flex-row items-center md:gap-3'>
                     <div className='w-full md:w-1/2'>
                         <Slider {...setting1}>
-                            {banner_brand.map((banner, index) => {
+                            {banner_brand.map((banner: any, index: number) => {
                                 return (
                                     <div key={index} className='!important flex justify-center'>
                                         <img src={banner} alt="" />
@@ -101,7 +101,7 @@ const Hero = () => {
                     </div>
 
                     <div className='w-full md:w-1/2 flex flex-wrap justify-center'>
-                        {logo_brand.map((logo, index) => (
+                        {logo_brand.map((logo: any, index: number) => (
                             <div key={index}>
                                 <img src={logo} className='w-24 md:w-20 lg:w-32 m-1 lg:m-3 hover:-translate-y-1 transition-all duration-500' alt="" />
                             </div>
@@ -120,7 +120,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item, index) => {
+                    {productData?.slice(0, 8).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
@@ -147,7 +147,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(3, 10).map((item, index) => {
+                    {productData?.slice(3, 10).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
@@ -174,7 +174,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(3, 10).map((item, index) => {
+                    {productData?.slice(3, 10).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
@@ -228,7 +228,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {miniSize?.slice(0, 6).map((item, index) => {
+                    {miniSize?.slice(0, 6).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
@@ -255,7 +255,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {giftset?.slice(0, 6).map((item, index) => {
+                    {giftset?.slice(0, 6).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
@@ -282,7 +282,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {bodyAndHome?.slice(0, 6).map((item, index) => {
+                    {bodyAndHome?.slice(0, 6).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />

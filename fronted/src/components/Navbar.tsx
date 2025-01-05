@@ -72,7 +72,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
 
-                                <Link className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
+                                <Link to='/' className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
                             </div>
 
                             <div className='flex gap-3 xl:gap-10'>
@@ -123,7 +123,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
 
-                                <Link className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
+                                <Link to='/' className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
                             </div>
 
                             <div className='flex gap-3 xl:gap-10'>
@@ -174,7 +174,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
 
-                                <Link className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
+                                <Link to='/' className='mt-3 mb-1.5 text-gray-400 hover:text-gray-500'>Xem tất cả</Link>
                             </div>
 
                             <div className='flex gap-3 xl:gap-10'>

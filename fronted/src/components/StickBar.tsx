@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 const StickyBar = ({ productInfo, formatMoney, addToCart }) => {
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState<boolean>(false);
 
     useEffect(() => {
         const handleScroll = () => {

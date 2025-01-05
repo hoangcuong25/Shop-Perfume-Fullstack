@@ -5,7 +5,12 @@ import { IoIosGift } from "react-icons/io";
 import { IoMdPaper } from "react-icons/io";
 import { AiOutlineMenu } from "react-icons/ai";
 
-const Point = ({ setShow, show }) => {
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
+
+const Point = ({ setShow, show }: Props) => {
     return (
         <div className='flex flex-col gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>
             <div

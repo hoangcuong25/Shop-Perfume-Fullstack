@@ -4,11 +4,16 @@ import { AppContext } from '../context/Context';
 import { Link } from 'react-router-dom';
 import { FaBox, FaRegWindowClose } from "react-icons/fa";
 
-const TrackOrder = ({ setShow, show }) => {
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
+
+const TrackOrder = ({ setShow, show }: Props) => {
 
     const { order, formatMoney } = useContext(AppContext)
 
-    const formatDate = (dateString) => {
+    const formatDate = (dateString: number) => {
         if (!dateString) return ''
         const date = new Date(dateString);
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
@@ -32,7 +37,7 @@ const TrackOrder = ({ setShow, show }) => {
                         <p className='font-bold text-lg'>Đơn hàng của tôi</p>
 
                         <div className='flex flex-col gap-5 md:gap-8 mt-3.5'>
-                            {order?.map((i, index) => (
+                            {order?.map((i: any, index: number) => (
                                 <div key={index} className='bg-gray-100 border border-gray-200 rounded-md shadow-md hover:shadow-xl flex flex-col gap-2 px-2 py-1.5 md:px-5 md:py-5'>
                                     <p>Mã đơn hàng: <span className='font-semibold'>{i?._id}</span></p>
                                     <p>Trạng thái: <span className='font-semibold'>{i?.status}</span></p>
@@ -42,7 +47,7 @@ const TrackOrder = ({ setShow, show }) => {
                                     <p>Hình thức thanh toán: <span className='font-semibold'>{i?.optionPayment}</span></p>
 
                                     <div className='flex flex-col gap-5 mt-3.5'>
-                                        {i?.productList?.map((i, index) => (
+                                        {i?.productList?.map((i: any, index: number) => (
                                             <div key={index} className='flex items-center gap-3 text-[13px] md:text-sm'>
                                                 <img src={i.productList?.image} className='w-20' alt="" />
                                                 <div>

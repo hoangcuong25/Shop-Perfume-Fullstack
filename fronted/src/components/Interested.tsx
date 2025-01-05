@@ -46,7 +46,7 @@ const Interested = () => {
         <div data-aos="fade-up" className='flex flex-col gap-5 mt-8 px-3.5 sm:px-7'>
             <p className='text-lg md:text-2xl font-semibold'>Có thể bạn sẽ quan tâm:</p>
             <Slider {...setting}>
-                {productData?.slice(0, 8).map((item, index) => {
+                {productData?.slice(0, 8).map((item: any, index: number) => {
                     return (
                         <div key={index} className='relative' >
                             <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />

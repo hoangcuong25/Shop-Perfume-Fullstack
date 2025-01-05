@@ -9,9 +9,14 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AiOutlineMenu } from "react-icons/ai";
 
-const EditProfile = ({ setShow, show }) => {
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
 
-    const { userData, setUserData, backendUrl, token, loadUserProfileData } = useContext(AppContext)
+const EditProfile = ({ setShow, show }: Props) => {
+
+    const { userData, backendUrl, token, loadUserProfileData } = useContext(AppContext)
 
     const [image, setImage] = useState()
     const [lastName, setLastName] = useState(userData.lastName)
@@ -55,8 +60,6 @@ const EditProfile = ({ setShow, show }) => {
             toast.error(error.response?.data?.message || error.message)
         }
     }
-
-    console.log(image)
 
     return (
         <div className='flex flex-col xl:flex-row gap-3 w-full bg-gray-100 px-3 py-3 shadow-md'>

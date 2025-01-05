@@ -8,11 +8,16 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-const Cart = ({ show, setShow }) => {
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
+
+const Cart = ({ show, setShow }: Props) => {
 
     const { cart, formatMoney, backendUrl, token, loadUserProfileData, totalPrice } = useContext(AppContext)
 
-    const removeFromCart = async (productId) => {
+    const removeFromCart = async (productId: string) => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/remove-from-cart', { productId }, { headers: { token } })
 
@@ -26,7 +31,7 @@ const Cart = ({ show, setShow }) => {
         }
     }
 
-    const increaseQuantity = async (productId) => {
+    const increaseQuantity = async (productId: string) => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/increase-quantity', { productId }, { headers: { token } })
 
@@ -39,7 +44,7 @@ const Cart = ({ show, setShow }) => {
         }
     }
 
-    const decreaseQuantity = async (productId) => {
+    const decreaseQuantity = async (productId: string) => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/decrease-quantity', { productId }, { headers: { token } })
 
@@ -76,7 +81,7 @@ const Cart = ({ show, setShow }) => {
                         <p className='text-lg font-semibold text-center hidden lg:block'>Số lượng</p>
                         <p className='text-lg font-semibold text-center hidden lg:block'>Thành tiền</p>
                     </div>
-                    {cart?.map((i, index) => (
+                    {cart?.map((i: any, index: number) => (
                         <div key={index} className='mt-3.5 flex lg:grid items-center text-center lg:grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
                                 <img src={i?.product?.image} className='w-28  ' alt="" />

@@ -7,7 +7,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
 import { FaRegWindowClose } from 'react-icons/fa';
 
-const WishList = ({ setShow, show }) => {
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
+
+const WishList = ({ setShow, show }: Props) => {
 
     const { wishlist, formatMoney, wishlistProduct } = useContext(AppContext)
 
@@ -38,7 +43,7 @@ const WishList = ({ setShow, show }) => {
                         <p className='text-lg font-semibold text-center hidden lg:block'>Giá tiền</p>
                     </div>
 
-                    {wishlist?.map((i, index) => (
+                    {wishlist?.map((i: any, index: number) => (
                         <div key={index} className='mt-3.5 flex lg:grid items-center text-center lg:grid-cols-[50%_13%_17%_13%_7%] px-3 py-2'>
                             <div className='flex gap-5 items-center'>
                                 <img onClick={() => navigate(`/product/${i?._id}`)} src={i?.image} className='w-28 cursor-pointer ' alt="" />

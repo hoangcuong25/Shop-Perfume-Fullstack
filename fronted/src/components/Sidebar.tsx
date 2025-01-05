@@ -2,13 +2,19 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/Context'
 import { useNavigate } from 'react-router-dom'
 
-const Sidebar = ({ sidebar, setSidebar, show }) => {
+type Props = {
+    sidebar: string
+    setSidebar: React.Dispatch<React.SetStateAction<string>>
+    show: boolean
+}
+
+const Sidebar = ({ sidebar, setSidebar, show }: Props) => {
 
     const { userData, setToken } = useContext(AppContext)
 
     const navigate = useNavigate()
 
-    const logout = () => {
+    const logout = (): void => {
         setToken(false)
         localStorage.removeItem('token')
         navigate('/')

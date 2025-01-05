@@ -1,5 +1,12 @@
-const Pagination = (props) => {
-    const { totalPosts, postPerPage, setCurrentPage, currentPage } = props;
+type Props = {
+    totalPosts: number
+    postPerPage: number
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+    currentPage: number
+}
+
+const Pagination = ({ totalPosts, postPerPage, setCurrentPage, currentPage }: Props) => {
+
     let pages = [];
 
     for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {

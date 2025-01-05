@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaRegWindowClose } from 'react-icons/fa';
 
-const FAQ = ({ setShow, show }) => {
-    const [openIndex, setOpenIndex] = useState(null);
+type Props = {
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    show: boolean
+}
+
+const FAQ = ({ setShow, show }: Props) => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const faqs = [
         {
@@ -20,7 +25,7 @@ const FAQ = ({ setShow, show }) => {
         }
     ];
 
-    const toggleFAQ = (index) => {
+    const toggleFAQ = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 

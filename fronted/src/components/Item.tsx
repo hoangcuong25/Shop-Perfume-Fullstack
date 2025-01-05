@@ -2,6 +2,16 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context'
 
+type Props = {
+    image: string
+    brand: string
+    name: string
+    newPrice: number
+    oldPrice: number
+    id: string
+    des: string
+}
+
 const Item = ({
     image,
     brand,
@@ -10,7 +20,7 @@ const Item = ({
     oldPrice,
     id,
     des
-}) => {
+}: Props) => {
 
     const { formatMoney } = useContext(AppContext)
 

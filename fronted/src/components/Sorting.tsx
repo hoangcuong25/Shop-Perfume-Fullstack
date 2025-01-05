@@ -1,4 +1,9 @@
-const Sorting = ({ setSelectedOption, selectedOption }) => {
+type Props = {
+    selectedOption: string
+    setSelectedOption: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Sorting = ({ setSelectedOption, selectedOption }: Props) => {
 
     return (
         <div className="relative group">

@@ -22,7 +22,7 @@ const Header = () => {
 
     const navigate = useNavigate()
 
-    const logout = () => {
+    const logout = (): void => {
         setToken(false)
         localStorage.removeItem('token')
     }
@@ -205,7 +205,7 @@ const Header = () => {
                             <div className='absolute z-50 pt-8 top-2.5 -right-3.5 hidden group-hover:flex'>
                                 {cart.length != 0 ?
                                     <div className='flex flex-col border border-gray-300 rounded-md bg-white gap-3 '>
-                                        {cart?.map((i, index) => (
+                                        {cart?.map((i: any, index: number) => (
                                             <div key={index} className='flex items-center gap-3.5 text-xs w-72 px-3.5 py-2.5 border-b'>
                                                 <img src={i?.product?.image} className='size-12  ' alt="" />
                                                 <p>{i?.product?.name}</p>

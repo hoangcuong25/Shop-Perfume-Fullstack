@@ -61,7 +61,7 @@ const Payment = () => {
                                 type="radio"
                                 name="shippingMethod"
                                 checked={optionShip === 'Giao hàng tiêu chuẩn'}
-                                onClick={() => setOptionShip('Giao hàng tiêu chuẩn')}
+                                onChange={() => setOptionShip('Giao hàng tiêu chuẩn')}
                                 className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                             />
                             <div className="ml-3 text-sm">
@@ -81,7 +81,7 @@ const Payment = () => {
                                 type="radio"
                                 name="shippingMethod"
                                 checked={optionShip === 'Giao hàng hỏa tốc'}
-                                onClick={() => setOptionShip('Giao hàng hỏa tốc')}
+                                onChange={() => setOptionShip('Giao hàng hỏa tốc')}
                                 className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                             />
                             <div className="ml-3 text-sm">
@@ -108,7 +108,7 @@ const Payment = () => {
                                 type="radio"
                                 name="paymentMethod"
                                 checked={optionPayment === 'Thanh toán khi nhận hàng'}
-                                onClick={() => setOptionPayment('Thanh toán khi nhận hàng')}
+                                onChange={() => setOptionPayment('Thanh toán khi nhận hàng')}
                                 className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                             />
                             <div className="ml-3 text-sm">
@@ -125,7 +125,7 @@ const Payment = () => {
                                 type="radio"
                                 name="paymentMethod"
                                 checked={optionPayment === 'Thanh toán bằng ví VNPAY'}
-                                onClick={() => setOptionPayment('Thanh toán bằng ví VNPAY')}
+                                onChange={() => setOptionPayment('Thanh toán bằng ví VNPAY')}
                                 className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                             />
                             <div className="ml-3 text-sm">
