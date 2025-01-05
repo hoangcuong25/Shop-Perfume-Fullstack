@@ -19,7 +19,7 @@ const Login = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const login = async (e: React.FormEvent) => {
+    const login = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault()
 
         try {

@@ -5,13 +5,13 @@ import axios from 'axios';
 import { AppContext } from '../context/Context';
 
 interface Product {
-    name: string;
-    des: string;
-    brand: string;
-    type: string;
-    oldPrice: string;
-    newPrice: string;
-    image: File | null;
+    name: string
+    des: string
+    brand: string
+    type: string
+    oldPrice: string
+    newPrice: string
+    image: string | null
 }
 
 const AddProduct = () => {
@@ -29,7 +29,7 @@ const AddProduct = () => {
     })
 
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault()
 
         try {

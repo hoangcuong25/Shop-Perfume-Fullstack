@@ -17,7 +17,7 @@ const Cart = ({ show, setShow }: Props) => {
 
     const { cart, formatMoney, backendUrl, token, loadUserProfileData, totalPrice } = useContext(AppContext)
 
-    const removeFromCart = async (productId: string) => {
+    const removeFromCart = async (productId: string): Promise<void> => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/remove-from-cart', { productId }, { headers: { token } })
 
@@ -31,7 +31,7 @@ const Cart = ({ show, setShow }: Props) => {
         }
     }
 
-    const increaseQuantity = async (productId: string) => {
+    const increaseQuantity = async (productId: string): Promise<void> => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/increase-quantity', { productId }, { headers: { token } })
 
@@ -44,7 +44,7 @@ const Cart = ({ show, setShow }: Props) => {
         }
     }
 
-    const decreaseQuantity = async (productId: string) => {
+    const decreaseQuantity = async (productId: string): Promise<void> => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/decrease-quantity', { productId }, { headers: { token } })
 

@@ -22,7 +22,7 @@ const Register = () => {
     const [password_2, setPassword_2] = useState<string>('')
     const [dob, setDob] = useState<string>('')
 
-    const register = async (e: React.FormEvent) => {
+    const register = async (e: React.FormEvent): Promise<void> => {
         try {
             e.preventDefault()
 

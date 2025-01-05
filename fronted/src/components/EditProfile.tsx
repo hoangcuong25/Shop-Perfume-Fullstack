@@ -25,7 +25,7 @@ const EditProfile = ({ setShow, show }: Props) => {
     const [address, setAddress] = useState(userData.address)
     const [dob, setdob] = useState(userData.dob)
 
-    const editProfile = async () => {
+    const editProfile = async (): Promise<void> => {
         try {
             const formData = new FormData()
             formData.append('firstName', firstName)

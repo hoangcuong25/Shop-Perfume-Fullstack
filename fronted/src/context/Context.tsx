@@ -4,16 +4,6 @@ import { toast } from "react-toastify";
 
 export const AppContext = createContext()
 
-interface ProductData {
-    name: string;
-    des: string;
-    brand: string;
-    type: string;
-    oldPrice: string;
-    newPrice: string;
-    image: string;
-}
-
 const AppContextProvider = (props) => {
 
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
@@ -23,16 +13,16 @@ const AppContextProvider = (props) => {
     const [userData, setUserData] = useState(false)
     const [cart, setCart] = useState([])
     const [wishlist, setWishlist] = useState([])
-    const [productData, setProductData] = useState<ProductData>()
+    const [productData, setProductData] = useState()
     const [order, setOrder] = useState({})
 
     const backendUrl = 'http://localhost:4000'
 
-    function formatMoney(amount) {
+    function formatMoney(amount: number) {
         return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
-    const loadUserProfileData = async () => {
+    const loadUserProfileData = async (): Promise<void> => {
         try {
             const { data } = await axios.get(backendUrl + '/api/user/profile', { headers: { token } })
 
@@ -50,7 +40,7 @@ const AppContextProvider = (props) => {
 
     }
 
-    const loadProductData = async () => {
+    const loadProductData = async (): Promise<void> => {
         try {
             const { data } = await axios.get(backendUrl + '/api/user/get-product')
 
@@ -66,7 +56,7 @@ const AppContextProvider = (props) => {
         }
     }
 
-    const wishlistProduct = async (productId) => {
+    const wishlistProduct = async (productId: string): Promise<void> => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/wishlist', { productId }, { headers: { token } })
 
@@ -80,11 +70,11 @@ const AppContextProvider = (props) => {
         }
     }
 
-    const isWishlist = (productId) => {
+    const isWishlist = (productId: string) => {
         return wishlist?.some((i) => i?._id === productId) || false
     }
 
-    const totalPrice = () => {
+    const totalPrice = (): number => {
         let totalPrice = 0
 
         cart.map((i) => {
@@ -94,7 +84,7 @@ const AppContextProvider = (props) => {
         return totalPrice
     }
 
-    const getOrder = async () => {
+    const getOrder = async (): Promise<void> => {
         try {
             const { data } = await axios.get(backendUrl + '/api/user/get-order', { headers: { token } })
 

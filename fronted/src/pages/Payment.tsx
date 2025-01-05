@@ -20,7 +20,7 @@ const Payment = () => {
 
     const productInfor: any[] = []
 
-    const order = async () => {
+    const order = async (): Promise<void> => {
         try {
             cart.map((i) => {
                 productInfor.push({

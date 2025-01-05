@@ -19,7 +19,7 @@ const DisplayProduct = () => {
 
     const productInfo = productData?.find((i: any) => i._id === id)
 
-    const addToCart = async (productId: string | undefined) => {
+    const addToCart = async (productId: string | undefined): Promise<void> => {
         try {
             const { data } = await axios.post(
                 backendUrl + '/api/user/add-to-cart',
