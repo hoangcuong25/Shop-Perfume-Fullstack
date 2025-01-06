@@ -138,16 +138,16 @@ const Payment = () => {
                                 <input
                                     type="radio"
                                     name="paymentMethod"
-                                    checked={optionPayment === 'Thanh toán bằng ví VNPAY'}
-                                    onChange={() => setOptionPayment('Thanh toán bằng ví VNPAY')}
+                                    checked={optionPayment === 'Thanh toán bằng chuyển khoản'}
+                                    onChange={() => setOptionPayment('Thanh toán bằng chuyển khoản')}
                                     className="mt-1 w-5 h-5 text-blue-500 focus:ring-blue-400 border-gray-300"
                                 />
                                 <div className="ml-3 text-sm">
                                     <p className="block text-base font-medium">
-                                        Thanh toán bằng ví VNPAY
+                                        Thanh toán bằng chuyển khoản
                                     </p>
                                     <p className="text-gray-600">
-                                        Quý khách sử dụng ví VNPAY để thanh toán online
+                                        Quý khách sử dụng ví điện tử để thanh toán online bằng cách quét mã qr
                                     </p>
                                 </div>
                             </div>
