@@ -23,10 +23,10 @@ const Navbar = () => {
 
     return (
         <div className='mt-1.5 sm:mt-3 px-3.5 sm:px-7  overflow-x-scroll overflow-y-hidden'>
-            <div className='flex justify-start gap-3 lg:gap-7 whitespace-nowrap space-x-4'>
+            <div className='flex justify-start gap-3 lg:gap-7 whitespace-nowrap'>
                 <Link
                     to='/'
-                    className='text-sm text-red-600 font-bold'
+                    className='text-sm text-red-600 font-bold py-1 mx-1.5'
                     onClick={() => scrollTo(0, 1000)}
                 >
                     Brand Of The Year
@@ -35,13 +35,13 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-nam"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa nam' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa nam' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Nước hoa nam')}
                 >
                     Nước Hoa Nam
                     <hr className={`${navbar === 'Nước hoa nam' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
@@ -86,13 +86,13 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-nu"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa nữ' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa nữ' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Nước hoa nữ')}
                 >
                     Nước Hoa Nữ
                     <hr className={`${navbar === 'Nước hoa nữ' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
@@ -137,13 +137,13 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-mini"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa mini' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa mini' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Nước hoa mini')}
                 >
                     Nước Hoa Mini
                     <hr className={`${navbar === 'Nước hoa mini' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
@@ -188,13 +188,13 @@ const Navbar = () => {
 
                 <Link
                     to="/giftset"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'Giftset' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Giftset' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Giftset')}
                 >
                     Giftset
                     <hr className={`${navbar === 'Giftset' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>
@@ -223,13 +223,13 @@ const Navbar = () => {
 
                 <Link
                     to="/bodycare&homecare"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'Bodycare & Homecare' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Bodycare & Homecare' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Bodycare & Homecare')}
                 >
                     Bodycare & Homecare
                     <hr className={`${navbar === 'Bodycare & Homecare' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân Loại</p>

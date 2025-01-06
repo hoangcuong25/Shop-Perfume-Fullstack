@@ -40,7 +40,7 @@ const TrackOrder = ({ setShow, show }: Props) => {
                         </div>
 
                         <div className='flex flex-col gap-5 md:gap-8 mt-3.5'>
-                            {order.map((i: any, index: number) => (
+                            {order.slice().reverse().map((i: any, index: number) => (
                                 <div key={index} className='bg-gray-100 border border-gray-200 rounded-md shadow-md hover:shadow-xl flex flex-col gap-2 px-2 py-1.5 md:px-5 md:py-5'>
                                     <p>Mã đơn hàng: <span className='font-semibold'>{i._id}</span></p>
                                     <p>Trạng thái: <span className='font-semibold'>{i.status}</span></p>
