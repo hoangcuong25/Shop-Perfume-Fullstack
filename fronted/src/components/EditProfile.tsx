@@ -7,7 +7,7 @@ import { FaFacebook, FaRegWindowClose } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineReload } from "react-icons/ai";
 
 type Props = {
     setShow: React.Dispatch<React.SetStateAction<boolean>>
@@ -18,6 +18,8 @@ const EditProfile = ({ setShow, show }: Props) => {
 
     const { userData, backendUrl, token, loadUserProfileData } = useContext(AppContext)
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const [image, setImage] = useState()
     const [lastName, setLastName] = useState(userData.lastName)
     const [firstName, setFirstName] = useState(userData.firstName)
@@ -26,6 +28,8 @@ const EditProfile = ({ setShow, show }: Props) => {
     const [dob, setdob] = useState(userData.dob)
 
     const editProfile = async (): Promise<void> => {
+        setLoading(true)
+
         try {
             const formData = new FormData()
             formData.append('firstName', firstName)
@@ -59,6 +63,8 @@ const EditProfile = ({ setShow, show }: Props) => {
         } catch (error) {
             toast.error(error.response?.data?.message || error.message)
         }
+
+        setLoading(false)
     }
 
     return (
@@ -150,7 +156,12 @@ const EditProfile = ({ setShow, show }: Props) => {
                             <p>Nhận thông tin khuyến mãi qua e-mail</p>
                         </div>
 
-                        <div onClick={editProfile} className='w-32 py-1.5 cursor-pointer bg-red-500 hover:bg-red-600 text-center text-white'>Lưu thay đổi</div>
+                        {loading ?
+                            <div className='flex items-center justify-center w-32 h-9 cursor-pointer bg-gray-300 text-center'>
+                                <AiOutlineReload className='animate-spin text-green-500 text-2xl' />
+                            </div>
+                            : <div onClick={editProfile} className='w-32 py-1.5 cursor-pointer bg-red-500 hover:bg-red-600 text-center text-white'>Lưu thay đổi</div>
+                        }
                     </div>
                 </div>
             </div>

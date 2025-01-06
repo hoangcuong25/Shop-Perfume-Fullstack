@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -9,9 +9,13 @@ import { AppContext } from '../context/Context.js';
 import { FaStar } from "react-icons/fa";
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { AiOutlineReload } from "react-icons/ai";
+
 const DisplayProduct = () => {
 
     const { productData, formatMoney, loadUserProfileData, backendUrl, token } = useContext(AppContext)
+
+    const [loading, setLoading] = useState<boolean>(false)
 
     const navigate = useNavigate()
 
@@ -20,6 +24,8 @@ const DisplayProduct = () => {
     const productInfo = productData?.find((i: any) => i._id === id)
 
     const addToCart = async (productId: string | undefined): Promise<void> => {
+        setLoading(true)
+
         try {
             const { data } = await axios.post(
                 backendUrl + '/api/user/add-to-cart',
@@ -40,6 +46,8 @@ const DisplayProduct = () => {
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+
+        setLoading(false)
     }
 
     return (
@@ -49,14 +57,14 @@ const DisplayProduct = () => {
             <StickyBar productInfo={productInfo} formatMoney={formatMoney} addToCart={addToCart} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
-                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo.type} | </span><span className='font-semibold'>{productInfo.name}</span></p>
+                <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.type} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
 
                 <div className='flex flex-col lg:flex-row justify-between gap-10'>
                     <div className='flex flex-col md:flex-row gap-3'>
-                        <img src={productInfo.image} className='w-80' alt="" />
+                        <img src={productInfo?.image} className='w-80' alt="" />
 
                         <div className='flex flex-col gap-2'>
-                            <p>{productInfo.name}</p>
+                            <p>{productInfo?.name}</p>
                             <div className='flex gap-1 text-orange-600'>
                                 <FaStar />
                                 <FaStar />
@@ -65,21 +73,28 @@ const DisplayProduct = () => {
                                 <FaStar />
                                 <p className='text-gray-800 text-sm'>13 đánh giá</p>
                             </div>
-                            <p>Thương Hiệu: <span className='font-bold'>{productInfo.brand}</span></p>
-                            <p>Mô tả: {productInfo.des}</p>
-                            <p>Loại: {productInfo.type}</p>
+                            <p>Thương Hiệu: <span className='font-bold'>{productInfo?.brand}</span></p>
+                            <p>Mô tả: {productInfo?.des}</p>
+                            <p>Loại: {productInfo?.type}</p>
                             <p>Mặt hàng: Có sẵn</p>
                             <p>Vận chuyển: <span className='text-red-500'>Freeship HCM</span></p>
                             <p>Gọi đặt mua: <span className='text-red-500'>1900 0129 </span><span className='text-gray-400'>(9:00 - 21:00)</span></p>
-                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo.newPrice)} vnđ </span><span className='text-gray-400 line-through'>{formatMoney(productInfo.oldPrice)} vnđ</span></p>
+                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo?.newPrice)} vnđ </span><span className='text-gray-400 line-through'>{formatMoney(productInfo?.oldPrice)} vnđ</span></p>
 
-                            <div className='flex gap-5 mt-7'>
-                                <div
-                                    className='w-40 py-2 rounded-md bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
-                                    onClick={() => addToCart(id)}
-                                >
-                                    THÊM VÀO GIỎ
-                                </div>
+                            <div className='flex gap-5 mt-5'>
+                                {loading ?
+                                    <div
+                                        className='flex items-center justify-center w-40 h-10 rounded-md bg-gray-300 text-center text-white cursor-pointer'
+                                    >
+                                        <AiOutlineReload className='animate-spin text-green-500 text-2xl' />
+                                    </div>
+                                    : <div
+                                        className='w-40 py-2 rounded-md bg-red-500 text-center text-white cursor-pointer hover:bg-red-600'
+                                        onClick={() => addToCart(id)}
+                                    >
+                                        THÊM VÀO GIỎ
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -108,7 +123,7 @@ const DisplayProduct = () => {
 
             <div className='flex flex-col gap-3 mt-8 px-3.5 sm:px-7'>
                 <p className='text-2xl font-semibold'>Đánh giá về sản phẩm</p>
-                <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo.name}</p>
+                <p className='text-lg font-medium mb-3.5'>13 đánh giá cho {productInfo?.name}</p>
 
                 <div className='bg-gray-100 rounded-md shadow-md flex gap-1.5 md:gap-16 md:px-7 px-1.5 md:py-3.5 py-1.5 w-fit items-center'>
                     <div className='flex flex-col items-center gap-2'>

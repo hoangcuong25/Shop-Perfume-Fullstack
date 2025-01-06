@@ -3,6 +3,7 @@ import upload from '../assets/upload.png'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { AppContext } from '../context/Context';
+import { AiOutlineReload } from 'react-icons/ai';
 
 interface Product {
     name: string
@@ -18,6 +19,8 @@ const AddProduct = () => {
 
     const { backendUrl } = useContext(AppContext)
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const [product, setProduct] = useState<Product>({
         name: '',
         des: '',
@@ -30,6 +33,7 @@ const AddProduct = () => {
 
 
     const handleSubmit = async (e: React.FormEvent): Promise<void> => {
+        setLoading(true)
         e.preventDefault()
 
         try {
@@ -48,6 +52,8 @@ const AddProduct = () => {
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+
+        setLoading(false)
     }
 
     return (
@@ -139,11 +145,15 @@ const AddProduct = () => {
                         />
                     </label>
                 </div>
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                    Thêm sản phẩm
-                </button>
+                {loading ?
+                    <div className='flex items-center justify-center w-36 rounded h-10 cursor-pointer bg-gray-300 text-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-2xl' />
+                    </div>
+                    : <button
+                        type="submit"
+                        className="bg-blue-500 text-white w-36 py-2 rounded hover:bg-blue-600">
+                        Thêm sản phẩm
+                    </button>}
             </form>
         </div>
     )
