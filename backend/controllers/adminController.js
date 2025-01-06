@@ -9,10 +9,10 @@ const login = async (req, res) => {
         const { email, password } = req.body
 
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            res.json({ success: true })
+            return res.json({ success: true })
         }
 
-        return res.json({ success: false });
+        res.json({ success: false });
     }
     catch (error) {
         console.log(error)
