@@ -4,7 +4,7 @@ import { BiMessageDetail } from "react-icons/bi";
 
 const Support = () => {
     return (
-        <div className='fixed bottom-3 left-3 bg-gray-100 rounded-full p-1 text-3xl text-red-500'>
+        <div className='fixed bottom-10 right-5 bg-gray-100 shadow-md hover:shadow-lg rounded-full p-1 hover:p-2 text-3xl text-red-500 hover:text-red-600 cursor-pointer'>
             <BiMessageDetail />
         </div>
     )

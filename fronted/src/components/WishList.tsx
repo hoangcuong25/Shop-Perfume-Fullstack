@@ -51,7 +51,7 @@ const WishList = ({ setShow, show }: Props) => {
                                 <div className='lg:hidden flex flex-col gap-2 text-[13px]'>
                                     <p className='text-start'>{i.name}</p>
                                     <div className='flex gap-3.5 items-center'>
-                                        <p className=''>{formatMoney(i.newPrice)} vnd</p>
+                                        <p className=''>{formatMoney(i.newPrice)} vnđ</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
                                             onClick={() => wishlistProduct(i._id)}
@@ -61,7 +61,7 @@ const WishList = ({ setShow, show }: Props) => {
                             </div>
                             <p className='lg:block hidden font-semibold'>{i.brand}</p>
                             <p className='lg:block hidden'>{i.type}</p>
-                            <p className='lg:block hidden'>{formatMoney(i.newPrice)} vnd</p>
+                            <p className='lg:block hidden'>{formatMoney(i.newPrice)} vnđ</p>
                             <MdDeleteForever
                                 className='text-gray-700 text-2xl cursor-pointer lg:block hidden'
                                 onClick={() => wishlistProduct(i._id)}

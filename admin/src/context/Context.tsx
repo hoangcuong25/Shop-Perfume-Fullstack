@@ -6,11 +6,17 @@ export const AppContext = createContext()
 
 const AppContextProvider = (props) => {
 
+    const [token, setToken] = useState(localStorage.getItem('atoken') ? localStorage.getItem('atoken') : false)
+
     const backendUrl = 'http://localhost:4000'
 
     const [users, setUsers] = useState<any[]>([])
     const [products, setProducts] = useState<any[]>([])
     const [orders, setOrders] = useState<any[]>([])
+
+    function formatMoney(amount: number) {
+        return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
 
     const getAllUser = async (): Promise<void> => {
         try {
@@ -64,7 +70,9 @@ const AppContextProvider = (props) => {
         getAllProduct,
         products, setProducts,
         getAllOrder,
-        orders, setOrders
+        orders, setOrders,
+        formatMoney,
+        token, setToken
     }
 
     useEffect(() => {

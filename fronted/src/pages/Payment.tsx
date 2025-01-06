@@ -72,7 +72,7 @@ const Payment = () => {
                                     Miễn phí vận chuyển các đơn nội thành Hồ Chí Minh
                                 </p>
                                 <p className="text-gray-600">
-                                    Các địa chỉ khác: <span className="font-semibold">30.000 vnd</span>
+                                    Các địa chỉ khác: <span className="font-semibold">30.000 vnđ</span>
                                 </p>
                             </div>
                         </div>
@@ -89,10 +89,10 @@ const Payment = () => {
                                     Giao hàng hỏa tốc
                                 </p>
                                 <p className="text-gray-600">
-                                    Giao hàng hỏa tốc các đơn nội thành Hồ Chí Minh: <span className="font-semibold">35.000 vnd</span>
+                                    Giao hàng hỏa tốc các đơn nội thành Hồ Chí Minh: <span className="font-semibold">35.000 vnđ</span>
                                 </p>
                                 <p className="text-gray-600">
-                                    Các địa chỉ khác: <span className="font-semibold">60.000 vnd</span>
+                                    Các địa chỉ khác: <span className="font-semibold">60.000 vnđ</span>
                                 </p>
                             </div>
                         </div>
@@ -158,11 +158,11 @@ const Payment = () => {
                     <p className='mt-1 md:text-end text-sm text-blue-500 hover:text-blue-600 cursor-pointer'>Chọn mã giảm giá</p>
                     <div className='mt-5 flex justify-between'>
                         <p>Tạm tính:</p>
-                        <p>{formatMoney(totalPrice())} vnd</p>
+                        <p>{formatMoney(totalPrice())} vnđ</p>
                     </div>
                     <div className='mt-3 flex justify-between'>
                         <p>Vận chyển:</p>
-                        <p>{optionShip === 'Giao hàng tiêu chuẩn' ? '+ 30.000' : '+ 60.000'} vnd</p>
+                        <p>{optionShip === 'Giao hàng tiêu chuẩn' ? '+ 30.000' : '+ 60.000'} vnđ</p>
                     </div>
                     <div className='mt-3 flex justify-between'>
                         <p>Điểm tích lũy:</p>
@@ -171,7 +171,7 @@ const Payment = () => {
                     <div className='mt-5 flex justify-between'>
                         <p>Tiền phải trả:</p>
                         <p className='text-red-500 font-semibold'>
-                            {formatMoney(subtotal)} vnd
+                            {formatMoney(subtotal)} vnđ
                         </p>
                     </div>
                     <p className='mt-1 text-sm'>(giá này đã bao gồm thuế GTGT, phí đóng gói, phí vận chuyển và các chi phí phát sinh khác)</p>

@@ -3,6 +3,23 @@ import productModel from '../models/productModel.js'
 import userModel from '../models/userModel.js'
 import orderModel from '../models/orderModel.js'
 
+// api login 
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body
+
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+            res.json({ success: true })
+        }
+
+        return res.json({ success: false });
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 // api add product
 const addProduct = async (req, res) => {
     try {
@@ -81,4 +98,4 @@ const getAllOder = async (req, res) => {
     }
 }
 
-export { addProduct, getAllUser, getAllProduct, getAllOder }
+export { addProduct, getAllUser, getAllProduct, getAllOder, login }

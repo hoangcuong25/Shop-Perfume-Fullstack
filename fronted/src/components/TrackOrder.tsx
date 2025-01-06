@@ -34,14 +34,17 @@ const TrackOrder = ({ setShow, show }: Props) => {
             {order.length != 0 ?
                 <>
                     <div className='flex flex-col'>
-                        <p className='font-bold text-lg'>Đơn hàng của tôi</p>
+                        <div className='flex gap-3.5' >
+                            <FaBox className='text-gray-700 text-3xl' />
+                            <p className='font-bold text-lg'>Đơn hàng của tôi</p>
+                        </div>
 
                         <div className='flex flex-col gap-5 md:gap-8 mt-3.5'>
                             {order.map((i: any, index: number) => (
                                 <div key={index} className='bg-gray-100 border border-gray-200 rounded-md shadow-md hover:shadow-xl flex flex-col gap-2 px-2 py-1.5 md:px-5 md:py-5'>
                                     <p>Mã đơn hàng: <span className='font-semibold'>{i._id}</span></p>
                                     <p>Trạng thái: <span className='font-semibold'>{i.status}</span></p>
-                                    <p>Giá phải trả: <span className='font-semibold'>{formatMoney(i.price)}</span></p>
+                                    <p>Giá phải trả: <span className='font-semibold'>{formatMoney(i.price)} vnđ</span></p>
                                     <p>Ngày đặt hàng: <span className='font-semibold'>{formatDate(i.date)}</span></p>
                                     <p>Hình thức vận chuyển: <span className='font-semibold'>{i.optionShip}</span></p>
                                     <p>Hình thức thanh toán: <span className='font-semibold'>{i.optionPayment}</span></p>
@@ -53,7 +56,7 @@ const TrackOrder = ({ setShow, show }: Props) => {
                                                 <div>
                                                     <p>Tên sản phẩm: <span className='font-semibold'>{i.productList.name}</span> </p>
                                                     <p>Số lượng: <span className='font-semibold'>{i.quantity}</span></p>
-                                                    <p>Giá mỗi sản phẩm: <span className='font-semibold'>{formatMoney(i.productList.newPrice)}</span> vnd</p>
+                                                    <p>Giá mỗi sản phẩm: <span className='font-semibold'>{formatMoney(i.productList.newPrice)}</span> vnđ</p>
                                                 </div>
                                             </div>
                                         ))}

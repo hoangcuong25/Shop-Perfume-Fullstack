@@ -30,8 +30,8 @@ const Item = ({
                 <img src={image} alt="" className="md:size-[185px] size-[130px]" />
                 <h3 className="font-semibold text-base md:text-lg ">{brand}</h3>
                 <h4 className="italic text-center text-xs md:text-base text-gray-900">{name}</h4>
-                <h5 className="mt-3 lg:text-[13px] text-[12px] font-semibold">Giá mới: {formatMoney(newPrice)} vnd</h5>
-                <h5 className="line-through lg:text-[13px] text-[12px] font-semibold  text-slate-400  color: rgb(71 85 105);">Giá cũ: {formatMoney(oldPrice)} vnd</h5>
+                <h5 className="mt-3 lg:text-[13px] text-[12px] font-semibold">Giá mới: {formatMoney(newPrice)} vnđ</h5>
+                <h5 className="line-through lg:text-[13px] text-[12px] font-semibold  text-slate-400  color: rgb(71 85 105);">Giá cũ: {formatMoney(oldPrice)} vnđ</h5>
 
                 <div className='absolute hidden group-hover:block w-[65%] bg-red-500 py-1 text-white text-sm rounded-lg shadow-2xl text-center'>
                     XEM NHANH

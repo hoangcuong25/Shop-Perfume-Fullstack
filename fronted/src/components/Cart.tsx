@@ -104,7 +104,7 @@ const Cart = ({ show, setShow }: Props) => {
                                         </p>
                                     </div>
                                     <div className='flex justify-between items-center'>
-                                        <p className=''>{formatMoney(i.product.newPrice * i.quantity)} vnd</p>
+                                        <p className=''>{formatMoney(i.product.newPrice * i.quantity)} vnđ</p>
                                         <MdDeleteForever
                                             className='text-gray-700 text-2xl cursor-pointer'
                                             onClick={() => removeFromCart(i.product._id)}
@@ -112,7 +112,7 @@ const Cart = ({ show, setShow }: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice)} vnd</p>
+                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice)} vnđ</p>
                             <div className='lg:flex hidden justify-center items-center gap-3.5'>
                                 <p
                                     className='text-xl cursor-pointer py-0.5 w-7 rounded-full bg-gray-100 shadow-md'
@@ -128,7 +128,7 @@ const Cart = ({ show, setShow }: Props) => {
                                     +
                                 </p>
                             </div>
-                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice * i.quantity)} vnd</p>
+                            <p className='lg:block hidden'>{formatMoney(i.product.newPrice * i.quantity)} vnđ</p>
                             <MdDeleteForever
                                 className='text-gray-700 text-2xl cursor-pointer lg:block hidden'
                                 onClick={() => removeFromCart(i.product._id)}
@@ -137,7 +137,7 @@ const Cart = ({ show, setShow }: Props) => {
                     ))}
 
                     <div className='mt-3.5 flex items-center gap-5 place-self-start lg:place-self-end'>
-                        <p className='text-lg font-semibold'>Tổng: {formatMoney(totalPrice())} vnd</p>
+                        <p className='text-lg font-semibold'>Tổng: {formatMoney(totalPrice())} vnđ</p>
                         <Link to='/thanh-toan' className='bg-red-500 text-white w-52 text-center py-3 rounded-md mr-10 hover:bg-red-600 cursor-pointer'>
                             Thanh toán ngay
                         </Link>

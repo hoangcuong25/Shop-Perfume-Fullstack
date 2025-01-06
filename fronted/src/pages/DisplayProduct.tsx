@@ -71,7 +71,7 @@ const DisplayProduct = () => {
                             <p>Mặt hàng: Có sẵn</p>
                             <p>Vận chuyển: <span className='text-red-500'>Freeship HCM</span></p>
                             <p>Gọi đặt mua: <span className='text-red-500'>1900 0129 </span><span className='text-gray-400'>(9:00 - 21:00)</span></p>
-                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo.newPrice)} vnd </span><span className='text-gray-400 line-through'>{formatMoney(productInfo.oldPrice)} vnd</span></p>
+                            <p>Giá: <span className='text-lg text-red-500'>{formatMoney(productInfo.newPrice)} vnđ </span><span className='text-gray-400 line-through'>{formatMoney(productInfo.oldPrice)} vnđ</span></p>
 
                             <div className='flex gap-5 mt-7'>
                                 <div

@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/Context'
 
 const Navbar = () => {
+
+    const { setToken } = useContext(AppContext)
 
     const navigate = useNavigate()
 
     const logout = () => {
         navigate('/')
+        setToken(false)
+        localStorage.removeItem('atoken')
     }
 
     return (

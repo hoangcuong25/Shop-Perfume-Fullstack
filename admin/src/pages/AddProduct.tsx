@@ -51,9 +51,9 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="p-10">
-            <h1 className="text-2xl font-bold mb-6">Thêm sản phẩm</h1>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="m-5">
+            <div className="text-2xl font-bold bg-gray-100 py-3 px-16 rounded-md shadow-md mb-6">Thêm sản phẩm</div>
+            <form onSubmit={handleSubmit} className="space-y-4 bg-gray-100 border border-gray-200 rounded-md shadow-md px-16 py-3">
                 <div>
                     <label className="block mb-2">Tên sản phẩm</label>
                     <input
