@@ -147,11 +147,16 @@ const Payment = () => {
                                         Thanh toán bằng chuyển khoản
                                     </p>
                                     <p className="text-gray-600">
-                                        Quý khách sử dụng ví điện tử để thanh toán online bằng cách quét mã qr
+                                        Quý khách sử dụng ví điện tử để thanh toán online bằng cách quét mã QR
                                     </p>
                                 </div>
                             </div>
                         </div>
+
+                        {
+                            optionPayment === 'Thanh toán bằng chuyển khoản' &&
+                            <img src={`https://img.vietqr.io/image/MB-0251125112003-print.png?amount=${subtotal}&addInfo=chuyen tien nuoc hoa&accountName=HOANG VAN CUONG`} className="w-96" />
+                        }
                     </div>
 
                     <div className='flex flex-col mt-3'>
