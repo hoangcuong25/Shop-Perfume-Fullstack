@@ -137,11 +137,11 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-mini"
-                    className={`text-sm hover:text-rose-600 group ${navbar === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
+                    className={`text-sm hover:text-rose-600 group ${navbar === 'Nước hoa mini' ? 'text-red-500' : ''}`}
                     onClick={() => setNavbar('Nước hoa mini')}
                 >
                     Nước Hoa Mini
-                    <hr className={`${navbar === 'nuoc-hoa-mini' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${navbar === 'Nước hoa mini' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-32 -left-4 z-50 pt-7 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
