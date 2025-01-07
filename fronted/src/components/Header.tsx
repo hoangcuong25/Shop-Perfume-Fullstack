@@ -50,7 +50,7 @@ const Header = () => {
                     <div className='items-center gap-2 relative flex sm:hidden'>
                         <IoIosSearch className='text-2xl text-gray-600' />
                         {token ?
-                            <img onClick={() => navigate('/my-profile')} src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                            <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
                             : <FaRegUser onClick={() => navigate('/login')} />
                         }
                     </div>
@@ -113,12 +113,12 @@ const Header = () => {
 
                     {token ?
                         <div className='hidden sm:flex items-center gap-2  cursor-pointer relative group'>
-                            <img src={userData.image} className='lg:size-10 size-7 rounded-full' alt="" />
+                            <img src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
                             <Link
                                 to='/my-profile'
                                 className='capitalize group-hover:text-red-500 font-medium hidden lg:block'
                             >
-                                {`${userData.lastName} ${userData.firstName}`}
+                                {`${userData?.lastName} ${userData?.firstName}`}
                             </Link>
 
                             <div className='absolute z-50 pt-8 top-3.5 -right-3.5 hidden group-hover:flex'>

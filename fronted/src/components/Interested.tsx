@@ -50,7 +50,7 @@ const Interested = () => {
                     return (
                         <div key={index} className='relative' >
                             <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                            <div className='absolute top-0 left-7 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                            <div className='absolute top-0 left-0 px-1 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
                                 Brand year
                             </div>
                             {isWishlist(item._id) ?

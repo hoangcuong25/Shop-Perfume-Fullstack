@@ -17,7 +17,7 @@ const TypeProduct = () => {
 
     const [show, setShow] = useState<boolean>(false)
 
-    const [items, setItems] = useState<any[]>([])
+    const [items, setItems] = useState([])
 
     const [selectedBrand, setSelectedBrand] = useState<string>()
     const [selectedPrice, setSelectedPrice] = useState<string>()
