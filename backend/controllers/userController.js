@@ -135,6 +135,34 @@ const updateProfile = async (req, res) => {
     }
 }
 
+// api update password
+const updatePassword = async (req, res) => {
+    try {
+        const { userId, newPassword1, newPassword2, oldPassword } = req.body
+
+        if (!newPassword1 || !newPassword2 || !oldPassword) {
+            return res.json({ success: false, message: "Thiếu thông tin" })
+        }
+
+        const user = await userModel.findById(userId)
+
+        if (!oldPassword === userId.password) {
+            return res.json({ success: false, message: "Mật khẩu cũ không đúng" })
+        }
+
+        if (!newPassword2 === newPassword1) {
+            return res.json({ success: false, message: "Mật khẩu mới không giống nhau" })
+        }
+
+        await userModel.findByIdAndUpdate(userId, { password: newPassword1 })
+        res.json({ success: true, messgae: 'Thay đổi mật khẩu thành công' })
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 // api get product
 const getProduct = async (req, res) => {
     try {
@@ -380,5 +408,6 @@ export {
     decreaseQuantity,
     wishlist,
     order,
-    getOrder
+    getOrder,
+    updatePassword
 }

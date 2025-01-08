@@ -16,10 +16,6 @@ const TypeProduct = () => {
 
     const { navbar, productData, isWishlist, wishlistProduct } = useContext(AppContext)
 
-    const { thuong_hieu } = useParams()
-    const { muc_gia } = useParams()
-    const { sap_xep } = useParams()
-
     const [show, setShow] = useState<boolean>(false)
 
     const [items, setItems] = useState([])
