@@ -10,10 +10,15 @@ import { FaRegWindowClose } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 import Pagination from '../components/Pagination.js';
 import DescriptionTypeProduct from '../components/DescriptionTypeProduct.js';
+import { useParams } from 'react-router-dom';
 
 const TypeProduct = () => {
 
     const { navbar, productData, isWishlist, wishlistProduct } = useContext(AppContext)
+
+    const { thuong_hieu } = useParams()
+    const { muc_gia } = useParams()
+    const { sap_xep } = useParams()
 
     const [show, setShow] = useState<boolean>(false)
 

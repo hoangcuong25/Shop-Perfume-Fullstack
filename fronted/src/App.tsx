@@ -25,13 +25,36 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/nuoc-hoa-nam' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nam/:thuong_hieu' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nam/:thuong_hieu/:muc_gia' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nam/:thuong_hieu/:muc_gia/sap_xep' element={<TypeProduct />} />
+
         <Route path='/nuoc-hoa-nu' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nu/:thuong_hieu' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nu/:thuong_hieu/:muc_gia' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-nu/:thuong_hieu/:muc_gia/sap_xep' element={<TypeProduct />} />
+
         <Route path='/nuoc-hoa-mini' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-mini/:thuong_hieu' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-mini/:thuong_hieu/:muc_gia' element={<TypeProduct />} />
+        <Route path='/nuoc-hoa-mini/:thuong_hieu/:muc_gia/sap_xep' element={<TypeProduct />} />
+
         <Route path='/giftset' element={<TypeProduct />} />
+        <Route path='/giftset/:thuong_hieu' element={<TypeProduct />} />
+        <Route path='/giftset/:thuong_hieu/:muc_gia' element={<TypeProduct />} />
+        <Route path='/giftset/:thuong_hieu/:muc_gia/sap_xep' element={<TypeProduct />} />
+
         <Route path='/bodycare&homecare' element={<TypeProduct />} />
+        <Route path='/bodycare&homecare/:thuong_hieu' element={<TypeProduct />} />
+        <Route path='/bodycare&homecare/:thuong_hieu/:muc_gia' element={<TypeProduct />} />
+        <Route path='/bodycare&homecare/:thuong_hieu/:muc_gia/sap_xep' element={<TypeProduct />} />
+
         <Route path='/product/:id' element={<DisplayProduct />} />
+
         <Route path='/my-profile' element={<MyProfile />} />
+
         <Route path='/thanh-toan' element={<Payment />} />
 
         <Route path='/login' element={<Login />} />
