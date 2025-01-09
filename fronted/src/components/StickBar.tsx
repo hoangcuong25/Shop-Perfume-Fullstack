@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { AiOutlineReload } from 'react-icons/ai';
 
-const StickyBar = ({ productInfo, formatMoney, addToCart }) => {
+const StickyBar = ({ productInfo, formatMoney, addToCart, setLoading, loading }) => {
 
     const [show, setShow] = useState<boolean>(false);
 
@@ -28,7 +29,14 @@ const StickyBar = ({ productInfo, formatMoney, addToCart }) => {
                     </div>
                 </div>
                 <div className='flex gap-5'>
-                    <button onClick={() => addToCart(productInfo?._id)} className="bg-red-500 hover:bg-red-600 text-white text-xs md:text-base px-1 md:px-6 ml-2 py-1 md:py-2 rounded-lg">Thêm vào giỏ</button>
+                    {loading ?
+                        <button className="bg-gray-300 text-center text-white cursor-pointer rounded-md px-2 py-1">
+                            <AiOutlineReload className='animate-spin text-green-500 text-2xl' />
+                        </button>
+                        : <button onClick={() => addToCart(productInfo?._id)} className="bg-red-500 hover:bg-red-600 text-white text-xs md:text-base px-1 md:px-6 ml-2 py-1 md:py-2 rounded-lg">
+                            Thêm vào giỏ
+                        </button>
+                    }
                 </div>
             </div>
         </div>

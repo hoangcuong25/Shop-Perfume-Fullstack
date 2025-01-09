@@ -11,12 +11,10 @@ import cong_dong_nuoc_hoa from '../assets/cong-dong-nuoc-hoa.png'
 import xu_huong_nuoc_hoa from '../assets/xu-huong-nuoc-hoa.png'
 import goc_review from '../assets/goc-review.png'
 import feedbacks_instore from '../assets/feedbacks-instore.png'
-import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
+import GoogleLoginForm from './GoogleLogin';
 
 const Header = () => {
 
@@ -157,18 +155,7 @@ const Header = () => {
                                     </div>
                                     <div className='text-sm font-bold flex flex-col'>
                                         <p className='text-center mb-3.5'>Hoặc Đăng Nhập Với</p>
-                                        <GoogleLogin
-                                            onSuccess={credentialResponse => {
-                                                const credentialResponseDecoded = jwtDecode(
-                                                    credentialResponse.credential
-                                                )
-
-                                                console.log(credentialResponseDecoded)
-                                            }}
-                                            onError={() => {
-                                                console.log('Login Failed');
-                                            }}
-                                        />
+                                        <GoogleLoginForm />
                                         <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
                                             <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
                                                 <FaFacebook className='text-2xl text-blue-500' />

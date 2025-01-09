@@ -7,12 +7,14 @@ import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import GoogleLoginForm from '../components/GoogleLogin';
 
 const Login = () => {
 
     const navigate = useNavigate()
 
     const { backendUrl, setToken } = useContext(AppContext)
+
 
     const [isShow, setIsShow] = useState<boolean>(false)
 
@@ -84,14 +86,7 @@ const Login = () => {
 
                 <p className='mt-3 text-center font-medium'>Đăng nhập với</p>
 
-                <div className='flex w-full hover:text-red-500 cursor-pointer group/item '>
-                    <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500 rounded-l-md'>
-                        <FcGoogle className='text-2xl ' />
-                    </div>
-                    <div className='flex w-full font-light  border border-gray-300 rounded-r-md text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                        Đăng Nhập Với Google
-                    </div>
-                </div>
+                <GoogleLoginForm />
                 <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
                     <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500 rounded-l-md'>
                         <FaFacebook className='text-2xl text-blue-500' />
