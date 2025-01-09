@@ -4,12 +4,17 @@ import './index.css'
 import App from './App.tsx'
 import AppContextProvider from './context/Context.tsx'
 import { ToastContainer } from 'react-toastify';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AppContextProvider>
-      <App />
-      <ToastContainer />
-    </AppContextProvider>
+    <GoogleOAuthProvider clientId={CLIENT_ID}>
+      <AppContextProvider>
+        <App />
+        <ToastContainer />
+      </AppContextProvider>
+    </GoogleOAuthProvider>
   </StrictMode>,
 )

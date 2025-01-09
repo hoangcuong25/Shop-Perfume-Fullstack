@@ -15,6 +15,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
 
@@ -154,15 +156,19 @@ const Header = () => {
                                         </Link>
                                     </div>
                                     <div className='text-sm font-bold flex flex-col'>
-                                        <p className='text-center'>Hoặc Đăng Nhập Với</p>
-                                        <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
-                                            <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                                <FcGoogle className='text-2xl ' />
-                                            </div>
-                                            <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                                Đăng Nhập Với Google
-                                            </div>
-                                        </div>
+                                        <p className='text-center mb-3.5'>Hoặc Đăng Nhập Với</p>
+                                        <GoogleLogin
+                                            onSuccess={credentialResponse => {
+                                                const credentialResponseDecoded = jwtDecode(
+                                                    credentialResponse.credential
+                                                )
+
+                                                console.log(credentialResponseDecoded)
+                                            }}
+                                            onError={() => {
+                                                console.log('Login Failed');
+                                            }}
+                                        />
                                         <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
                                             <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
                                                 <FaFacebook className='text-2xl text-blue-500' />
