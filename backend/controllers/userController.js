@@ -141,7 +141,7 @@ const updatePassword = async (req, res) => {
         const { userId, newPassword1, newPassword2, oldPassword } = req.body
 
         if (!newPassword1 || !newPassword2 || !oldPassword) {
-            return res.status(400).json({ success: false, message: "Missing required fields." })
+            return res.json({ success: false, message: "Missing required fields." })
         }
 
         const user = await userModel.findById(userId)
@@ -170,8 +170,26 @@ const updatePassword = async (req, res) => {
     }
 }
 // api update phone number
-const updatePhone = (req, res) => {
+const updatePhone = async (req, res) => {
     try {
+        const { userId, phone } = req.body
+
+        if (!phone) {
+            return res.json({ success: false, message: "Hãy điền số điện thoại" })
+        }
+
+        if (phone.length !== 10) {
+            return res.json({ success: false, message: 'Hãy Điền Số Điện Thoại Hợp Lệ ' })
+        }
+
+        const user = await userModel.findById(userId)
+
+        if (phone === user.phone) {
+            return res.json({ success: false, message: "Trùng với số cũ" })
+        }
+
+        await userModel.findByIdAndUpdate(userId, { phone: phone })
+        res.status(200).json({ success: true })
 
     }
     catch (error) {
@@ -426,5 +444,6 @@ export {
     wishlist,
     order,
     getOrder,
-    updatePassword
+    updatePassword,
+    updatePhone
 }

@@ -21,6 +21,8 @@ const EditProfile = ({ setShow, show }: Props) => {
 
     const [loading, setLoading] = useState<boolean>(false)
 
+    const [isUpdatePhone, setIsUpdatePhone] = useState<boolean>(false)
+
     const [modalIsOpen, setIsOpen] = useState<boolean>(false)
 
     function openModal() {
@@ -33,6 +35,7 @@ const EditProfile = ({ setShow, show }: Props) => {
     const [gender, setGender] = useState(userData.gender)
     const [address, setAddress] = useState(userData.address)
     const [dob, setdob] = useState(userData.dob)
+    const [phone, setPhone] = useState<string>()
 
     const editProfile = async (): Promise<void> => {
         setLoading(true)
@@ -72,6 +75,25 @@ const EditProfile = ({ setShow, show }: Props) => {
         }
 
         setLoading(false)
+    }
+
+    const updatePhone = async (e: React.FormEvent): Promise<void> => {
+        e.preventDefault()
+
+        try {
+            const { data } = await axios.put(backendUrl + '/api/user/update-phone', { phone }, { headers: { token } })
+
+            if (data.success) {
+                toast.success('Thay đổi số điện thoại thành công')
+                loadUserProfileData();
+            }
+
+        }
+        catch (error) {
+            toast.error(error.response?.data?.message || error.message)
+        }
+
+        setIsUpdatePhone(false)
     }
 
     return (
@@ -179,18 +201,38 @@ const EditProfile = ({ setShow, show }: Props) => {
                 <p className='font-bold text-lg'>Số điện thoại và Email</p>
 
                 <div className='mt-5 flex justify-between'>
-                    <div className='flex gap-5 items-center'>
-                        <MdLocalPhone className='text-2xl text-gray-700' />
+                    {isUpdatePhone ?
+                        <div className=''>
+                            <div className='flex gap-3 items-center'>
+                                <MdLocalPhone className='text-2xl text-gray-700' />
+                                <p>Số điện thoại mới:</p>
+                            </div>
 
-                        <div>
-                            <p>Số điện thoại</p>
-                            <p className='text-gray-400'>Cập nhật số điện thoại</p>
+                            <input
+                                type="number"
+                                className='mt-2 border border-gray-300 py-1 pl-1.5'
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                            />
                         </div>
-                    </div>
+                        : <div className='flex gap-5 items-center'>
+                            <MdLocalPhone className='text-2xl text-gray-700' />
 
-                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 '>
-                        Cập Nhật
-                    </div>
+                            <div>
+                                <p>Số điện thoại</p>
+                                <p className='text-gray-400'>{userData?.phone}</p>
+                            </div>
+                        </div>
+                    }
+
+                    {isUpdatePhone ?
+                        <div onClick={updatePhone} className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 cursor-pointer '>
+                            Cập Nhật
+                        </div>
+                        : <div onClick={() => setIsUpdatePhone(!isUpdatePhone)} className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 cursor-pointer '>
+                            Cập Nhật
+                        </div>
+                    }
                 </div>
 
                 <div className='mt-5 flex items-center gap-5'>
@@ -238,7 +280,7 @@ const EditProfile = ({ setShow, show }: Props) => {
             </div>
 
             <ModalPassword modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
-        </div>
+        </div >
     )
 }
 
