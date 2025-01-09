@@ -13,8 +13,8 @@ const AppContextProvider = (props) => {
     const [userData, setUserData] = useState(false)
     const [cart, setCart] = useState([])
     const [wishlist, setWishlist] = useState([])
-    const [productData, setProductData] = useState()
-    const [order, setOrder] = useState({})
+    const [productData, setProductData] = useState([])
+    const [order, setOrder] = useState([])
 
     const backendUrl = 'http://localhost:4000'
 

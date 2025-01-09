@@ -147,7 +147,7 @@ const Hero = () => {
                 </div>
 
                 <Slider {...setting2}>
-                    {productData?.slice(3, 10).map((item: any, index: number) => {
+                    {productData?.slice(10, 18).map((item: any, index: number) => {
                         return (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />

@@ -17,6 +17,7 @@ import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Search from './Search';
 
 const Header = () => {
 
@@ -31,7 +32,7 @@ const Header = () => {
         localStorage.removeItem('token')
     }
 
-    const onSearchNote = async (query: string): Promise<void> => {
+    const onSearch = async (query: string): Promise<void> => {
         try {
             const { data } = await axios.get(
                 backendUrl + "api/user/search",
@@ -43,9 +44,24 @@ const Header = () => {
 
             if (data.success) {
                 setSearchProducts(data.product)
+            } else {
+                toast.warning("Không tìm thấy sản phẩm!")
             }
+
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
+    const handleClickWishlist = () => {
+        if (token) {
+            setSidebar('Danh sách yêu thích');
+        }
+    }
+
+    const handleClickCart = () => {
+        if (token) {
+            setSidebar('Giỏ hàng của tôi')
         }
     }
 
@@ -83,11 +99,7 @@ const Header = () => {
                     >
                         namperfume
                     </Link>
-                    <div className='hidden sm:flex items-center border border-gray-300 rounded-md w-72 h-9 hover:border-gray-500'>
-                        <IoIosSearch className='text-2xl text-gray-600 mx-2' />
-                        <input type="text" className='w-full focus:outline-none pr-2.5' />
-                        <TiDeleteOutline className='mr-2 text-gray-500 text-xl' />
-                    </div>
+                    <Search onSearch={onSearch} searchProducts={searchProducts} />
 
                     <div className='hidden sm:flex items-center gap-1.5 text-gray-700  cursor-pointer'>
                         <AiTwotoneShop />
@@ -194,8 +206,8 @@ const Header = () => {
 
                     <div className='flex items-center gap-7 text-gray-700'>
                         <Link
-                            to='/my-profile'
-                            onClick={() => setSidebar('Danh sách yêu thích')}
+                            to={token ? '/my-profile' : '/login'}
+                            onClick={() => handleClickWishlist()}
                             className='relative cursor-pointer group'
                         >
                             <FaRegHeart />
@@ -209,8 +221,8 @@ const Header = () => {
                             </div>
                         </Link>
                         <Link
-                            to='/my-profile'
-                            onClick={() => setSidebar('Giỏ hàng của tôi')}
+                            to={token ? '/my-profile' : '/login'}
+                            onClick={() => handleClickCart()}
                             className='relative cursor-pointer group'
                         >
                             <RiShoppingCartLine className='' />
