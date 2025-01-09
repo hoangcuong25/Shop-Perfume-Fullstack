@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FiBell } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -15,16 +15,38 @@ import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist, backendUrl } = useContext(AppContext)
+
+    const [searchProducts, setSearchProducts] = useState()
 
     const navigate = useNavigate()
 
     const logout = (): void => {
         setToken(false)
         localStorage.removeItem('token')
+    }
+
+    const onSearchNote = async (query: string): Promise<void> => {
+        try {
+            const { data } = await axios.get(
+                backendUrl + "api/user/search",
+                {
+                    params: { query },
+                    headers: { token },
+                }
+            )
+
+            if (data.success) {
+                setSearchProducts(data.product)
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
     }
 
     return (

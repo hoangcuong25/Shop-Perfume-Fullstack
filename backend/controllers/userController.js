@@ -431,6 +431,29 @@ const getOrder = async (req, res) => {
     }
 }
 
+// api search
+const search = async (req, res) => {
+    try {
+        const { userId } = req.body
+        const { query } = req.query
+
+        const searchCriteria = {
+            userId: userId,
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { brand: { $regex: query, $options: 'i' } }
+            ]
+        };
+
+        const products = await productModel.find(query ? searchCriteria : { userId: userId })
+        res.json({ success: true, products })
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 export {
     registerUser,
     loginUser,
@@ -445,5 +468,6 @@ export {
     order,
     getOrder,
     updatePassword,
-    updatePhone
+    updatePhone,
+    search
 }
