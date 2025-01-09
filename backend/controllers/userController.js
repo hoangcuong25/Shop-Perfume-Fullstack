@@ -74,7 +74,7 @@ const loginUser = async (req, res) => {
         const user = await userModel.findOne({ email })
 
         if (!user) {
-            return res.status(400).json({ success: false, message: 'User does not exist' })
+            return res.status(400).json({ success: false, message: 'Tài khoản không tồn tại' })
         }
 
         const isMatch = await bcrypt.compare(password, user.password)
@@ -84,7 +84,7 @@ const loginUser = async (req, res) => {
             return res.json({ success: true, token });
 
         } else {
-            res.json({ success: true, message: 'invalid credentials' })
+            res.json({ success: false, message: 'Mật khẩu không đúng' })
         }
 
     } catch (error) {
@@ -141,25 +141,42 @@ const updatePassword = async (req, res) => {
         const { userId, newPassword1, newPassword2, oldPassword } = req.body
 
         if (!newPassword1 || !newPassword2 || !oldPassword) {
-            return res.json({ success: false, message: "Thiếu thông tin" })
+            return res.status(400).json({ success: false, message: "Missing required fields." })
         }
 
         const user = await userModel.findById(userId)
 
-        if (!oldPassword === userId.password) {
-            return res.json({ success: false, message: "Mật khẩu cũ không đúng" })
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found." })
         }
 
-        if (!newPassword2 === newPassword1) {
-            return res.json({ success: false, message: "Mật khẩu mới không giống nhau" })
+        const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
+        if (!isOldPasswordValid) {
+            return res.status(400).json({ success: false, message: "Incorrect old password." })
         }
 
-        await userModel.findByIdAndUpdate(userId, { password: newPassword1 })
-        res.json({ success: true, messgae: 'Thay đổi mật khẩu thành công' })
+        if (newPassword1 !== newPassword2) {
+            return res.status(400).json({ success: false, message: "New passwords do not match." })
+        }
 
+        const hashedPassword = await bcrypt.hash(newPassword1, 10);
+
+        await userModel.findByIdAndUpdate(userId, { password: hashedPassword })
+
+        res.json({ success: true, message: "Password updated successfully." })
     } catch (error) {
-        console.log(error)
-        res.status(400).json({ success: false, message: error.message })
+        console.error(error)
+        res.status(500).json({ success: false, message: "An error occurred. Please try again." })
+    }
+}
+// api update phone number
+const updatePhone = (req, res) => {
+    try {
+
+    }
+    catch (error) {
+        console.error(error)
+        res.status(500).json({ success: false, message: "An error occurred. Please try again." })
     }
 }
 

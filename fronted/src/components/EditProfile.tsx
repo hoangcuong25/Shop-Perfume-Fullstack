@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AiOutlineMenu, AiOutlineReload } from "react-icons/ai";
+import ModalPassword from './ModalPassword';
 
 type Props = {
     setShow: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,6 +20,12 @@ const EditProfile = ({ setShow, show }: Props) => {
     const { userData, backendUrl, token, loadUserProfileData } = useContext(AppContext)
 
     const [loading, setLoading] = useState<boolean>(false)
+
+    const [modalIsOpen, setIsOpen] = useState<boolean>(false)
+
+    function openModal() {
+        setIsOpen(true);
+    }
 
     const [image, setImage] = useState()
     const [lastName, setLastName] = useState(userData.lastName)
@@ -202,7 +209,7 @@ const EditProfile = ({ setShow, show }: Props) => {
                         <IoMdLock className='text-2xl text-gray-700' />
                         <p>Đổi mât khẩu</p>
                     </div>
-                    <div className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300'>
+                    <div onClick={openModal} className='bg-gray-300 shadow-lg rounded-md text-gray-500 font-bold px-5 py-1.5 h-fit hover:bg-green-300 cursor-pointer'>
                         Cập Nhật
                     </div>
                 </div>
@@ -229,6 +236,8 @@ const EditProfile = ({ setShow, show }: Props) => {
                     </div>
                 </div>
             </div>
+
+            <ModalPassword modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         </div>
     )
 }
