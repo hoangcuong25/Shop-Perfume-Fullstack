@@ -34,7 +34,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/product/nuoc-hoa-nam"
+                    to="/nuoc-hoa-nam"
                     className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nam' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nam
@@ -84,7 +84,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/product/nuoc-hoa-nu"
+                    to="/nuoc-hoa-nu"
                     className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nu' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nữ
@@ -134,7 +134,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/product/nuoc-hoa-mini"
+                    to="/nuoc-hoa-mini"
                     className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Mini
@@ -184,7 +184,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/product/giftset"
+                    to="/giftset"
                     className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'giftset' ? 'text-red-500' : ''}`}
                 >
                     Giftset
@@ -218,7 +218,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/product/bodycare&homecare"
+                    to="/bodycare&homecare"
                     className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'bodycare&homecare' ? 'text-red-500' : ''}`}
                 >
                     Bodycare & Homecare
