@@ -434,18 +434,20 @@ const getOrder = async (req, res) => {
 // api search
 const search = async (req, res) => {
     try {
-        const { userId } = req.body
         const { query } = req.query
 
+        if (!query || typeof query !== 'string') {
+            return res.json({ success: false, message: 'Query parameter is required and must be a string' })
+        }
+
         const searchCriteria = {
-            userId: userId,
             $or: [
                 { name: { $regex: query, $options: 'i' } },
                 { brand: { $regex: query, $options: 'i' } }
             ]
-        };
+        }
 
-        const products = await productModel.find(query ? searchCriteria : { userId: userId })
+        const products = await productModel.find(searchCriteria)
         res.json({ success: true, products })
 
     } catch (error) {

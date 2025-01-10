@@ -40,7 +40,7 @@ const Navbar = () => {
                     Nước Hoa Nam
                     <hr className={`${catalog === 'nuoc-hoa-nam' ? 'block' : 'hidden'} border-red-500`} />
 
-                    <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
+                    <div className='absolute top-40 left-0 z-40 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
                             <div className='flex flex-col text-xs'>
                                 <p className='font-semibold text-sm mb-3.5'>Phân loại</p>

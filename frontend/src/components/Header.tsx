@@ -15,42 +15,17 @@ import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';
-import axios from 'axios';
-import { toast } from 'react-toastify';
 import Search from './Search';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist, backendUrl } = useContext(AppContext)
-
-    const [searchProducts, setSearchProducts] = useState()
+    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist } = useContext(AppContext)
 
     const navigate = useNavigate()
 
     const logout = (): void => {
         setToken(false)
         localStorage.removeItem('token')
-    }
-
-    const onSearch = async (query: string): Promise<void> => {
-        try {
-            const { data } = await axios.get(
-                backendUrl + "api/user/search",
-                {
-                    params: { query },
-                    headers: { token },
-                }
-            )
-
-            if (data.success) {
-                setSearchProducts(data.product)
-            } else {
-                toast.warning("Không tìm thấy sản phẩm!")
-            }
-
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Something went wrong")
-        }
     }
 
     const handleClickWishlist = () => {
@@ -99,7 +74,7 @@ const Header = () => {
                     >
                         namperfume
                     </Link>
-                    <Search onSearch={onSearch} searchProducts={searchProducts} />
+                    <Search />
 
                     <div className='hidden sm:flex items-center gap-1.5 text-gray-700  cursor-pointer'>
                         <AiTwotoneShop />

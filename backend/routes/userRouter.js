@@ -19,6 +19,6 @@ userRouter.post('/decrease-quantity', authUser, decreaseQuantity)
 userRouter.post('/wishlist', authUser, wishlist)
 userRouter.post('/order', authUser, order)
 userRouter.get('/get-order', authUser, getOrder)
-userRouter.get('/search', authUser, search)
+userRouter.get('/search', search)
 
 export default userRouter
