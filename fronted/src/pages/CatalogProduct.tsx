@@ -9,16 +9,17 @@ import { FaFilter } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import Sorting from '../components/Sorting.js';
 import Pagination from '../components/Pagination.js';
-import DescriptionTypeProduct from '../components/DescriptionTypeProduct.js';
 import { useParams } from 'react-router-dom';
+import DescriptionCatalogProduct from '../components/DescriptionCatalogProduct.js';
 
-const TypeProduct = () => {
+const CatalogProduct = () => {
 
-    const { navbar, productData, isWishlist, wishlistProduct } = useContext(AppContext)
+    const { productData, isWishlist, wishlistProduct } = useContext(AppContext)
+
+    const { catalog } = useParams()
+    const [items, setItems] = useState([])
 
     const [show, setShow] = useState<boolean>(false)
-
-    const [items, setItems] = useState([])
 
     const [selectedBrand, setSelectedBrand] = useState<string>()
     const [selectedPrice, setSelectedPrice] = useState<string>()
@@ -36,7 +37,15 @@ const TypeProduct = () => {
     const currentPosts = items?.slice(firstPostIndex, lastPostIndex)
 
     const filteredItem = () => {
-        let filtered = productData?.filter(item => item.type === navbar)
+        let catalogProduct = ''
+
+        if (catalog === 'nuoc-hoa-nam') { catalogProduct = 'Nước hoa nam' }
+        if (catalog === 'nuoc-hoa-nu') { catalogProduct = 'Nước hoa nữ' }
+        if (catalog === 'nuoc-hoa-mini') { catalogProduct = 'Nước hoa mini' }
+        if (catalog === 'giftset') { catalogProduct = 'Giftset' }
+        if (catalog === 'bodycare&homecare') { catalogProduct = 'Bodycare & Homecare' }
+
+        let filtered = productData?.filter(item => item.type === catalogProduct)
 
         if (selectedBrand) {
             filtered = filtered.filter(item => item.brand === selectedBrand)
@@ -57,13 +66,15 @@ const TypeProduct = () => {
             })
         }
 
-        setItems(filtered);
+        setItems(filtered)
     }
 
     useEffect(() => {
-        filteredItem()
-        setSelectedOption('')
-    }, [navbar, selectedBrand, selectedPrice])
+        if (productData.length > 0) {
+            filteredItem()
+            setSelectedOption('')
+        }
+    }, [productData, , selectedBrand, selectedPrice, catalog])
 
     const sorting = (): void => {
         if (items?.length === 0) return
@@ -87,13 +98,20 @@ const TypeProduct = () => {
             <Header />
             <Navbar />
 
-            <DescriptionTypeProduct navbar={navbar} />
+            <DescriptionCatalogProduct catalog={catalog} />
 
             <div className='flex gap-5 px-3.5 sm:px-7 mt-3.5 sm:mt-12 relative'>
                 <div
                     className={`w-56 h-fit bg-gray-100 px-3 py-5 rounded-md shadow-md hover:shadow-lg md:flex flex-col  ${show ? 'flex absolute z-50 top-10' : 'hidden'} `}
                 >
-                    <p className='font-semibold text-2xl'>{navbar}</p>
+                    <p className='font-semibold text-2xl'>
+                        {catalog === 'nuoc-hoa-nam' && 'Nước hoa nam'}
+                        {catalog === 'nuoc-hoa-nu' && 'Nước hoa nữ'}
+                        {catalog === 'nuoc-hoa-mini' && 'Nước hoa mini'}
+                        {catalog === 'giftset' && 'Giftset'}
+                        {catalog === 'bodycare&homecare' && 'Bodycare & Homecare'}
+                    </p>
+
 
                     <p className='mt-3.5 text-gray-500'>Bộ lọc</p>
                     <div className='flex items-center justify-between'>
@@ -198,4 +216,4 @@ const TypeProduct = () => {
     )
 }
 
-export default TypeProduct
+export default CatalogProduct

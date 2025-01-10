@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AppContext } from '../context/Context'
 import menu_hover_nam_1 from '../assets/menu_hover_nam_1.png'
 import menu_hover_nam_2 from '../assets/menu_hover_nam_2.png'
@@ -19,7 +19,7 @@ import menu_hover_bodyhomecare_3 from '../assets/menu_hover_bodyhomecare_3.png'
 
 const Navbar = () => {
 
-    const { navbar, setNavbar } = useContext(AppContext)
+    const { catalog } = useParams()
 
     return (
         <div className='mt-1.5 sm:mt-3 px-3.5 sm:px-7  overflow-x-scroll overflow-y-hidden'>
@@ -34,12 +34,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/nuoc-hoa-nam"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa nam' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('Nước hoa nam')}
+                    to="/product/nuoc-hoa-nam"
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nam' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nam
-                    <hr className={`${navbar === 'Nước hoa nam' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${catalog === 'nuoc-hoa-nam' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
@@ -85,12 +84,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/nuoc-hoa-nu"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa nữ' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('Nước hoa nữ')}
+                    to="/product/nuoc-hoa-nu"
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nu' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nữ
-                    <hr className={`${navbar === 'Nước hoa nữ' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${catalog === 'nuoc-hoa-nu' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
@@ -136,12 +134,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/nuoc-hoa-mini"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Nước hoa mini' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('Nước hoa mini')}
+                    to="/product/nuoc-hoa-mini"
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Mini
-                    <hr className={`${navbar === 'Nước hoa mini' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${catalog === 'nuoc-hoa-mini' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
@@ -187,12 +184,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/giftset"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Giftset' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('Giftset')}
+                    to="/product/giftset"
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'giftset' ? 'text-red-500' : ''}`}
                 >
                     Giftset
-                    <hr className={`${navbar === 'Giftset' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${catalog === 'giftset' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>
@@ -222,12 +218,11 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                    to="/bodycare&homecare"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${navbar === 'Bodycare & Homecare' ? 'text-red-500' : ''}`}
-                    onClick={() => setNavbar('Bodycare & Homecare')}
+                    to="/product/bodycare&homecare"
+                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'bodycare&homecare' ? 'text-red-500' : ''}`}
                 >
                     Bodycare & Homecare
-                    <hr className={`${navbar === 'Bodycare & Homecare' ? 'block' : 'hidden'} border-red-500`} />
+                    <hr className={`${catalog === 'bodycare&homecare' ? 'block' : 'hidden'} border-red-500`} />
 
                     <div className='absolute top-40 left-0 z-50 px-3.5 text-black sm:px-7 w-full hidden group-hover:flex'>
                         <div className='w-full bg-stone-100 rounded-md justify-between p-3 hidden sm:flex'>

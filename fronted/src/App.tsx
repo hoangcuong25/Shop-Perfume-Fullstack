@@ -7,10 +7,10 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
-import TypeProduct from './pages/TypeProduct'
 import Payment from './pages/Payment'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import CatalogProduct from './pages/CatalogProduct'
 
 const App = () => {
 
@@ -26,16 +26,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
 
-        <Route path='/nuoc-hoa-nam' element={<TypeProduct />} />
-        <Route path='/nuoc-hoa-nu' element={<TypeProduct />} />
-        <Route path='/nuoc-hoa-mini' element={<TypeProduct />} />
-        <Route path='/giftset' element={<TypeProduct />} />
-        <Route path='/bodycare&homecare' element={<TypeProduct />} />
+        <Route path='/product/:catalog/' element={<CatalogProduct />} />
+        <Route path='/product/:catalog/:brand' element={<CatalogProduct />} />
+        <Route path='/product/:catalog/:price' element={<CatalogProduct />} />
 
         <Route path='/product/:id' element={<DisplayProduct />} />
-
         <Route path='/my-profile' element={<MyProfile />} />
-
         <Route path='/thanh-toan' element={<Payment />} />
 
         <Route path='/login' element={<Login />} />

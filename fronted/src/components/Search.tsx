@@ -21,6 +21,7 @@ const Search = ({ onSearch, searchProducts }) => {
 
     return (
         <div className='hidden sm:flex items-center border border-gray-300 rounded-md w-72 h-9 hover:border-gray-500'>
+            <IoIosSearch onClick={handleSearch} className='text-2xl text-gray-600 ml-2 cursor-pointer' />
             <input
                 type="text"
                 className='w-full focus:outline-none px-2.5'
@@ -28,7 +29,6 @@ const Search = ({ onSearch, searchProducts }) => {
                 onChange={(e) => setQuery(e.target.value)}
             />
             {isSearch && <TiDeleteOutline onClick={handleClearSearch} className='mr-2 text-gray-500 text-xl cursor-pointer' />}
-            <IoIosSearch onClick={handleSearch} className='text-2xl text-gray-600 mr-2 cursor-pointer' />
         </div>
     )
 }

@@ -118,17 +118,17 @@ const AppContextProvider = (props) => {
     }
 
     useEffect(() => {
+        loadProductData()
+        getOrder()
+    }, [])
+
+    useEffect(() => {
         if (token) {
             loadUserProfileData()
         } else {
             setUserData(false)
         }
     }, [token])
-
-    useEffect(() => {
-        loadProductData()
-        getOrder()
-    }, [])
 
     useEffect(() => {
         totalPrice()
