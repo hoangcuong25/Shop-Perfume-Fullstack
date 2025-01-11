@@ -67,13 +67,6 @@ const TrackOrder = ({ setShow, show }: Props) => {
                     </div>
                 </>
                 : <div className='mt-3 flex md:flex-row flex-col gap-5'>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
                     <FaBox className='text-gray-700 text-8xl' />
                     <div className='flex flex-col'>
                         <p className='text-2xl font-bold mb-3.5'>Bạn chưa đặt đơn hàng nào!</p>
