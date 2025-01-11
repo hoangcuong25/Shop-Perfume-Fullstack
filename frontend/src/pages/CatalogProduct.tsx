@@ -211,13 +211,13 @@ const CatalogProduct = () => {
                             </div>
                         ))}
                     </div>
+
+                    <Pagination
+                        totalPosts={items?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
+                        currentPage={currentPage}
+                    />
                 </div>
             </div>
-
-            <Pagination
-                totalPosts={items?.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-            />
         </div >
     )
 }

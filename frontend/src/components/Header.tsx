@@ -19,7 +19,7 @@ import SearchModal from './SearchModal';
 
 const Header = () => {
 
-    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist } = useContext(AppContext)
+    const { setNavbar, token, setToken, userData, cart, setSidebar, wishlist, formatMoney } = useContext(AppContext)
 
     const navigate = useNavigate()
 
@@ -209,8 +209,11 @@ const Header = () => {
                                     <div className='flex flex-col border border-gray-300 rounded-md bg-white gap-3 '>
                                         {cart.map((i: any, index: number) => (
                                             <div key={index} className='flex items-center gap-3.5 text-xs w-72 px-3.5 py-2.5 border-b'>
-                                                <img src={i.product.image} className='size-12  ' alt="" />
-                                                <p>{i.product.name}</p>
+                                                <img src={i?.product.image} className='size-12  ' alt="" />
+                                                <div className='flex flex-col'>
+                                                    <p>{i?.product.name}</p>
+                                                    <p className='text-xs'><span className=' text-red-500'>{formatMoney(i?.product?.newPrice)} vnđ </span> - Số lượng: {i?.quantity}</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
