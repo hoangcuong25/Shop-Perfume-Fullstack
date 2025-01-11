@@ -43,7 +43,7 @@ const Search = ({ modalIsOpen }) => {
 
     return (
         <div className='relative'>
-            <div className={`${modalIsOpen ? 'flex' : 'hidden sm:flex'}  items-center border border-gray-300 rounded-md w-72 h-9 hover:border-gray-500`}>
+            <div className={`${modalIsOpen ? 'flex' : 'hidden sm:flex'} items-center border border-gray-300 rounded-md w-64 sm:w-72 h-9 hover:border-gray-500`}>
                 <IoIosSearch onClick={() => onSearch(query)} className='text-2xl text-gray-600 ml-2 cursor-pointer' />
                 <input
                     type="text"
