@@ -46,7 +46,6 @@ const AppContextProvider = (props) => {
 
             if (data.success) {
                 setProductData(data.dataProduct)
-
             } else {
                 toast.error(data.message)
             }
@@ -114,7 +113,7 @@ const AppContextProvider = (props) => {
         isWishlist,
         totalPrice,
         getOrder,
-        order, setOrder
+        order, setOrder,
     }
 
     useEffect(() => {

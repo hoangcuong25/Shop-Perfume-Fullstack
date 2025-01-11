@@ -10,10 +10,11 @@ import { FaStar } from "react-icons/fa";
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { AiOutlineReload } from "react-icons/ai";
+import CommentModal from '../components/CommentModal.js'
 
 const DisplayProduct = () => {
 
-    const { productData, formatMoney, loadUserProfileData, backendUrl, token } = useContext(AppContext)
+    const { productData, formatMoney, loadUserProfileData, backendUrl, token, comments } = useContext(AppContext)
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -140,9 +141,26 @@ const DisplayProduct = () => {
                         <p>0 đánh giá 2 sao</p>
                         <p>0 đánh giá 1 sao</p>
                     </div>
-                    <div className='bg-black rounded-md text-white md:px-3.5 px-1.5 md:py-3 py-1 md:text-base text-xs'>
-                        Đánh giá ngay
-                    </div>
+                    <CommentModal productInfo={productInfo} />
+                </div>
+
+                <div className='mt-3.5'>
+                    {
+                        productInfo?.comments.length != 0 ?
+                            <div className='flex flex-col gap-3.5'>
+                                {
+                                    productInfo?.comments.map((item: any, index: number) => (
+                                        <div className='border border-gray-300 px-2 py-2 rounded w-80 sm:w-[500px] '>
+                                            <p className='font-semibold capitalize'>{item?.userData?.firstName + " " + item?.userData?.lastName}:</p>
+                                            <p className='mt-1.5'>{item?.comment}</p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            : <div>
+                                Chưa có đánh giá nào về sản phẩm này
+                            </div>
+                    }
                 </div>
             </div>
 

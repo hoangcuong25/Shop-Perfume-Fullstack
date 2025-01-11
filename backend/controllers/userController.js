@@ -456,6 +456,38 @@ const search = async (req, res) => {
     }
 }
 
+// api comment 
+const comment = async (req, res) => {
+    try {
+        const { userId, comment, productId } = req.body
+
+        if (!comment) {
+            return res.json({ success: false, message: 'Hãy cho chúng tôi biết cảm nhận của bạn' })
+        }
+
+        const userData = await userModel.findById(userId)
+
+        const commentData = {
+            userData: userData,
+            comment: comment
+        }
+
+        const product = await productModel.findById(productId)
+
+        const comments = product.comments
+
+        comments.push(commentData)
+
+        await productModel.findByIdAndUpdate(productId, { comments: comments })
+
+        res.json({ success: true })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 export {
     registerUser,
     loginUser,
@@ -471,5 +503,6 @@ export {
     getOrder,
     updatePassword,
     updatePhone,
-    search
+    search,
+    comment
 }
