@@ -4,17 +4,6 @@ import Modal from 'react-modal'
 import { AppContext } from '../context/Context';
 import { toast } from 'react-toastify';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
-
 const ModalPassword = ({ modalIsOpen, setIsOpen }) => {
 
     const { backendUrl, token, loadProductData } = useContext(AppContext)

@@ -5,7 +5,7 @@ import { TiDeleteOutline } from 'react-icons/ti'
 import { toast } from 'react-toastify'
 import { AppContext } from '../context/Context'
 
-const Search = () => {
+const Search = ({ modalIsOpen }) => {
 
     const { formatMoney, backendUrl } = useContext(AppContext)
 
@@ -43,11 +43,12 @@ const Search = () => {
 
     return (
         <div className='relative'>
-            <div className='hidden sm:flex items-center border border-gray-300 rounded-md w-72 h-9 hover:border-gray-500'>
+            <div className={`${modalIsOpen ? 'flex' : 'hidden sm:flex'}  items-center border border-gray-300 rounded-md w-72 h-9 hover:border-gray-500`}>
                 <IoIosSearch onClick={() => onSearch(query)} className='text-2xl text-gray-600 ml-2 cursor-pointer' />
                 <input
                     type="text"
                     className='w-full focus:outline-none px-2.5'
+                    placeholder='Tìm kiếm'
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
@@ -56,7 +57,7 @@ const Search = () => {
 
             {isSearch && searchProducts.length != 0 && (
                 <div
-                    className={`absolute top-10 flex-col gap-3.5 bg-stone-100 rounded-md text-black w-[500px] h-96 z-50 flex overflow-y-scroll`}
+                    className={`absolute top-10 flex-col gap-3.5 bg-stone-100 rounded-md text-black w-[400px] h-96 z-50 flex overflow-y-scroll`}
                 >
                     {searchProducts?.map((item: any, index: number) => (
                         <div

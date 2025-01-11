@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { FiBell } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
-import { TiDeleteOutline } from "react-icons/ti";
 import { AiTwotoneShop } from "react-icons/ai";
 import { RiArticleLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
@@ -16,6 +15,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';
 import Search from './Search';
+import SearchModal from './SearchModal';
 
 const Header = () => {
 
@@ -61,7 +61,7 @@ const Header = () => {
 
                 <div className='flex justify-between mt-0 sm:mt-3.5'>
                     <div className='items-center gap-2 relative flex sm:hidden'>
-                        <IoIosSearch className='text-2xl text-gray-600' />
+                        <SearchModal />
                         {token ?
                             <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
                             : <FaRegUser onClick={() => navigate('/login')} />

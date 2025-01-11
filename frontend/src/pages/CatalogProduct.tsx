@@ -116,7 +116,10 @@ const CatalogProduct = () => {
                     <p className='mt-3.5 text-gray-500'>Bộ lọc</p>
                     <div className='flex items-center justify-between'>
                         <p className='mt-1.5 font-bold'>Thương Hiệu</p>
-                        <IoIosArrowDown className='cursor-pointer' onClick={() => setIsShowBrand(!isShowBrand)} />
+                        <IoIosArrowDown
+                            className={`cursor-pointer transition-all duration-300 ${isShowBrand === true && 'rotate-180'}`}
+                            onClick={() => setIsShowBrand(!isShowBrand)}
+                        />
                     </div>
 
                     {isShowBrand &&
@@ -146,7 +149,10 @@ const CatalogProduct = () => {
 
                     <div className='flex items-center justify-between mb-1'>
                         <p className='mt-1.5 font-bold'>Mức Giá</p>
-                        <IoIosArrowDown className='cursor-pointer' onClick={() => setIsShowPrice(!isShowPrice)} />
+                        <IoIosArrowDown
+                            className={`cursor-pointer transition-all duration-300 ${isShowPrice === true && 'rotate-180'}`}
+                            onClick={() => setIsShowPrice(!isShowPrice)}
+                        />
                     </div>
 
                     {isShowPrice &&
