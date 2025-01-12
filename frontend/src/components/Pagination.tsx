@@ -32,7 +32,7 @@ const Pagination = ({ totalPosts, postPerPage, setCurrentPage, currentPage }: Pr
             <button
                 onClick={() => prevPage()}
                 className="px-4 py-2 bg-gray-200 shadow-md hover:bg-gray-300 rounded-md transition-all duration-300">
-                ⮜ Prev
+                Prev
             </button>
             {pages.map((page, index) => (
                 <button
@@ -46,7 +46,7 @@ const Pagination = ({ totalPosts, postPerPage, setCurrentPage, currentPage }: Pr
             <button
                 onClick={() => nextPage()}
                 className="px-4 py-2 bg-gray-200 shadow-md hover:bg-gray-300 rounded-md transition-all duration-300">
-                Next ⮞
+                Next
             </button>
         </div>
     )

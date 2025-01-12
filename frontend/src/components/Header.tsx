@@ -78,12 +78,12 @@ const Header = () => {
 
                     <div className='hidden sm:flex items-center gap-1.5 text-gray-700  cursor-pointer'>
                         <AiTwotoneShop />
-                        <p className='hidden lg:block hover:text-red-500'>8 cửa hàng toàn quốc</p>
+                        <p className='hidden lg:block hover:text-red-500 font-medium'>8 cửa hàng toàn quốc</p>
                     </div>
 
                     <div className='hidden sm:flex items-center gap-1.5 text-gray-700 cursor-pointer relative group'>
                         <RiArticleLine />
-                        <p className='group-hover:text-red-500 hidden lg:block'>Nmagazine</p>
+                        <p className='group-hover:text-red-500 font-medium hidden lg:block'>Nmagazine</p>
 
                         <div className='absolute z-50 pt-8 top-2.5 -left-20 lf lg:-left-3.5 hidden group-hover:flex'>
                             <div className='border border-gray-300 rounded-md bg-white w-max px-3.5 py-3.5 flex flex-col gap-3.5'>
