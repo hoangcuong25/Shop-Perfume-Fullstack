@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react'
 import empty from '../assets/empty.png'
 import { Link } from 'react-router-dom'
@@ -13,9 +14,16 @@ type Props = {
     show: boolean
 }
 
-const Cart = ({ show, setShow }: Props) => {
+const Cart: React.FC<Props> = ({ show, setShow }) => {
 
-    const { cart, formatMoney, backendUrl, token, loadUserProfileData, totalPrice } = useContext(AppContext)
+    const {
+        cart,
+        formatMoney,
+        backendUrl,
+        token,
+        loadUserProfileData,
+        totalPrice,
+    } = useContext(AppContext)
 
     const removeFromCart = async (productId: string): Promise<void> => {
         try {
@@ -26,7 +34,7 @@ const Cart = ({ show, setShow }: Props) => {
                 loadUserProfileData()
             }
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
@@ -39,7 +47,7 @@ const Cart = ({ show, setShow }: Props) => {
                 loadUserProfileData()
             }
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
@@ -52,7 +60,7 @@ const Cart = ({ show, setShow }: Props) => {
                 loadUserProfileData()
             }
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }

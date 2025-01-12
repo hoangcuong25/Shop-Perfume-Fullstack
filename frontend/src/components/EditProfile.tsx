@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/Context'
 import { HiOutlineMail } from "react-icons/hi";
@@ -29,13 +30,20 @@ const EditProfile = ({ setShow, show }: Props) => {
         setIsOpen(true);
     }
 
-    const [image, setImage] = useState()
+    const [image, setImage] = useState<File | null>(null)
     const [lastName, setLastName] = useState(userData.lastName)
     const [firstName, setFirstName] = useState(userData.firstName)
     const [gender, setGender] = useState(userData.gender)
     const [address, setAddress] = useState(userData.address)
     const [dob, setdob] = useState(userData.dob)
     const [phone, setPhone] = useState<string>()
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files ? e.target.files[0] : null
+        if (file) {
+            setImage(file);
+        }
+    }
 
     const editProfile = async (): Promise<void> => {
         setLoading(true)
@@ -70,7 +78,7 @@ const EditProfile = ({ setShow, show }: Props) => {
                 toast.error(data.message);
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || error.message)
         }
 
@@ -89,7 +97,7 @@ const EditProfile = ({ setShow, show }: Props) => {
             }
 
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || error.message)
         }
 
@@ -116,7 +124,7 @@ const EditProfile = ({ setShow, show }: Props) => {
                             <img className='size-24 rounded-full' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
                             <p className='mt-3 text-sm text-center'>Tải ảnh của bạn</p>
                         </div>
-                        <input onChange={(e) => setImage(e.target.files[0])} type="file" id='image' hidden />
+                        <input onChange={handleFileChange} type="file" id='image' hidden />
                     </label>
 
                     <div className='flex flex-col gap-3.5'>

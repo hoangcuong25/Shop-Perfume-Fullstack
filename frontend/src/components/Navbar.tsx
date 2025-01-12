@@ -1,6 +1,4 @@
-import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { AppContext } from '../context/Context'
 import menu_hover_nam_1 from '../assets/menu_hover_nam_1.png'
 import menu_hover_nam_2 from '../assets/menu_hover_nam_2.png'
 import menu_hover_nam_3 from '../assets/menu_hover_nam_3.png'

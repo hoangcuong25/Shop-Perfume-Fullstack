@@ -1,6 +1,8 @@
-import React from 'react'
+type Props = {
+    catalog: string | undefined
+}
 
-const DescriptionCatalogProduct = ({ catalog }) => {
+const DescriptionCatalogProduct: React.FC<Props> = ({ catalog }) => {
     return (
         <div>
             {catalog === 'nuoc-hoa-nam' &&

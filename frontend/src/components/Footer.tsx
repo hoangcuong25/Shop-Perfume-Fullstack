@@ -1,5 +1,3 @@
-'use server'
-import React from 'react'
 import { SiInstagram } from "react-icons/si";
 import { FiFacebook } from "react-icons/fi";
 import { AiOutlineYoutube } from "react-icons/ai";

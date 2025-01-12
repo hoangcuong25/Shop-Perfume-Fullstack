@@ -1,7 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect, useContext } from 'react';
 import { AiOutlineReload } from 'react-icons/ai';
+import { AppContext } from '../context/Context';
 
-const StickyBar = ({ productInfo, formatMoney, addToCart, setLoading, loading }) => {
+type Props = {
+    productInfo: any
+}
+
+const StickyBar: React.FC<Props> = ({ productInfo }) => {
+
+    const { formatMoney, addToCart, loading } = useContext(AppContext)
 
     const [show, setShow] = useState<boolean>(false);
 

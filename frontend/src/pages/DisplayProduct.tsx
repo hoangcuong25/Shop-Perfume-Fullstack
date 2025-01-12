@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -14,7 +15,7 @@ import CommentModal from '../components/CommentModal.js'
 
 const DisplayProduct = () => {
 
-    const { productData, formatMoney, loadUserProfileData, backendUrl, token, comments } = useContext(AppContext)
+    const { productData, formatMoney, loadUserProfileData, backendUrl, token } = useContext(AppContext)
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -44,7 +45,7 @@ const DisplayProduct = () => {
                 scrollTo(0, 0)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
 
@@ -55,7 +56,7 @@ const DisplayProduct = () => {
         <div className='mb-16'>
             <Header />
             <Navbar />
-            <StickyBar productInfo={productInfo} formatMoney={formatMoney} addToCart={addToCart} loading={loading} setLoading={setLoading} />
+            <StickyBar productInfo={productInfo} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
                 <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.type} | </span><span className='font-semibold'>{productInfo?.name}</span></p>
@@ -150,7 +151,7 @@ const DisplayProduct = () => {
                             <div className='flex flex-col gap-3.5'>
                                 {
                                     productInfo?.comments.map((item: any, index: number) => (
-                                        <div className='border border-gray-300 px-2 py-2 rounded w-80 sm:w-[500px] '>
+                                        <div key={index} className='border border-gray-300 px-2 py-2 rounded w-80 sm:w-[500px] '>
                                             <p className='font-semibold capitalize'>{item?.userData?.firstName + " " + item?.userData?.lastName}:</p>
                                             <p className='mt-1.5'>{item?.comment}</p>
                                         </div>

@@ -1,24 +1,93 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-export const AppContext = createContext()
+export type CartItem = {
+    product: ProductData
+    quantity: number
+}
 
-const AppContextProvider = (props) => {
+export type ProductData = {
+    _id: string
+    name: string
+    des: string
+    brand: string
+    type: string
+    oldPrice: number
+    newPrice: number
+    image: string | null
+    comments: []
+}
 
-    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
+export type UserData = {
+    _id: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    password: string
+    dob: string
+    image: string | null
+    address: string
+    gender: string
+    cart: CartItem[]
+    wishlist: ProductData[]
+}
 
-    const [navbar, setNavbar] = useState<string>('')
+export type OrderData = {
+    _id: string
+    userId: string
+    status: string
+    productList: []
+    date: string
+    price: number
+    optionShip: string
+    optionPayment: string
+}
+
+interface AppContextType {
+    backendUrl: string
+    token: string | false
+    setToken: React.Dispatch<React.SetStateAction<string | false>>
+    userData: UserData | false
+    loadUserProfileData: () => Promise<void>
+    productData: ProductData[]
+    loadProductData: () => Promise<void>
+    formatMoney: (amount: number) => string
+    cart: CartItem[]
+    sidebar: string
+    setSidebar: React.Dispatch<React.SetStateAction<string>>
+    wishlistProduct: (productId: string) => Promise<void>
+    wishlist: ProductData[]
+    isWishlist: (productId: string) => boolean
+    totalPrice: () => number
+    getOrder: () => Promise<void>
+    order: OrderData[]
+}
+
+export const AppContext = createContext<AppContextType | any>({});
+
+interface AppContextProviderProps {
+    children: ReactNode
+}
+
+const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => {
+
+    const [token, setToken] = useState<string | false>(
+        localStorage.getItem("token") || false
+    )
+
     const [sidebar, setSidebar] = useState<string>('')
-    const [userData, setUserData] = useState(false)
-    const [cart, setCart] = useState([])
-    const [wishlist, setWishlist] = useState([])
-    const [productData, setProductData] = useState([])
-    const [order, setOrder] = useState([])
+    const [userData, setUserData] = useState<UserData | false>(false)
+    const [cart, setCart] = useState<CartItem[]>([])
+    const [wishlist, setWishlist] = useState<ProductData[]>([])
+    const [productData, setProductData] = useState<ProductData[]>([])
+    const [order, setOrder] = useState<OrderData[]>([])
 
     const backendUrl = 'http://localhost:4000'
 
-    function formatMoney(amount: number) {
+    function formatMoney(amount: number): string {
         return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
@@ -34,7 +103,7 @@ const AppContextProvider = (props) => {
                 toast.error(data.message)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
 
@@ -50,7 +119,7 @@ const AppContextProvider = (props) => {
                 toast.error(data.message)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
@@ -64,12 +133,12 @@ const AppContextProvider = (props) => {
                 loadUserProfileData()
             }
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
 
-    const isWishlist = (productId: string) => {
+    const isWishlist = (productId: string): boolean => {
         return wishlist?.some((i) => i?._id === productId) || false
     }
 
@@ -92,28 +161,27 @@ const AppContextProvider = (props) => {
             }
 
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
 
     const value = {
-        navbar, setNavbar,
         backendUrl,
         token, setToken,
-        userData, setUserData,
+        userData,
         loadUserProfileData,
-        productData, setProductData,
+        productData,
         loadProductData,
         formatMoney,
-        cart, setCart,
+        cart,
         sidebar, setSidebar,
         wishlistProduct,
-        wishlist, setWishlist,
+        wishlist,
         isWishlist,
         totalPrice,
         getOrder,
-        order, setOrder,
+        order,
     }
 
     useEffect(() => {
@@ -135,7 +203,7 @@ const AppContextProvider = (props) => {
 
     return (
         <AppContext.Provider value={value}>
-            {props.children}
+            {children}
         </AppContext.Provider>
     )
 }

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import { useContext} from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'

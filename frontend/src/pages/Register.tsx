@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -51,7 +52,7 @@ const Register = () => {
             } else {
                 toast.error(data.message)
             }
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { AppContext } from '../context/Context';
@@ -9,7 +10,7 @@ type Props = {
     show: boolean
 }
 
-const TrackOrder = ({ setShow, show }: Props) => {
+const TrackOrder: React.FC<Props> = ({ setShow, show }) => {
 
     const { order, formatMoney } = useContext(AppContext)
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Modal from 'react-modal';
 import Search from './Search';
 import { IoIosSearch } from 'react-icons/io';
@@ -16,16 +16,17 @@ const customStyles = {
 
 const SearchModal = () => {
 
-    let subtitle;
+    const subtitle = useRef<HTMLHeadingElement | null>(null)
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     function openModal() {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        subtitle.style.color = '#f00';
+    const afterOpenModal = () => {
+        if (subtitle.current) {
+            subtitle.current.style.color = '#f00'
+        }
     }
 
     function closeModal() {

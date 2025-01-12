@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'

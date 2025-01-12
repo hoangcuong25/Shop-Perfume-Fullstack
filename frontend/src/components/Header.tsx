@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import { FiBell } from "react-icons/fi";
-import { IoIosSearch } from "react-icons/io";
 import { AiTwotoneShop } from "react-icons/ai";
 import { RiArticleLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
@@ -74,7 +74,7 @@ const Header = () => {
                     >
                         namperfume
                     </Link>
-                    <Search />
+                    <Search modalIsOpen={false} />
 
                     <div className='hidden sm:flex items-center gap-1.5 text-gray-700  cursor-pointer'>
                         <AiTwotoneShop />

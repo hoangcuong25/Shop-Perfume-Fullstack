@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import wishlist_icon from '../assets/wishlist.jpg'
@@ -12,7 +13,7 @@ type Props = {
     show: boolean
 }
 
-const WishList = ({ setShow, show }: Props) => {
+const WishList: React.FC<Props> = ({ setShow, show }) => {
 
     const { wishlist, formatMoney, wishlistProduct } = useContext(AppContext)
 

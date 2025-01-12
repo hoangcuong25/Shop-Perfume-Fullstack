@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { toast } from 'react-toastify'
 import { AppContext } from '../context/Context'
 
-const Search = ({ modalIsOpen }) => {
+type Props = {
+    modalIsOpen: boolean
+}
+
+const Search: React.FC<Props> = ({ modalIsOpen }) => {
 
     const { formatMoney, backendUrl } = useContext(AppContext)
 
@@ -28,7 +33,7 @@ const Search = ({ modalIsOpen }) => {
                 toast.warning("Không tìm thấy sản phẩm!")
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong!!!")
         }
 

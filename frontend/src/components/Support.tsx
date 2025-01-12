@@ -1,5 +1,3 @@
-'use server'
-import React from 'react'
 import { BiMessageDetail } from "react-icons/bi";
 
 const Support = () => {

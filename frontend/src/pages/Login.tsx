@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { AppContext } from '../context/Context';
-import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -37,7 +36,7 @@ const Login = () => {
                 toast.error(data.message)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }

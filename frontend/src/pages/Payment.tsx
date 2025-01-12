@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import { AppContext } from '../context/Context'
@@ -42,7 +43,7 @@ const Payment = () => {
                 getOrder()
             }
         }
-        catch (error) {
+        catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
 

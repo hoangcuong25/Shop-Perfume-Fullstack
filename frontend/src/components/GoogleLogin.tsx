@@ -1,22 +1,27 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
+
+interface CredentialResponse {
+    credential: string;
+}
 
 const GoogleLoginForm = () => {
+    const handleSuccess = (credentialResponse: any) => {
+        const decodedResponse = jwtDecode<CredentialResponse>(credentialResponse.credential);
+        console.log(decodedResponse);
+    }
+
+    const handleError = () => {
+        console.log('Login Failed');
+    }
+
     return (
         <GoogleLogin
-            onSuccess={credentialResponse => {
-                const credentialResponseDecoded = jwtDecode(
-                    credentialResponse.credential
-                )
-
-                console.log(credentialResponseDecoded)
-            }}
-            onError={() => {
-                console.log('Login Failed');
-            }}
+            onSuccess={handleSuccess}
+            onError={handleError}
         />
     )
 }
 
-export default GoogleLoginForm
+export default GoogleLoginForm;

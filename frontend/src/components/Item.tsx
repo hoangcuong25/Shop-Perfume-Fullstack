@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context'
 
@@ -18,9 +19,7 @@ const Item = ({
     name,
     newPrice,
     oldPrice,
-    id,
-    des
-}: Props) => {
+    id }: Props) => {
 
     const { formatMoney } = useContext(AppContext)
 

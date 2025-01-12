@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { AppContext } from '../context/Context';
 import { toast } from 'react-toastify';
+import { ProductData } from '../context/Context'
 
 const customStyles = {
     content: {
@@ -12,28 +14,33 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-    },
-};
+    }
+}
+type Props = {
+    productInfo: ProductData
+}
 
-const CommentModal = ({ productInfo }) => {
+const CommentModal: React.FC<Props> = ({ productInfo }) => {
 
     const { backendUrl, token, loadProductData } = useContext(AppContext)
 
     const [comment, setComment] = useState<string>('')
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    let subtitle
+    const subtitle = useRef<HTMLHeadingElement | null>(null)
 
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
+    const afterOpenModal = () => {
+        if (subtitle.current) {
+            subtitle.current.style.color = '#f00'
+        }
     }
 
     function openModal() {
-        setIsOpen(true);
+        setIsOpen(true)
     }
 
     function closeModal() {
-        setIsOpen(false);
+        setIsOpen(false)
     }
 
     const productId = productInfo?._id
@@ -50,7 +57,7 @@ const CommentModal = ({ productInfo }) => {
                 toast.error(data.message)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
@@ -72,7 +79,9 @@ const CommentModal = ({ productInfo }) => {
             >
                 <div className='flex justify-between items-start mb-7'>
                     <div>
-                        <h2 className='text-red-500' ref={(_subtitle) => (subtitle = _subtitle)}>Đánh giá sản phẩm</h2>
+                        <h2 className='text-red-500' ref={(el) => {
+                            subtitle.current = el
+                        }}>Đánh giá sản phẩm</h2>
                         <p>{productInfo?.name}</p>
                     </div>
                     <button onClick={closeModal}>X</button>

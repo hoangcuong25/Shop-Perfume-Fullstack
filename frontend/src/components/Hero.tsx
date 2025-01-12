@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import HeroBanner from '../assets/banner.js'
-import banner_brand from '../assets/banner_brand.js'
-import logo_brand from '../assets/logo_brand.js'
+import HeroBanner from '../assets/banner.js';
+import banner_brand from '../assets/banner_brand.js';
+import logo_brand from '../assets/logo_brand.js';
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { IoIosArrowDropright } from "react-icons/io";
@@ -13,16 +14,16 @@ import for_her from '../assets/for_her.png'
 import sale from '../assets/sale.png'
 import new_in from '../assets/new_in.png'
 import { AppContext } from '../context/Context.js';
-import Item from './item.js';
 import { Link } from 'react-router-dom';
+import Item from './Item'
 
 const Hero = () => {
 
-    const { productData, setNavbar, wishlistProduct, isWishlist } = useContext(AppContext)
+    const { productData, wishlistProduct, isWishlist } = useContext(AppContext)
 
-    const miniSize = productData?.filter((i) => i.type === 'Nước hoa mini')
-    const giftset = productData?.filter((i) => i.type === 'Giftset')
-    const bodyAndHome = productData?.filter((i) => i.type === 'Bodycare & Homecare')
+    const miniSize = productData?.filter((i: { type: string }) => i.type === 'Nước hoa mini')
+    const giftset = productData?.filter((i: { type: string }) => i.type === 'Giftset')
+    const bodyAndHome = productData?.filter((i: { type: string }) => i.type === 'Bodycare & Homecare')
 
     const setting1 = {
         dots: true,
@@ -195,7 +196,7 @@ const Hero = () => {
                 <Link
                     to='/nuoc-hoa-nam'
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
-                    onClick={() => { scrollTo(0, 0), setNavbar('Nước hoa nam') }}
+                    onClick={() => { scrollTo(0, 0) }}
                 >
                     <img src={for_him} className=' w-40 md:w-60 xl:w-72  ' alt="" />
                     <p>For Him</p>
@@ -203,7 +204,7 @@ const Hero = () => {
                 <Link
                     to='/nuoc-hoa-nu'
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
-                    onClick={() => { scrollTo(0, 0), setNavbar('Nước hoa nữ') }}
+                    onClick={() => { scrollTo(0, 0) }}
                 >
                     <img src={for_her} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>For Her</p>

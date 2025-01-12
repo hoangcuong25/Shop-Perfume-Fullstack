@@ -3,7 +3,7 @@ type Props = {
     setSelectedOption: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Sorting = ({ setSelectedOption, selectedOption }: Props) => {
+const Sorting: React.FC<Props> = ({ setSelectedOption, selectedOption }) => {
 
     return (
         <div className="relative group">

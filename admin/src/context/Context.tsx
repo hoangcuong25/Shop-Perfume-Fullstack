@@ -10,9 +10,9 @@ const AppContextProvider = (props) => {
 
     const backendUrl = 'http://localhost:4000'
 
-    const [users, setUsers] = useState<any[]>([])
-    const [products, setProducts] = useState<any[]>([])
-    const [orders, setOrders] = useState<any[]>([])
+    const [users, setUsers] = useState([])
+    const [products, setProducts] = useState([])
+    const [orders, setOrders] = useState([])
 
     function formatMoney(amount: number) {
         return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');

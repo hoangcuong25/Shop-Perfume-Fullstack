@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { AppContext } from '../context/Context';
 import { toast } from 'react-toastify';
@@ -13,9 +14,14 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
-};
+}
 
-const ModalPassword = ({ modalIsOpen, setIsOpen }) => {
+type Props = {
+    modalIsOpen: boolean
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ModalPassword: React.FC<Props> = ({ modalIsOpen, setIsOpen }) => {
 
     const { backendUrl, token, loadProductData } = useContext(AppContext)
 
@@ -23,10 +29,12 @@ const ModalPassword = ({ modalIsOpen, setIsOpen }) => {
     const [newPassword1, setnewPassword1] = useState<string>()
     const [newPassword2, setnewPassword2] = useState<string>()
 
-    let subtitle
+    const subtitle = useRef<HTMLHeadingElement | null>(null)
 
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
+    const afterOpenModal = () => {
+        if (subtitle.current) {
+            subtitle.current.style.color = '#f00'
+        }
     }
 
     function closeModal() {
@@ -43,7 +51,7 @@ const ModalPassword = ({ modalIsOpen, setIsOpen }) => {
                 closeModal()
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
@@ -58,7 +66,9 @@ const ModalPassword = ({ modalIsOpen, setIsOpen }) => {
                 contentLabel="Example Modal"
             >
                 <div className='flex justify-between'>
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Đổi mật khẩu</h2>
+                    <h2 ref={(el) => {
+                        subtitle.current = el
+                    }}>Đổi mật khẩu</h2>
                     <button className='hover:text-red-500' onClick={closeModal}>X</button>
                 </div>
 

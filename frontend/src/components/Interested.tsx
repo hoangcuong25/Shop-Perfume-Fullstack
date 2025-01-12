@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Item from '../components/item.js';
+import Item from '../components/Item'
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { AppContext } from '../context/Context.js';

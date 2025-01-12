@@ -1,9 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-const */
+import { useContext, useEffect, useState } from 'react'
 import Header from '../components/Header.js'
 import Navbar from '../components/Navbar.js'
 import { IoIosArrowDown } from "react-icons/io";
 import { AppContext } from '../context/Context.js';
-import Item from '../components/item.js';
+import Item from '../components/Item';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
@@ -30,7 +34,7 @@ const CatalogProduct = () => {
     const [selectedOption, setSelectedOption] = useState<string>('')
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(9)
+    const [postPerPage] = useState(9)
 
     const lastPostIndex = currentPage * postPerPage
     const firstPostIndex = lastPostIndex - postPerPage
@@ -45,14 +49,14 @@ const CatalogProduct = () => {
         if (catalog === 'giftset') { catalogProduct = 'Giftset' }
         if (catalog === 'bodycare&homecare') { catalogProduct = 'Bodycare & Homecare' }
 
-        let filtered = productData?.filter(item => item.type === catalogProduct)
+        let filtered = productData?.filter((item: { type: string }) => item.type === catalogProduct)
 
         if (selectedBrand) {
-            filtered = filtered.filter(item => item.brand === selectedBrand)
+            filtered = filtered.filter((item: { brand: string; }) => item.brand === selectedBrand)
         }
 
         if (selectedPrice) {
-            filtered = filtered.filter(item => {
+            filtered = filtered.filter((item: { newPrice: number; }) => {
                 if (selectedPrice === 'Dưới 2 triệu') {
                     return item.newPrice < 2000000;
                 }
@@ -74,16 +78,16 @@ const CatalogProduct = () => {
             filteredItem()
             setSelectedOption('')
         }
-    }, [productData, , selectedBrand, selectedPrice, catalog])
+    }, [productData, selectedBrand, selectedPrice, catalog])
 
     const sorting = (): void => {
         if (items?.length === 0) return
         let sortedArray = [...items]
 
         if (selectedOption === 'Giá thấp đến cao') {
-            sortedArray.sort((a, b) => a.newPrice - b.newPrice)
+            sortedArray.sort((a: any, b: any) => a.newPrice - b.newPrice)
         } else if (selectedOption === 'Giá cao đến thấp') {
-            sortedArray.sort((a, b) => b.newPrice - a.newPrice)
+            sortedArray.sort((a: any, b: any) => b.newPrice - a.newPrice)
         }
 
         setItems(sortedArray)
@@ -201,7 +205,7 @@ const CatalogProduct = () => {
                     </div>
 
                     <div className='mt-8 flex flex-wrap gap-5 justify-center'>
-                        {currentPosts?.map((item, index) => (
+                        {currentPosts?.map((item: any, index: number) => (
                             <div key={index} className='relative'>
                                 <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
                                 {isWishlist(item?._id) ?
