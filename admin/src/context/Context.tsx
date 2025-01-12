@@ -72,7 +72,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => 
         localStorage.getItem("atoken") || false
     )
 
-    const backendUrl = 'http://localhost:4000'
+    const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
 
     const [users, setUsers] = useState([])
     const [products, setProducts] = useState([])
