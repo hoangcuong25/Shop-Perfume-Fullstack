@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useState } from 'react'
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
@@ -43,7 +44,7 @@ const Login = () => {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
 
-        setLoading(f)
+        setLoading(false)
     }
 
     return (
