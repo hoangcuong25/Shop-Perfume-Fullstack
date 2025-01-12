@@ -19,6 +19,11 @@ const Search: React.FC<Props> = ({ modalIsOpen }) => {
     const [isSearch, setIsSearch] = useState<boolean>(false)
 
     const onSearch = async (query: string): Promise<void> => {
+        if (!query) {
+            toast.warning("Không tìm thấy sản phẩm!")
+            return
+        }
+
         try {
             const { data } = await axios.get(
                 backendUrl + "/api/user/search",

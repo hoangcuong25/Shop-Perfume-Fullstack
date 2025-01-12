@@ -5,6 +5,7 @@ import Modal from 'react-modal'
 import { AppContext } from '../context/Context';
 import { toast } from 'react-toastify';
 import { ProductData } from '../context/Context'
+import { AiOutlineReload } from 'react-icons/ai';
 
 const customStyles = {
     content: {
@@ -23,6 +24,8 @@ type Props = {
 const CommentModal: React.FC<Props> = ({ productInfo }) => {
 
     const { backendUrl, token, loadProductData } = useContext(AppContext)
+
+    const [loadingComment, setLoadingComment] = useState<boolean>(false)
 
     const [comment, setComment] = useState<string>('')
 
@@ -46,6 +49,8 @@ const CommentModal: React.FC<Props> = ({ productInfo }) => {
     const productId = productInfo?._id
 
     const userComment = async () => {
+        setLoadingComment(true)
+
         try {
             const { data } = await axios.post(backendUrl + '/api/user/comment', { comment, productId }, { headers: { token } })
 
@@ -60,6 +65,8 @@ const CommentModal: React.FC<Props> = ({ productInfo }) => {
         } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+
+        setLoadingComment(false)
     }
 
     return (
@@ -96,9 +103,14 @@ const CommentModal: React.FC<Props> = ({ productInfo }) => {
                     />
                 </div>
 
-                <div onClick={() => userComment()} className='bg-red-500 py-2 mt-3.5 text-white text-center cursor-pointer'>
-                    Đánh giá
-                </div>
+                {loadingComment ?
+                    <div className='flex justify-center bg-gray-300 py-2 mt-3.5 text-white text-center cursor-pointer'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-xl' />
+                    </div>
+                    : <div onClick={() => userComment()} className='bg-red-500 py-2 mt-3.5 text-white text-center cursor-pointer'>
+                        Đánh giá
+                    </div>
+                }
             </Modal>
         </div>
     )

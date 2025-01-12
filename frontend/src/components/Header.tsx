@@ -69,7 +69,7 @@ const Header = () => {
                     </div>
                     <Link
                         to='/'
-                        className='ml-3.5 sm:ml-0 text-red-500 text-2xl md:text-3xl font-medium cursor-pointer'
+                        className='ml-5 sm:ml-0 text-red-500 text-2xl md:text-3xl font-medium cursor-pointer'
                         onClick={() => setNavbar('/')}
                     >
                         namperfume

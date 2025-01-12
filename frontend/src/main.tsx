@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')!).render(
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <AppContextProvider>
         <App />
-        <ToastContainer />
+        <ToastContainer autoClose={1000} />
       </AppContextProvider>
     </GoogleOAuthProvider>
   </StrictMode>,
