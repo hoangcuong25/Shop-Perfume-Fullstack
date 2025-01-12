@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import GoogleLoginForm from '../components/GoogleLogin';
+import { AiOutlineReload } from 'react-icons/ai';
 
 const Login = () => {
 
@@ -14,6 +15,7 @@ const Login = () => {
 
     const { backendUrl, setToken } = useContext(AppContext)
 
+    const [loading, setLoading] = useState<boolean>(false)
 
     const [isShow, setIsShow] = useState<boolean>(false)
 
@@ -22,6 +24,7 @@ const Login = () => {
 
     const login = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault()
+        setLoading(true)
 
         try {
             const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
@@ -39,6 +42,8 @@ const Login = () => {
         } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+
+        setLoading(f)
     }
 
     return (
@@ -81,7 +86,12 @@ const Login = () => {
 
                 <Link className='mt-2 text-xs text-blue-400 text-center ' to='/'>Quên mật khẩu</Link>
 
-                <button type='submit' className='bg-red-500 text-white mt-3.5 rounded-lg px-24 py-1 '>Đăng Nhập</button>
+                {loading ?
+                    <button type='submit' className='flex justify-center bg-gray-300 text-white mt-3.5 rounded-lg w-[264px] text-center py-1 '>
+                        <AiOutlineReload className='animate-spin text-green-500 text-xl text-center' />
+                    </button>
+                    : <button type='submit' className='bg-red-500 text-white mt-3.5 rounded-lg px-24 py-1 '>Đăng Nhập</button>
+                }
 
                 <p className='mt-3 text-center font-medium'>Đăng nhập với</p>
 

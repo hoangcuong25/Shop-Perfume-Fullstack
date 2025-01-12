@@ -192,7 +192,7 @@ const Hero = () => {
                 </Slider>
             </div>
 
-            <div data-aos="fade-up" className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
+            <div className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
                 <Link
                     to='/nuoc-hoa-nam'
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'

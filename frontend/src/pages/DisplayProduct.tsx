@@ -56,7 +56,7 @@ const DisplayProduct = () => {
         <div className='mb-16'>
             <Header />
             <Navbar />
-            <StickyBar productInfo={productInfo} />
+            <StickyBar productInfo={productInfo} addToCart={addToCart} loading={loading} />
 
             <div className='flex flex-col gap-1.5 mt-1.5 sm:mt-3.5 px-3.5 sm:px-7'>
                 <p className='text-sm '><span className='text-gray-500'>Trang chủ | {productInfo?.type} | </span><span className='font-semibold'>{productInfo?.name}</span></p>

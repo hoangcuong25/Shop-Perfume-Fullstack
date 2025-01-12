@@ -7,18 +7,10 @@ import Login from './pages/Login'
 import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
 import Payment from './pages/Payment'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 import CatalogProduct from './pages/CatalogProduct'
 
 const App = () => {
 
-  AOS.init({
-    offset: 100,
-    duration: 500,
-    easing: 'ease-in-sine',
-    delay: 200,
-  })
 
   return (
     <BrowserRouter>

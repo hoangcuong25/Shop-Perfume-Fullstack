@@ -60,7 +60,7 @@ const Header = () => {
                 </div>
 
                 <div className='flex justify-between mt-0 sm:mt-3.5'>
-                    <div className='items-center gap-2 relative flex sm:hidden'>
+                    <div className='items-center gap-7 relative flex sm:hidden'>
                         <SearchModal />
                         {token ?
                             <img onClick={() => navigate('/my-profile')} src={userData?.image} className='lg:size-10 size-7 rounded-full' alt="" />
@@ -69,7 +69,7 @@ const Header = () => {
                     </div>
                     <Link
                         to='/'
-                        className='text-red-500 text-2xl md:text-3xl font-medium cursor-pointer'
+                        className='ml-3.5 sm:ml-0 text-red-500 text-2xl md:text-3xl font-medium cursor-pointer'
                         onClick={() => setNavbar('/')}
                     >
                         namperfume

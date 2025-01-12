@@ -5,11 +5,13 @@ import { AppContext } from '../context/Context';
 
 type Props = {
     productInfo: any
+    addToCart: (productId: string | undefined) => Promise<void>
+    loading: boolean
 }
 
-const StickyBar: React.FC<Props> = ({ productInfo }) => {
+const StickyBar: React.FC<Props> = ({ productInfo, addToCart, loading }) => {
 
-    const { formatMoney, addToCart, loading } = useContext(AppContext)
+    const { formatMoney } = useContext(AppContext)
 
     const [show, setShow] = useState<boolean>(false);
 

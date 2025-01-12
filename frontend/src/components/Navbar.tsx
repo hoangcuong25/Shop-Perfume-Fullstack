@@ -21,19 +21,18 @@ const Navbar = () => {
 
     return (
         <div className='mt-1.5 sm:mt-3 px-3.5 sm:px-7  overflow-x-scroll overflow-y-hidden'>
-            <div className='flex justify-start gap-3 lg:gap-7 whitespace-nowrap'>
+            <div className='flex justify-start gap-3 lg:gap-8 xl:gap-12 whitespace-nowrap'>
                 <Link
                     to='/'
-                    className='text-sm text-red-600 font-bold py-1 mx-1.5'
+                    className='xl:text-lg text-red-600 font-bold py-1 mx-1.5'
                     onClick={() => scrollTo(0, 1000)}
                 >
                     Brand Of The Year
-
                 </Link>
 
                 <Link
                     to="/nuoc-hoa-nam"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nam' ? 'text-red-500' : ''}`}
+                    className={`font-medium hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nam' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nam
                     <hr className={`${catalog === 'nuoc-hoa-nam' ? 'block' : 'hidden'} border-red-500`} />
@@ -83,7 +82,7 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-nu"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nu' ? 'text-red-500' : ''}`}
+                    className={`font-medium hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-nu' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Nữ
                     <hr className={`${catalog === 'nuoc-hoa-nu' ? 'block' : 'hidden'} border-red-500`} />
@@ -133,7 +132,7 @@ const Navbar = () => {
 
                 <Link
                     to="/nuoc-hoa-mini"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
+                    className={`font-medium hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'nuoc-hoa-mini' ? 'text-red-500' : ''}`}
                 >
                     Nước Hoa Mini
                     <hr className={`${catalog === 'nuoc-hoa-mini' ? 'block' : 'hidden'} border-red-500`} />
@@ -183,7 +182,7 @@ const Navbar = () => {
 
                 <Link
                     to="/giftset"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'giftset' ? 'text-red-500' : ''}`}
+                    className={`font-medium hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'giftset' ? 'text-red-500' : ''}`}
                 >
                     Giftset
                     <hr className={`${catalog === 'giftset' ? 'block' : 'hidden'} border-red-500`} />
@@ -217,7 +216,7 @@ const Navbar = () => {
 
                 <Link
                     to="/bodycare&homecare"
-                    className={`text-sm hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'bodycare&homecare' ? 'text-red-500' : ''}`}
+                    className={`font-medium hover:text-rose-600 group py-1 pt-1 pb-5 mx-1.5 ${catalog === 'bodycare&homecare' ? 'text-red-500' : ''}`}
                 >
                     Bodycare & Homecare
                     <hr className={`${catalog === 'bodycare&homecare' ? 'block' : 'hidden'} border-red-500`} />
