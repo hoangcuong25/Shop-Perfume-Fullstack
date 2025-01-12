@@ -6,6 +6,7 @@ import { FaRegEye } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/Context'
 import { toast } from 'react-toastify'
+import { AiOutlineReload } from 'react-icons/ai';
 
 const Register = () => {
 
@@ -14,6 +15,8 @@ const Register = () => {
     const { backendUrl, setToken } = useContext(AppContext)
 
     const [isShow, setIsShow] = useState<boolean>(false)
+
+    const [loadingLogin, setLoadingLogin] = useState<boolean>(false)
 
     const [firstName, setFirstName] = useState<string>('')
     const [lastName, setLastName] = useState<string>('')
@@ -24,6 +27,8 @@ const Register = () => {
     const [dob, setDob] = useState<string>('')
 
     const register = async (e: React.FormEvent): Promise<void> => {
+        setLoadingLogin(true)
+
         try {
             e.preventDefault()
 
@@ -55,6 +60,8 @@ const Register = () => {
         } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
+        
+        setLoadingLogin(false)
     }
 
     return (
@@ -153,7 +160,12 @@ const Register = () => {
                     />
                 </div>
 
-                <button type='submit' className='bg-red-500 text-white mt-3.5 rounded-lg px-24 py-1 '>Đăng Ký</button>
+                {loadingLogin ?
+                    <button type='submit' className='flex justify-center bg-gray-300 mt-3.5 rounded-lg  py-1 '>
+                        <AiOutlineReload className='animate-spin text-green-500 text-xl text-center' />
+                    </button>
+                    : <button type='submit' className='bg-red-500 text-white mt-3.5 rounded-lg px-24 py-1 '>Đăng Ký</button>
+                }
 
                 <div className='text-xs'>
                     <p>Khi đăng ký, bạn đã đồng ý với <span className='font-bold'>điều khoản sử dụng</span> và nội quy diễn</p>
