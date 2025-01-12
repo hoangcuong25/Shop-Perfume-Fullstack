@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useState } from 'react'
 import upload from '../assets/upload.png'
 import { toast } from 'react-toastify';
@@ -12,7 +13,7 @@ interface Product {
     type: string
     oldPrice: string
     newPrice: string
-    image: string | null
+    image: string | null | File
 }
 
 const AddProduct = () => {
@@ -49,7 +50,7 @@ const AddProduct = () => {
                 toast.error(data.message)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong")
         }
 
@@ -134,11 +135,16 @@ const AddProduct = () => {
                     <label className="block mb-2">Hình ảnh sản phẩm</label>
                     <label htmlFor="image">
                         <div className='inline-block relative cursor-pointer'>
-                            <img className='size-36 ' src={product.image ? URL.createObjectURL(product.image) : upload} alt="" />
+                            <img className='size-36 ' src={product.image ? URL.createObjectURL(product.image as unknown as Blob) : upload} alt="" />
                             <p className='mt-3 text-sm text-center'>Tải ảnh của bạn</p>
                         </div>
                         <input
-                            onChange={(e) => { setProduct((prev) => ({ ...prev, image: e.target.files[0] })) }}
+                            onChange={(e) => {
+                                const file = e.target.files ? e.target.files[0] : null
+                                if (file) {
+                                    setProduct((prev) => ({ ...prev, image: file }))
+                                }
+                            }}
                             type="file"
                             id='image'
                             hidden

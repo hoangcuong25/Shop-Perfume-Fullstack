@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import { AppContext } from '../context/Context'
 import { GiPerfumeBottle } from 'react-icons/gi'
 

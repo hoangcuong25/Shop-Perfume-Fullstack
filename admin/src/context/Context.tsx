@@ -1,14 +1,78 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-export const AppContext = createContext()
+export type CartItem = {
+    product: ProductData
+    quantity: number
+}
 
-const AppContextProvider = (props) => {
+export type ProductData = {
+    _id: string
+    name: string
+    des: string
+    brand: string
+    type: string
+    oldPrice: number
+    newPrice: number
+    image: string | null
+    comments: []
+}
 
-    const [token, setToken] = useState(localStorage.getItem('atoken') ? localStorage.getItem('atoken') : false)
+export type UserData = {
+    _id: string
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    password: string
+    dob: string
+    image: string | null
+    address: string
+    gender: string
+    cart: CartItem[]
+    wishlist: ProductData[]
+}
 
-    const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
+export type OrderData = {
+    _id: string
+    userId: string
+    status: string
+    productList: []
+    date: string
+    price: number
+    optionShip: string
+    optionPayment: string
+}
+
+interface AppContextType {
+    backendUrl: string
+    token: string | false
+    setToken: React.Dispatch<React.SetStateAction<string | false>>
+    users: UserData | false
+    products: ProductData[]
+    order: OrderData[]
+    getAllUser: () => Promise<void>
+    getAllProduct: () => Promise<void>
+    formatMoney: (amount: number) => string
+}
+
+
+export const AppContext = createContext<AppContextType | any>({})
+
+interface AppContextProviderProps {
+    children: ReactNode
+}
+
+const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => {
+
+    const [token, setToken] = useState<string | false>(
+        localStorage.getItem("atoken") || false
+    )
+
+    const backendUrl = 'http://localhost:4000'
 
     const [users, setUsers] = useState([])
     const [products, setProducts] = useState([])
@@ -26,7 +90,7 @@ const AppContextProvider = (props) => {
                 setUsers(data.users)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(
                 error.response?.data?.message || "Something went wrong"
             )
@@ -41,7 +105,7 @@ const AppContextProvider = (props) => {
                 setProducts(data.products)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(
                 error.response?.data?.message || "Something went wrong"
             )
@@ -56,7 +120,7 @@ const AppContextProvider = (props) => {
                 setOrders(data.orders)
             }
 
-        } catch (error) {
+        } catch (error: any) {
             toast.error(
                 error.response?.data?.message || "Something went wrong"
             )
@@ -66,11 +130,10 @@ const AppContextProvider = (props) => {
     const value = {
         backendUrl,
         getAllUser,
-        users, setUsers,
+        users,
         getAllProduct,
-        products, setProducts,
-        getAllOrder,
-        orders, setOrders,
+        products,
+        orders,
         formatMoney,
         token, setToken
     }
@@ -84,7 +147,7 @@ const AppContextProvider = (props) => {
 
     return (
         <AppContext.Provider value={value}>
-            {props.children}
+            {children}
         </AppContext.Provider>
     )
 }

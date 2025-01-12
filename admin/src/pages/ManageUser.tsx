@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import { FaUsers } from 'react-icons/fa'
 import { AppContext } from '../context/Context'
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/Context'
 import axios from 'axios'
@@ -21,7 +22,7 @@ const Login = () => {
             } else {
                 toast.error("Tài khoản hoặc mật khẩu không đúng")
             }
-        } catch (error) {
+        } catch (error: any) {
             toast.error(error.message)
         }
     }
