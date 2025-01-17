@@ -12,7 +12,7 @@ const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
-const allowedOrigins = ["http://localhost:5173"]
+const allowedOrigins = ["https://shop-perfume-fullstack.vercel.app"]
 
 // middlewares
 app.use(express.json())
