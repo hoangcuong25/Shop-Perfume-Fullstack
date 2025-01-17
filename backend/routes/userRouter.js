@@ -1,5 +1,5 @@
 import express from 'express'
-import { addToCart, wishlist, decreaseQuantity, getProduct, updatePhone, increaseQuantity, loginUser, profile, registerUser, removeFromCart, updateProfile, order, getOrder, updatePassword, search, comment } from '../controllers/userController.js'
+import { addToCart, wishlist, decreaseQuantity, getProduct, updatePhone, increaseQuantity, loginUser, profile, registerUser, removeFromCart, updateProfile, order, getOrder, updatePassword, search, comment, sendResetOtp, resetPassword } from '../controllers/userController.js'
 import authUser from '../middlewares/authUser.js'
 import upload from '../middlewares/multer.js'
 
@@ -21,5 +21,7 @@ userRouter.post('/order', authUser, order)
 userRouter.get('/get-order', authUser, getOrder)
 userRouter.get('/search', search)
 userRouter.post('/comment', authUser, comment)
+userRouter.post("/send-reset-otp", sendResetOtp)
+userRouter.post("/reset-password", resetPassword)
 
 export default userRouter

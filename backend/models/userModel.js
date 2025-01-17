@@ -11,7 +11,9 @@ const userSchema = new mongoose.Schema({
     address: { type: String, default: "Không xác định" },
     gender: { type: String, default: "Không xác định" },
     cart: { type: Array, default: [] },
-    wishlist: { type: Array, default: [] }
+    wishlist: { type: Array, default: [] },
+    resetOpt: { type: String, default: "" },
+    resetOptExpireAt: { type: Number, default: 0 },
 }, { minimize: false })
 
 const userModel = mongoose.model('user', userSchema)

@@ -8,6 +8,7 @@ import DisplayProduct from './pages/DisplayProduct'
 import MyProfile from './pages/MyProfile'
 import Payment from './pages/Payment'
 import CatalogProduct from './pages/CatalogProduct'
+import ResetPassword from './pages/ResetPassword'
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
 
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
       </Routes>
       <Footer />
       <Support />

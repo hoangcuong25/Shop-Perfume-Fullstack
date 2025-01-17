@@ -48,7 +48,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex flex-col items-center gap-5 mt-3 mb-10 md:mt-5'>
+        <div className='flex flex-col items-center gap-5 mt-3 mb-10 md:mt-5 '>
             <Link to='/' className='text-3xl font-bold text-red-500'>namperfume</Link>
 
             <div className='text-center'>
@@ -85,7 +85,7 @@ const Login = () => {
                     }
                 </div>
 
-                <Link className='mt-2 text-xs text-blue-400 text-center ' to='/'>Quên mật khẩu</Link>
+                <Link className='mt-2 text-xs text-blue-400 text-center ' to='/reset-password'>Quên mật khẩu</Link>
 
                 {loading ?
                     <button type='submit' className='flex justify-center bg-gray-300 text-white mt-3.5 rounded-lg w-[264px] text-center py-1 '>
