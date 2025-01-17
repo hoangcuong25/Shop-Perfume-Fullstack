@@ -74,6 +74,20 @@ const addProduct = async (req, res) => {
     }
 }
 
+// api delete product 
+const deleteProduct = async (req, res) => {
+    try {
+        const { productId } = req.body
+
+        await productModel.findByIdAndDelete(productId)
+        res.json({ success: true, message: "Xóa sản phẩm thành công" })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
 // api get all user
 const getAllUser = async (req, res) => {
     try {
@@ -119,5 +133,6 @@ export {
     getAllProduct,
     getAllOder,
     login,
-    deleteUser
+    deleteUser,
+    deleteProduct
 }
