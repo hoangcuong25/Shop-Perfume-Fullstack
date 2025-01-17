@@ -1,11 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { FaUsers } from 'react-icons/fa'
 import { AppContext } from '../context/Context'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { AiOutlineReload } from 'react-icons/ai'
 
 const ManageUser = () => {
 
-    const { users } = useContext(AppContext)
+    const { users, backendUrl, getAllUser } = useContext(AppContext)
+
+    const [loading, setLoading] = useState(false)
+
+    const deleteUser = async (userId: any) => {
+        setLoading(true)
+
+        try {
+            const { data } = await axios.delete(backendUrl + "/api/admin/delete-user", { data: { userId } })
+
+            if (data.success) {
+                toast.success('Xóa người dùng thành công')
+                getAllUser()
+            }
+
+        } catch (error: any) {
+            toast.error(
+                error.response?.data?.message || "Something went wrong"
+            )
+        }
+
+        setLoading(false)
+    }
 
     return (
         <div className='m-5'>
@@ -28,6 +53,14 @@ const ManageUser = () => {
                             <p>Ngày sinh: <span className='font-semibold'>{i.dob}</span></p>
                             <p>Giới tính: <span className='font-semibold'>{i.gender}</span></p>
                             <p>Địa chỉ: <span className='font-semibold'>{i.address}</span></p>
+                            {loading
+                                ? <button className='flex justify-center mt-3.5 bg-gray-300 py-2.5 text-white'>
+                                    <AiOutlineReload className='animate-spin text-green-500 text-2xl' />
+                                </button>
+                                : <button onClick={(() => deleteUser(i._id))} className='mt-3.5 bg-red-500 py-2.5 text-white'>
+                                    Xóa người dùng
+                                </button>
+                            }
                         </div>
                     ))}
                 </div>

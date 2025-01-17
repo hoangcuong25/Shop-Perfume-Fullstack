@@ -20,6 +20,21 @@ const login = async (req, res) => {
     }
 }
 
+// api delete user
+const deleteUser = async (req, res) => {
+    try {
+        const { userId } = req.body
+
+        await userModel.findByIdAndDelete(userId)
+        res.json({ success: true, message: "Xóa người dùng thành công" })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json({ success: false, message: error.message })
+    }
+}
+
 // api add product
 const addProduct = async (req, res) => {
     try {
@@ -98,4 +113,11 @@ const getAllOder = async (req, res) => {
     }
 }
 
-export { addProduct, getAllUser, getAllProduct, getAllOder, login }
+export {
+    addProduct,
+    getAllUser,
+    getAllProduct,
+    getAllOder,
+    login,
+    deleteUser
+}
