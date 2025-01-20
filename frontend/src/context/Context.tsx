@@ -85,8 +85,8 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => 
     const [productData, setProductData] = useState<ProductData[]>([])
     const [order, setOrder] = useState<OrderData[]>([])
 
-    // const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
-    const backendUrl = 'http://localhost:4000'
+    const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
+    // const backendUrl = 'http://localhost:4000'
 
     const loading = async () => {
         try {
