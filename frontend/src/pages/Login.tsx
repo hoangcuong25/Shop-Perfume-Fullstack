@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import GoogleLoginForm from '../components/GoogleLogin';
 import { AiOutlineReload } from 'react-icons/ai';
+import FacebookLogin from '../components/FacebookLogin';
 
 const Login = () => {
 
@@ -97,14 +98,7 @@ const Login = () => {
                 <p className='mt-3 text-center font-medium'>Đăng nhập với</p>
 
                 <GoogleLoginForm />
-                <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
-                    <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500 rounded-l-md'>
-                        <FaFacebook className='text-2xl text-blue-500' />
-                    </div>
-                    <div className='flex w-full font-light  border border-gray-300 rounded-r-md text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                        Đăng Nhập Với Facebook
-                    </div>
-                </div>
+                <FacebookLogin />
             </form>
 
             <div className='flex flex-col items-center mt-8 text-white text-sm w-full py-3.5 bg-[#333333]'>

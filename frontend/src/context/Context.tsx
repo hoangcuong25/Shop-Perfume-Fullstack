@@ -85,7 +85,8 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => 
     const [productData, setProductData] = useState<ProductData[]>([])
     const [order, setOrder] = useState<OrderData[]>([])
 
-    const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
+    // const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
+    const backendUrl = 'http://localhost:4000'
 
     function formatMoney(amount: number): string {
         return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');

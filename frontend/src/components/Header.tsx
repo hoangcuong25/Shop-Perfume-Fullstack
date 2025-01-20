@@ -16,6 +16,7 @@ import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';
 import Search from './Search';
 import SearchModal from './SearchModal';
+import FacebookLogin from './FacebookLogin';
 
 const Header = () => {
 
@@ -165,14 +166,7 @@ const Header = () => {
                                     <div className='text-sm font-bold flex flex-col'>
                                         <p className='text-center mb-3.5'>Hoặc Đăng Nhập Với</p>
                                         <GoogleLoginForm />
-                                        <div className='flex w-full hover:text-red-500 cursor-pointer group/item'>
-                                            <div className='flex border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                                <FaFacebook className='text-2xl text-blue-500' />
-                                            </div>
-                                            <div className='flex w-full font-light  border border-gray-300 text-center mt-3.5 px-2 py-1 group-hover/item:border-red-500'>
-                                                Đăng Nhập Với Facebook
-                                            </div>
-                                        </div>
+                                        <FacebookLogin />
                                     </div>
                                 </div>
                             </div>
