@@ -2,6 +2,7 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context'
+import { AiOutlineReload } from 'react-icons/ai'
 
 type Props = {
     image: string
@@ -26,7 +27,7 @@ const Item = ({
     return (
         <Link to={`/product/${id}`} onClick={() => window.scrollTo(0, 0)}>
             <div className="w-36 md:w-52 flex flex-col justify-center items-center hover:scale-105 transition-all duration-500 mt-5 md:mx-3 relative group">
-                <img src={image} alt="" className="md:size-[185px] size-[130px]" />
+                <img src={image} loading='lazy' alt="" className="md:size-[185px] size-[130px]" />
                 <h3 className="font-semibold text-base md:text-lg ">{brand}</h3>
                 <h4 className="text-center text-sm font-medium md:text-base text-gray-900">{name}</h4>
                 <h5 className="mt-3 xl:text-[16px] lg:text-[15px] text-[12px] font-semibold">Giá mới: {formatMoney(newPrice)} vnđ</h5>

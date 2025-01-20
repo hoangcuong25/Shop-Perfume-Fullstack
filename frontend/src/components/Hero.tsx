@@ -16,6 +16,7 @@ import new_in from '../assets/new_in.png'
 import { AppContext } from '../context/Context.js';
 import { Link } from 'react-router-dom';
 import Item from './Item'
+import { AiOutlineReload } from 'react-icons/ai';
 
 const Hero = () => {
 
@@ -120,22 +121,28 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {productData?.slice(0, 8).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
-                                    Brand year
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {productData?.slice(0, 8).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                        Brand year
+                                    </div>
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
                                 </div>
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
 
             <div className='mt-10 px-3.5 sm:px-7 '>
@@ -147,22 +154,28 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {productData?.slice(10, 18).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
-                                    New
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {productData?.slice(10, 18).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                        New
+                                    </div>
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
                                 </div>
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
 
             <div className='mt-10 px-3.5 sm:px-7 '>
@@ -174,22 +187,28 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {productData?.slice(3, 10).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
-                                    Bestsellers
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {productData?.slice(3, 10).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                        Bestsellers
+                                    </div>
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
                                 </div>
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
 
             <div className='mt-16 px-3.5 sm:px-7 justify-center items-center flex flex-wrap gap-6 xl:gap-10'>
@@ -198,7 +217,7 @@ const Hero = () => {
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
                     onClick={() => { scrollTo(0, 0) }}
                 >
-                    <img src={for_him} className=' w-40 md:w-60 xl:w-72  ' alt="" />
+                    <img src={for_him} loading='lazy' className=' w-40 md:w-60 xl:w-72  ' alt="" />
                     <p>For Him</p>
                 </Link>
                 <Link
@@ -206,15 +225,15 @@ const Hero = () => {
                     className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'
                     onClick={() => { scrollTo(0, 0) }}
                 >
-                    <img src={for_her} className='w-40 md:w-60 xl:w-72 ' alt="" />
+                    <img src={for_her} loading='lazy' className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>For Her</p>
                 </Link>
                 <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img src={sale} onClick={() => scrollTo(0, 1800)} className='w-40 md:w-60 xl:w-72 ' alt="" />
+                    <img src={sale} loading='lazy' onClick={() => scrollTo(0, 1800)} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>Bestseller</p>
                 </div>
                 <div className='flex flex-col items-center gap-2 hover:scale-105 transition-all duration-500 cursor-pointer'>
-                    <img src={new_in} onClick={() => scrollTo(0, 1500)} className='w-40 md:w-60 xl:w-72 ' alt="" />
+                    <img src={new_in} loading='lazy' onClick={() => scrollTo(0, 1500)} className='w-40 md:w-60 xl:w-72 ' alt="" />
                     <p>New Arrivals</p>
                 </div>
             </div>
@@ -228,22 +247,28 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {miniSize?.slice(0, 6).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
-                                    Mini size
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {miniSize?.slice(0, 6).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                        Mini size
+                                    </div>
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
                                 </div>
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
 
             <div className='mt-10 px-3.5 sm:px-7 '>
@@ -255,22 +280,28 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {giftset?.slice(0, 6).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
-                                    Giftset
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {giftset?.slice(0, 6).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    <div className='absolute top-0 left-0 px-3 py-0.5 bg-red-500 text-white rounded-lg text-[10px]'>
+                                        Giftset
+                                    </div>
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
                                 </div>
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
 
             <div className='mt-10 px-3.5 sm:px-7 '>
@@ -282,21 +313,27 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <Slider {...setting2}>
-                    {bodyAndHome?.slice(0, 6).map((item: any, index: number) => {
-                        return (
-                            <div key={index} className='relative'>
-                                <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
-                                {isWishlist(item._id) ?
-                                    < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
-                                    : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
-                                }
-                            </div>
-                        )
-                    })}
-                </Slider>
+                {productData !== 0
+                    ? <Slider {...setting2}>
+                        {bodyAndHome?.slice(0, 6).map((item: any, index: number) => {
+                            return (
+                                <div key={index} className='relative'>
+                                    <Item id={item._id} image={item.image} brand={item.brand} name={item.name} oldPrice={item.oldPrice} newPrice={item.newPrice} des={item.des} />
+                                    {isWishlist(item._id) ?
+                                        < FaHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-red-500 text-lg hover:scale-110 cursor-pointer' />
+                                        : < FaRegHeart onClick={() => wishlistProduct(item._id)} className='absolute z-50 top-0 right-7 text-gray-700 text-lg hover:scale-110 cursor-pointer' />
+                                    }
+                                </div>
+                            )
+                        })}
+                    </Slider>
+                    :
+                    <div className='flex items-center justify-center'>
+                        <AiOutlineReload className='animate-spin text-green-500 text-3xl text-center' />
+                    </div>
+                }
             </div>
-        </div>
+        </div >
     )
 }
 

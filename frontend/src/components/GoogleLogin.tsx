@@ -5,10 +5,11 @@ import { FcGoogle } from "react-icons/fc"
 import axios from 'axios';
 import { useContext } from 'react';
 import { AppContext } from '../context/Context.js';
+import { toast } from 'react-toastify';
 
 const GoogleLogin = () => {
 
-    const { backendUrl } = useContext(AppContext)
+    const { backendUrl, setToken } = useContext(AppContext)
 
     const navigate = useNavigate()
     const handleGoogleClick = async () => {
@@ -21,15 +22,25 @@ const GoogleLogin = () => {
             console.log(result)
 
             const lastName = result.user.displayName?.split(" ")[0]
-            const fisrtName = result.user.displayName?.split(" ")[1]
+            const firstName = result.user.displayName?.split(" ")[1]
             const email = result.user.email
             const image = result.user.photoURL
 
-            const { data } = await axios.post(backendUrl + "/api/user/login-google")
+            const { data } = await axios.post(backendUrl + "/api/user/login-google", { lastName, firstName, email, image })
 
-            // navigate('/')
-        } catch (error) {
-            console.log('could not login with google', error);
+            if (data.success) {
+                toast.success("Đăng Nhập Thành Công")
+                localStorage.setItem('token', data.token)
+                setToken(data.token)
+                navigate('/')
+                scrollTo(0, 0)
+            } else {
+                toast.error(data.message)
+            }
+
+
+        } catch (error: any) {
+            toast.error(error.response?.data?.message || "Something went wrong")
         }
     }
 

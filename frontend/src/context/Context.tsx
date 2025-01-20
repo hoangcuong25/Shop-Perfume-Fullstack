@@ -88,6 +88,17 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => 
     // const backendUrl = 'https://shop-perfume-fullstack.onrender.com'
     const backendUrl = 'http://localhost:4000'
 
+    const loading = async () => {
+        try {
+            if (productData.length === 0) {
+                toast.warning("Nếu như không tải được trang được vui lòng F5")
+            }
+
+        } catch (error: any) {
+            toast.error(error.response?.data?.message || "Something went wrong")
+        }
+    }
+
     function formatMoney(amount: number): string {
         return amount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
@@ -188,6 +199,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => 
     useEffect(() => {
         loadProductData()
         getOrder()
+        loading()
     }, [])
 
     useEffect(() => {

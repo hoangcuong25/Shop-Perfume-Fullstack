@@ -98,6 +98,8 @@ const loginUser = async (req, res) => {
 const profile = async (req, res) => {
     try {
         const { userId } = req.body
+
+        console.log(userId)
         const userData = await userModel.findById(userId).select('-password')
 
         res.json({ success: true, userData })
@@ -535,7 +537,7 @@ export const resetPassword = async (req, res) => {
             return res.json({ success: false, message: "Email, OTP, and password are required" })
         }
 
-        const user = await userModel.findOne({ email: email })
+        const user = await userModel.findOne({ email })
 
         if (!user) {
             return res.json({ success: false, message: "User not fount" })
@@ -558,6 +560,48 @@ export const resetPassword = async (req, res) => {
         await user.save()
 
         return res.json({ success: true, message: "Password has been reset successfully" })
+
+    } catch (error) {
+        console.log(error.message)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+// api login with google
+export const LoginGoogle = async (req, res) => {
+    try {
+        const { firstName, lastName, email, image } = req.body
+
+        if (!firstName || !lastName || !email || !image) {
+            return res.json({ success: false, message: "Thiếu thông tin" })
+        }
+
+        const isEmail = await userModel.findOne({ email: email })
+
+        if (isEmail) {
+            const token = jwt.sign({ id: isEmail._id }, process.env.JWT_SECERT)
+
+            return res.json({ success: true, token })
+        } else {
+            const generatedPassword = Math.random().toString(36).slice(-8)
+            const hashedPassword = await bcrypt.hash(generatedPassword, 10);
+
+            const userData = {
+                firstName,
+                lastName,
+                email,
+                phone: "Không xác định",
+                password: hashedPassword,
+                dob: "Không xác định",
+                image
+            }
+
+            const newUser = new userModel(userData)
+            await newUser.save()
+
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECERT)
+            return res.json({ success: true, token })
+        }
 
     } catch (error) {
         console.log(error.message)
