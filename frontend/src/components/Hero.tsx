@@ -121,7 +121,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {productData?.slice(0, 8).map((item: any, index: number) => {
                             return (
@@ -154,7 +154,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {productData?.slice(10, 18).map((item: any, index: number) => {
                             return (
@@ -187,7 +187,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {productData?.slice(3, 10).map((item: any, index: number) => {
                             return (
@@ -247,7 +247,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {miniSize?.slice(0, 6).map((item: any, index: number) => {
                             return (
@@ -280,7 +280,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {giftset?.slice(0, 6).map((item: any, index: number) => {
                             return (
@@ -313,7 +313,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {productData !== 0
+                {productData.length !== 0
                     ? <Slider {...setting2}>
                         {bodyAndHome?.slice(0, 6).map((item: any, index: number) => {
                             return (
