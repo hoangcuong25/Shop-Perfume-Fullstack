@@ -71,13 +71,6 @@ const WishList: React.FC<Props> = ({ setShow, show }) => {
                     ))}
                 </div>
                 : <div className='mt-3 flex md:flex-row flex-col gap-3.5'>
-                    <div
-                        className='flex md:hidden items-center gap-3 mb-3 cursor-pointer'
-                        onClick={() => setShow(!show)}
-                    >
-                        <AiOutlineMenu />
-                        <p>Menu</p>
-                    </div>
                     <img src={wishlist_icon} className='size-72' alt="" />
                     <div className='flex flex-col'>
                         <p className='text-2xl font-bold mb-3.5'>Danh sách của bạn đang rỗng!</p>
