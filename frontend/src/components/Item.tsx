@@ -2,7 +2,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../context/Context'
-import { AiOutlineReload } from 'react-icons/ai'
 
 type Props = {
     image: string

@@ -10,7 +10,6 @@ import cong_dong_nuoc_hoa from '../assets/cong-dong-nuoc-hoa.png'
 import xu_huong_nuoc_hoa from '../assets/xu-huong-nuoc-hoa.png'
 import goc_review from '../assets/goc-review.png'
 import feedbacks_instore from '../assets/feedbacks-instore.png'
-import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Context';
 import GoogleLoginForm from './GoogleLogin';

@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react'
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { AppContext } from '../context/Context';
-import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';

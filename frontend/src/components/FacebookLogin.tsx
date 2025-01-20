@@ -1,17 +1,17 @@
 import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
 import app from "../firebase.js"
-import { useNavigate } from 'react-router-dom';
-import { FcGoogle } from "react-icons/fc"
-import axios from 'axios';
-import { useContext } from 'react';
-import { AppContext } from '../context/Context.js';
+// import { useNavigate } from 'react-router-dom';
+// import { FcGoogle } from "react-icons/fc"
+// import axios from 'axios';
+// import { useContext } from 'react';
+// import { AppContext } from '../context/Context.js';
 import { FaFacebook } from 'react-icons/fa';
 
 const FacebookLogin = () => {
 
-    const { backendUrl } = useContext(AppContext)
+    // const { backendUrl } = useContext(AppContext)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const handleGoogleClick = async () => {
         try {
             const provider = new GoogleAuthProvider();
@@ -21,12 +21,12 @@ const FacebookLogin = () => {
 
             console.log(result)
 
-            const lastName = result.user.displayName?.split(" ")[0]
-            const fisrtName = result.user.displayName?.split(" ")[1]
-            const email = result.user.email
-            const image = result.user.photoURL
+            // const lastName = result.user.displayName?.split(" ")[0]
+            // const fisrtName = result.user.displayName?.split(" ")[1]
+            // const email = result.user.email
+            // const image = result.user.photoURL
 
-            const { data } = await axios.post(backendUrl + "/api/user/login-google")
+            // const { data } = await axios.post(backendUrl + "/api/user/login-google")
 
             // navigate('/')
         } catch (error) {
